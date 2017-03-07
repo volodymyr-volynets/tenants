@@ -13,7 +13,7 @@ class numbers_tenants_tenants_model_tenants extends object_table {
 	public $column_prefix = 'tm_tenant_';
 	public $columns = [
 		'tm_tenant_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id_sequence'],
-		'tm_tenant_code' => ['name' => 'Code', 'domain' => 'group_code'],
+		'tm_tenant_code' => ['name' => 'Code', 'domain' => 'domain_part'],
 		'tm_tenant_name' => ['name' => 'Name', 'domain' => 'name'],
 		'tm_tenant_email' => ['name' => 'Primary Email', 'domain' => 'email', 'null' => true],
 		'tm_tenant_phone' => ['name' => 'Primary Phone', 'domain' => 'phone', 'null' => true],

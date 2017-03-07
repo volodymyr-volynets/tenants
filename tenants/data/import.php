@@ -25,27 +25,14 @@ class numbers_tenants_tenants_data_import extends object_import {
 		],
 		'tenants' => [
 			'options' => [
-				'pk' => ['tm_tenant_id'],
+				'pk' => ['tm_tenant_code'],
 				'model' => 'numbers_tenants_tenants_model_tenants',
 				'method' => 'save'
 			],
 			'data' => [
 				[
-					'tm_tenant_id' => 1,
 					'tm_tenant_code' => 'SYSTEM',
 					'tm_tenant_name' => 'System',
-					'tm_tenant_inactive' => 0
-				],
-				[
-					'tm_tenant_id' => 2,
-					'tm_tenant_code' => 'MAINTENANCE',
-					'tm_tenant_name' => 'Maintenance',
-					'tm_tenant_inactive' => 0
-				],
-				[
-					'tm_tenant_id' => 100,
-					'tm_tenant_code' => 'DEFAULT',
-					'tm_tenant_name' => 'Default',
 					'tm_tenant_inactive' => 0
 				]
 			]
