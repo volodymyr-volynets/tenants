@@ -2,11 +2,6 @@
 
 class numbers_tenants_tenants_override_acl_resources {
 	public $data = [
-		'controllers' => [
-			'primary' => [
-				'datasource' => 'numbers_tenants_tenants_datasource_acl_controllers'
-			]
-		],
 		'application_structure' => [
 			'tenant' => [
 				'tenant_datasource' => 'numbers_tenants_tenants_datasource_tenants',
