@@ -73,8 +73,10 @@ finish:
 		];
 		do {
 			$model = new numbers_tenants_tenants_model_modules();
+			$model->cache = false;
 			$model->db_object->begin();
 			$feature_model = new numbers_tenants_tenants_model_module_features();
+			$feature_model->cache = false;
 			// check dependencies
 			$feature_collection = new numbers_backend_system_modules_model_collection_module_features();
 			$feature_result = $feature_collection->get([

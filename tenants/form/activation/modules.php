@@ -1,17 +1,18 @@
 <?php
 
 class numbers_tenants_tenants_form_activation_modules extends object_form_wrapper_base {
-	public $form_link = 'module_activation';
+	public $form_link = 'module_activation_form';
 	public $options = [
 		'segment' => [
 			'type' => 'primary',
 			'header' => [
-				'icon' => ['type' => 'cog'],
-				'title' => 'Module Activation:'
+				'icon' => ['type' => 'cubes'],
+				'title' => 'Activate Module:'
 			]
 		],
 		'actions' => [
-			'refresh' => true
+			'refresh' => true,
+			'back' => true
 		]
 	];
 	public $containers = [

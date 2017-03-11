@@ -15,7 +15,7 @@ class numbers_tenants_tenants_model_module_features extends object_table {
 		'tm_feature_tenant_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id'],
 		'tm_feature_module_id' => ['name' => 'Module #', 'domain' => 'module_id'],
 		'tm_feature_module_code' => ['name' => 'Module Code', 'domain' => 'module_code'],
-		'tm_feature_feature_code' => ['name' => 'Module Code', 'domain' => 'feature_code'],
+		'tm_feature_feature_code' => ['name' => 'Feature Code', 'domain' => 'feature_code'],
 		'tm_feature_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
 	];
 	public $constraints = [
