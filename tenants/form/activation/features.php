@@ -11,7 +11,8 @@ class numbers_tenants_tenants_form_activation_features extends object_form_wrapp
 			]
 		],
 		'actions' => [
-			'refresh' => true
+			'refresh' => true,
+			'back' => true
 		]
 	];
 	public $containers = [

@@ -46,17 +46,17 @@ class numbers_tenants_tenants_form_activation_list_features extends object_form_
 			]
 		],
 		'filter' => [
-//			'tm_module_id' => [
-//				'tm_module_id1' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Module #', 'domain' => 'module_id', 'percent' => 25, 'null' => true, 'query_builder' => 'a.tm_module_id;>='],
-//				'tm_module_id2' => ['order' => 2, 'label_name' => 'Module #', 'domain' => 'module_id', 'percent' => 25, 'null' => true, 'query_builder' => 'a.tm_module_id;<='],
-//				'tm_module_module_code1' => ['order' => 3, 'label_name' => 'Module Code', 'domain' => 'module_code', 'percent' => 50, 'null' => true, 'method' => 'multiselect', 'multiple_column' => 1, 'options_model' => 'numbers_backend_system_modules_model_modules', 'query_builder' => 'a.tm_module_module_code'],
-//			],
-//			'tm_module_module_code' => [
-//				'tm_module_name1' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Name', 'domain' => 'name', 'percent' => 50, 'null' => true, 'query_builder' => 'a.tm_module_name;like%'],
-//				'tm_module_inactive1' => ['order' => 2, 'label_name' => 'Inactive', 'type' => 'boolean', 'percent' => 50, 'query_builder' => 'a.tm_module_inactive;=']
-//			],
+			'tm_module_id' => [
+				'tm_feature_module_id1' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Module #', 'domain' => 'module_id', 'percent' => 25, 'null' => true, 'query_builder' => 'a.tm_feature_module_id;>='],
+				'tm_feature_module_id2' => ['order' => 2, 'label_name' => 'Module #', 'domain' => 'module_id', 'percent' => 25, 'null' => true, 'query_builder' => 'a.tm_feature_module_id;<='],
+				'tm_feature_module_code1' => ['order' => 3, 'label_name' => 'Module Type', 'domain' => 'module_code', 'percent' => 50, 'null' => true, 'method' => 'multiselect', 'multiple_column' => 1, 'options_model' => 'numbers_backend_system_modules_model_modules', 'query_builder' => 'a.tm_feature_module_code', 'onchange' => 'this.form.submit();'],
+			],
+			'tm_feature_feature_code' => [
+				'tm_feature_feature_code1' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Feature Name', 'domain' => 'feature_code', 'percent' => 50, 'null' => true, 'query_builder' => 'a.tm_feature_feature_code', 'method' => 'multiselect', 'multiple_column' => 1, 'options_model' => 'numbers_backend_system_modules_model_module_feature_options', 'options_depends' => ['sm_feature_module_code' => 'tm_feature_module_code1']],
+				'tm_feature_inactive1' => ['order' => 2, 'label_name' => 'Inactive', 'type' => 'boolean', 'percent' => 50, 'method' => 'multiselect', 'multiple_column' => 1, 'options_model' => 'object_data_model_inactive', 'query_builder' => 'a.tm_feature_inactive;=']
+			],
 			'full_text_search' => [
-				'full_text_search' => ['order' => 1, 'row_order' => 300, 'label_name' => 'Text Search', 'full_text_search_columns' => ['tm_module_name'], 'placeholder' => 'Search in Name', 'domain' => 'name', 'percent' => 100, 'null' => true],
+				'full_text_search' => ['order' => 1, 'row_order' => 300, 'label_name' => 'Text Search', 'full_text_search_columns' => ['tm_module_name', 'tm_feature_feature_code', 'sm_feature_name'], 'placeholder' => 'Search in Module Name, Feature Code, Feature Name', 'domain' => 'name', 'percent' => 100, 'null' => true],
 			]
 		],
 		'sort' => [
@@ -86,7 +86,8 @@ class numbers_tenants_tenants_form_activation_list_features extends object_form_
 		'pagination_bottom' => 'numbers_frontend_html_form_renderers_html_pagination_base',
 		'default_limit' => 30,
 		'default_sort' => [
-			'tm_feature_module_id' => SORT_ASC
+			'tm_feature_module_id' => SORT_ASC,
+			'sm_feature_name' => SORT_ASC
 		]
 	];
 	const list_sort_options = [

@@ -52,7 +52,7 @@ class numbers_tenants_tenants_form_activation_list_modules extends object_form_w
 			],
 			'tm_module_module_code' => [
 				'tm_module_name1' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Name', 'domain' => 'name', 'percent' => 50, 'null' => true, 'query_builder' => 'a.tm_module_name;like%'],
-				'tm_module_inactive1' => ['order' => 2, 'label_name' => 'Inactive', 'type' => 'boolean', 'percent' => 50, 'query_builder' => 'a.tm_module_inactive;=']
+				'tm_module_inactive1' => ['order' => 2, 'label_name' => 'Inactive', 'type' => 'boolean', 'percent' => 50, 'method' => 'multiselect', 'multiple_column' => 1, 'options_model' => 'object_data_model_inactive', 'query_builder' => 'a.tm_module_inactive;=']
 			],
 			'full_text_search' => [
 				'full_text_search' => ['order' => 1, 'row_order' => 300, 'label_name' => 'Text Search', 'full_text_search_columns' => ['tm_module_name'], 'placeholder' => 'Search in Name', 'domain' => 'name', 'percent' => 100, 'null' => true],
@@ -78,7 +78,10 @@ class numbers_tenants_tenants_form_activation_list_modules extends object_form_w
 	public $list_options = [
 		'pagination_top' => 'numbers_frontend_html_form_renderers_html_pagination_base',
 		'pagination_bottom' => 'numbers_frontend_html_form_renderers_html_pagination_base',
-		'default_limit' => 30
+		'default_limit' => 30,
+		'default_sort' => [
+			'tm_module_id' => SORT_ASC
+		]
 	];
 	const list_sort_options = [
 		'tm_module_id' => ['name' => 'Module #'],
