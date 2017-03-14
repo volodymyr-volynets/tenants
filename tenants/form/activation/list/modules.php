@@ -67,10 +67,10 @@ class numbers_tenants_tenants_form_activation_list_modules extends object_form_w
 		self::list_buttons => self::list_buttons_data,
 		self::list_container => [
 			'row1' => [
-				'tm_module_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Module #', 'domain' => 'module_id_sequence', 'width' => '10%'],
-				'tm_module_module_code' => ['order' => 2, 'label_name' => 'Module Type', 'domain' => 'module_code', 'width' => '30%', 'options_model' => 'numbers_backend_system_modules_model_modules'],
-				'tm_module_name' => ['order' => 3, 'label_name' => 'Name', 'domain' => 'name', 'width' => '45%'],
-				'tm_module_inactive' => ['order' => 4, 'label_name' => 'Inactive', 'type' => 'boolean', 'width' => '5%']
+				'tm_module_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Module #', 'domain' => 'module_id_sequence', 'percent' => 10],
+				'tm_module_module_code' => ['order' => 2, 'label_name' => 'Module Type', 'domain' => 'module_code', 'percent' => 30, 'options_model' => 'numbers_backend_system_modules_model_modules'],
+				'tm_module_name' => ['order' => 3, 'label_name' => 'Name', 'domain' => 'name', 'percent' => 45],
+				'tm_module_inactive' => ['order' => 4, 'label_name' => 'Inactive', 'type' => 'boolean', 'percent' => 5]
 			]
 		]
 	];
