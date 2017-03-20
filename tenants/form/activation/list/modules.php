@@ -3,13 +3,7 @@
 class numbers_tenants_tenants_form_activation_list_modules extends object_form_wrapper_list {
 	public $form_link = 'module_activation_list';
 	public $options = [
-		'segment' => [
-			'type' => 'primary',
-			'header' => [
-				'icon' => ['type' => 'cubes'],
-				'title' => 'General Modules:'
-			]
-		],
+		'segment' => self::segment_list,
 		'actions' => [
 			'refresh' => true,
 			'new' => ['value' => 'Activate Module', 'onclick' => ''],

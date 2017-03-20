@@ -3,13 +3,7 @@
 class numbers_tenants_tenants_form_activation_list_features extends object_form_wrapper_list {
 	public $form_link = 'feature_activation_list';
 	public $options = [
-		'segment' => [
-			'type' => 'primary',
-			'header' => [
-				'icon' => ['type' => 'cubes'],
-				'title' => 'General Features:'
-			]
-		],
+		'segment' => self::segment_list,
 		'actions' => [
 			'refresh' => true,
 			'new' => ['value' => 'Activate Feature', 'onclick' => ''],

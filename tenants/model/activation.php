@@ -40,7 +40,7 @@ class numbers_tenants_tenants_model_activation {
 			$default_features = numbers_backend_system_modules_model_module_features::get_static([
 				'where' => [
 					'sm_feature_module_code' => $module_code,
-					'sm_feature_type' => 10,
+					'sm_feature_activated_by_default' => 1,
 					'sm_feature_inactive' => 0
 				]
 			]);

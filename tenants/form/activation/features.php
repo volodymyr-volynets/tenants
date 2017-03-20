@@ -22,10 +22,10 @@ class numbers_tenants_tenants_form_activation_features extends object_form_wrapp
 	public $elements = [
 		'default' => [
 			'tm_feature_module_id' => [
-				'tm_feature_module_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Module', 'domain' => 'module_id', 'percent' => 100, 'required' => true, 'method' => 'select', 'options_model' => 'numbers_tenants_tenants_datasource_activation_feature_modules', 'onchange' => 'this.form.submit();'],
+				'tm_feature_module_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Module', 'domain' => 'module_id', 'percent' => 100, 'required' => true, 'null' => true, 'method' => 'select', 'options_model' => 'numbers_tenants_tenants_datasource_activation_feature_modules', 'onchange' => 'this.form.submit();'],
 			],
 			'tm_feature_feature_code' => [
-				'tm_feature_feature_code' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Feature', 'domain' => 'feature_code', 'percent' => 100, 'required' => true, 'method' => 'select', 'options_model' => 'numbers_tenants_tenants_datasource_activation_feature_features', 'options_depends' => ['tm_feature_module_id' => 'tm_feature_module_id']],
+				'tm_feature_feature_code' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Feature', 'domain' => 'feature_code', 'percent' => 100, 'required' => true, 'null' => true, 'method' => 'select', 'options_model' => 'numbers_tenants_tenants_datasource_activation_feature_features', 'options_depends' => ['tm_feature_module_id' => 'tm_feature_module_id']],
 			],
 			self::buttons => [
 				self::button_submit => self::button_submit_data
