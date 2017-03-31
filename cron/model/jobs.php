@@ -1,6 +1,6 @@
 <?php
 
-class numbers_tenants_cron_model_jobs extends object_table {
+class numbers_tenants_cron_model_jobs extends \Object\Table {
 	public $db_link;
 	public $db_link_flag;
 	public $module_code = 'TM';

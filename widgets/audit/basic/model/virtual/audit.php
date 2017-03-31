@@ -1,6 +1,6 @@
 <?php
 
-class numbers_tenants_widgets_audit_basic_model_virtual_audit extends object_table {
+class numbers_tenants_widgets_audit_basic_model_virtual_audit extends \Object\Table {
 	public $db_link;
 	public $db_link_flag;
 	public $name = null;
@@ -73,7 +73,7 @@ class numbers_tenants_widgets_audit_basic_model_virtual_audit extends object_tab
 		}
 		$save['wg_audit_value'] = json_encode($data);
 		$save['wg_audit_changes'] = $options['changes'];
-		$this->process_who_columns(['inserted'], $save);
+		$this->processWhoColumns(['inserted'], $save);
 		$save['wg_audit_id'] = $this->sequence('wg_audit_id');
 		return $this->db_object->insert($this->full_table_name, [$save]);
 	}
