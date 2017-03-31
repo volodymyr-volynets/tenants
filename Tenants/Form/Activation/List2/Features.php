@@ -1,6 +1,7 @@
 <?php
 
-class numbers_tenants_tenants_form_activation_list_features extends \Object\Form\Wrapper\List2 {
+namespace Numbers\Tenants\Tenants\Form\Activation\List2;
+class Features extends \Object\Form\Wrapper\List2 {
 	public $form_link = 'feature_activation_list';
 	public $options = [
 		'segment' => self::SEGMENT_LIST,

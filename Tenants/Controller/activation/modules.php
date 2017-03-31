@@ -9,7 +9,7 @@ class Modules extends \Object\Controller\Permission {
 		echo $form->render();
 	}
 	public function actionEdit() {
-		$form = new numbers_tenants_tenants_form_activation_modules([
+		$form = new \Numbers\Tenants\Tenants\Form\Activation\Modules([
 			'input' => \Request::input()
 		]);
 		echo $form->render();

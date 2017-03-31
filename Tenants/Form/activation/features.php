@@ -1,6 +1,7 @@
 <?php
 
-class numbers_tenants_tenants_form_activation_features extends \Object\Form\Wrapper\Base {
+namespace Numbers\Tenants\Tenants\Form\Activation;
+class Features extends \Object\Form\Wrapper\Base {
 	public $form_link = 'feature_activation';
 	public $options = [
 		'segment' => [

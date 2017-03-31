@@ -1,6 +1,7 @@
 <?php
 
-class numbers_tenants_tenants_form_activation_modules extends \Object\Form\Wrapper\Base {
+namespace Numbers\Tenants\Tenants\Form\Activation;
+class Modules extends \Object\Form\Wrapper\Base {
 	public $form_link = 'module_activation_form';
 	public $options = [
 		'segment' => [
@@ -22,7 +23,7 @@ class numbers_tenants_tenants_form_activation_modules extends \Object\Form\Wrapp
 	public $elements = [
 		'default' => [
 			'tm_module_module_code' => [
-				'tm_module_module_code' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Module', 'domain' => 'module_code', 'percent' => 100, 'required' => true, 'method' => 'select', 'options_model' => 'numbers_tenants_tenants_datasource_activation_module_modules'],
+				'tm_module_module_code' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Module', 'domain' => 'module_code', 'percent' => 100, 'required' => true, 'method' => 'select', 'options_model' => '\Numbers\Tenants\Tenants\DataSource\Activation\Module\Modules'],
 			],
 			'tm_module_name' => [
 				'tm_module_name' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Name', 'domain' => 'name', 'percent' => 100],
@@ -34,7 +35,7 @@ class numbers_tenants_tenants_form_activation_modules extends \Object\Form\Wrapp
 	];
 
 	public function save(& $form) {
-		$result = \Numbers\Tenants\Tenants\Model\Activation::activate_module($form->values['tm_module_module_code'], $form->values['tm_module_name']);
+		$result = \Numbers\Tenants\Tenants\Model\Activation::activateModule($form->values['tm_module_module_code'], $form->values['tm_module_name']);
 		if ($result['success']) {
 			$form->error('success', 'Module has been activated!');
 			return true;

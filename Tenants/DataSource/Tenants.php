@@ -1,6 +1,7 @@
 <?php
 
-class numbers_tenants_tenants_datasource_tenants extends \Object\Datasource {
+namespace Numbers\Tenants\Tenants\DataSource;
+class Tenants extends \Object\Datasource {
 	public $db_link;
 	public $db_link_flag;
 	public $pk = ['tm_tenant_id'];
@@ -23,6 +24,6 @@ class numbers_tenants_tenants_datasource_tenants extends \Object\Datasource {
 	];
 
 	public function query($parameters, $options = []) {
-		$this->query->where_multiple('AND', $parameters);
+		$this->query->whereMultiple('AND', $parameters);
 	}
 }

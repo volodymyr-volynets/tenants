@@ -1,6 +1,7 @@
 <?php
 
-class numbers_tenants_tenants_datasource_activation_module_modules extends \Object\Datasource {
+namespace Numbers\Tenants\Tenants\DataSource\Activation\Module;
+class Modules extends \Object\Datasource {
 	public $db_link;
 	public $db_link_flag;
 	public $pk = ['sm_module_code'];

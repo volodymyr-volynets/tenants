@@ -16,7 +16,7 @@ class Activation {
 			'error' => []
 		];
 		do {
-			$modules = numbers_tenants_tenants_datasource_activation_module_modules::getStatic();
+			$modules = \Numbers\Tenants\Tenants\DataSource\Activation\Module\Modules::getStatic();
 			if (empty($modules[$module_code])) {
 				$result['error'][] = 'Module cannot be activated!';
 				break;
@@ -46,7 +46,7 @@ class Activation {
 				]
 			]);
 			foreach ($default_features as $k => $v) {
-				$feature_result = self::activate_feature($module_id, $module_code, $v['sm_feature_code']);
+				$feature_result = self::activateFeature($module_id, $module_code, $v['sm_feature_code']);
 				if (!$feature_result['success']) {
 					$result['error'] = array_merge($result['error'], $feature_result['error']);
 					goto finish;
@@ -76,7 +76,7 @@ finish:
 			$model = new \Numbers\Tenants\Tenants\Model\Modules();
 			$model->cache = false;
 			$model->db_object->begin();
-			$feature_model = new numbers_tenants_tenants_model_module_features();
+			$feature_model = new \Numbers\Tenants\Tenants\Model\Module\Features();
 			$feature_model->cache = false;
 			// check dependencies
 			$feature_collection = new \Numbers\Backend\System\Modules\Model\Collection\Module\Features();
@@ -151,7 +151,7 @@ finish:
 						]);
 						if (!empty($feature_check)) continue;
 						// activate dependent feature if its the same module
-						$activation_dependency_result = self::activate_feature($module_id, $v['sm_mdldep_child_module_code'], $v['sm_mdldep_child_feature_code']);
+						$activation_dependency_result = self::activateFeature($module_id, $v['sm_mdldep_child_module_code'], $v['sm_mdldep_child_feature_code']);
 						if (!$activation_dependency_result['success']) {
 							$result['error'] = array_merge($result['error'], $activation_dependency_result['error']);
 							break;
