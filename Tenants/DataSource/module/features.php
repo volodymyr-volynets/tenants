@@ -60,13 +60,13 @@ class numbers_tenants_tenants_datasource_module_features extends \Object\Datasou
 		$result = [];
 		foreach ($data as $k => $v) {
 			foreach ($v as $k2 => $v2) {
-				$parent = \Object\Table_options::options_json_format_key(['module_id' => $k]);
+				$parent = \Object\Table\Options::optionJsonFormatKey(['module_id' => $k]);
 				// add method
 				if (!isset($result[$parent])) {
 					$result[$parent] = ['name' => $v2['module_name'], 'icon_class' => \HTML::icon(['type' => $v2['module_icon'], 'class_only' => true]), 'parent' => null, 'disabled' => true];
 				}
 				// add item
-				$key = \Object\Table_options::options_json_format_key(['feature_code' => $k2, 'module_id' => $k]);
+				$key = \Object\Table\Options::optionJsonFormatKey(['feature_code' => $k2, 'module_id' => $k]);
 				$result[$key] = ['name' => $v2['feature_name'], 'icon_class' => \HTML::icon(['type' => $v2['feature_icon'], 'class_only' => true]), '__selected_name' => i18n(null, $v2['module_name']) . ': ' . i18n(null, $v2['feature_name']), 'parent' => $parent];
 			}
 		}

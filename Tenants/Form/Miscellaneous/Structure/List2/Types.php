@@ -1,13 +1,13 @@
 <?php
 
-namespace Numbers\Tenants\Tenants\Form\Activation\List2;
-class Modules extends \Object\Form\Wrapper\List2 {
-	public $form_link = 'module_activation_list';
+namespace Numbers\Tenants\Tenants\Form\Miscellaneous\Structure\List2;
+class Types extends \Object\Form\Wrapper\List2 {
+	public $form_link = 'structure_codes_list';
 	public $options = [
 		'segment' => self::SEGMENT_LIST,
 		'actions' => [
 			'refresh' => true,
-			'new' => ['value' => 'Activate Module', 'onclick' => ''],
+			'new' => true,
 			'filter_sort' => ['value' => 'Filter/Sort', 'sort' => 32000, 'icon' => 'filter', 'onclick' => 'Numbers.Form.listFilterSortToggle(this);']
 		]
 	];
@@ -62,25 +62,23 @@ class Modules extends \Object\Form\Wrapper\List2 {
 		self::LIST_BUTTONS => self::LIST_BUTTONS_DATA,
 		self::LIST_CONTAINER => [
 			'row1' => [
-				'tm_module_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Module #', 'domain' => 'module_id_sequence', 'percent' => 10],
-				'tm_module_module_code' => ['order' => 2, 'label_name' => 'Module Type', 'domain' => 'module_code', 'percent' => 30, 'options_model' => '\Numbers\Backend\System\Modules\Model\Modules'],
-				'tm_module_name' => ['order' => 3, 'label_name' => 'Name', 'domain' => 'name', 'percent' => 45],
-				'tm_module_inactive' => ['order' => 4, 'label_name' => 'Inactive', 'type' => 'boolean', 'percent' => 5]
+				'tm_structure_code' => ['order' => 1, 'label_name' => 'Structure Code', 'domain' => 'type_code', 'percent' => 30, 'url_edit' => true],
+				'tm_structure_name' => ['order' => 2, 'label_name' => 'Name', 'domain' => 'name', 'percent' => 45],
+				'tm_structure_inactive' => ['order' => 3, 'label_name' => 'Inactive', 'type' => 'boolean', 'percent' => 5]
 			]
 		]
 	];
-	public $query_primary_model = '\Numbers\Tenants\Tenants\Model\Modules';
+	public $query_primary_model = '\Numbers\Tenants\Tenants\Model\Structure\Types';
 	public $list_options = [
 		'pagination_top' => '\Numbers\Frontend\HTML\Form\Renderers\HTML\Pagination\Base',
 		'pagination_bottom' => '\Numbers\Frontend\HTML\Form\Renderers\HTML\Pagination\Base',
 		'default_limit' => 30,
 		'default_sort' => [
-			'tm_module_id' => SORT_ASC
+			'tm_structure_name' => SORT_ASC
 		]
 	];
 	const list_sort_options = [
-		'tm_module_id' => ['name' => 'Module #'],
-		'tm_module_name' => ['name' => 'Name']
+		'tm_structure_name' => ['name' => 'Name']
 	];
 
 	public function listQuery(& $form) {
