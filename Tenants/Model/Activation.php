@@ -52,6 +52,15 @@ class Activation {
 					goto finish;
 				}
 			}
+			// custom activation model
+			if (!empty($modules[$module_code]['sm_module_activation_model'])) {
+				$activation_model = new $modules[$module_code]['sm_module_activation_model']();
+				$activation_result = $activation_model->process();
+				if (!$activation_result['success']) {
+					$result['error'] = array_merge($result['error'], $activation_result['error']);
+					break;
+				}
+			}
 			// commit if we got here
 			$model->db_object->commit();
 			$result['success'] = true;

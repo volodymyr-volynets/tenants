@@ -25,7 +25,8 @@ class Modules extends \Object\Datasource {
 	public function query($parameters, $options = []) {
 		$this->query->columns([
 			'sm_module_code' => 'a.sm_module_code',
-			'sm_module_name' => 'a.sm_module_name'
+			'sm_module_name' => 'a.sm_module_name',
+			'sm_module_activation_model' => 'a.sm_module_activation_model'
 		]);
 		// join
 		$this->query->join('LEFT', function (& $query) {
