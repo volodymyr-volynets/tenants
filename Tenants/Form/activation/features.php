@@ -35,7 +35,7 @@ class Features extends \Object\Form\Wrapper\Base {
 	];
 
 	public function save(& $form) {
-		$result = \Numbers\Tenants\Tenants\Model\Activation::activate_feature($form->values['tm_feature_module_id'], '', $form->values['tm_feature_feature_code']);
+		$result = \Numbers\Tenants\Tenants\Model\Activation::activateFeature($form->values['tm_feature_module_id'], '', $form->values['tm_feature_feature_code']);
 		if ($result['success']) {
 			$form->error('success', 'Feature has been activated!');
 			return true;

@@ -1,6 +1,7 @@
 <?php
 
-class numbers_tenants_widgets_audit_basic_model_virtual_audit extends \Object\Table {
+namespace Numbers\Tenants\Widgets\Audit\Model\Virtual;
+class Audit extends \Object\Table {
 	public $db_link;
 	public $db_link_flag;
 	public $name = null;
@@ -36,11 +37,11 @@ class numbers_tenants_widgets_audit_basic_model_virtual_audit extends \Object\Ta
 	 *
 	 * @param string $class
 	 */
-	public function __construct($class) {
+	public function __construct($class, $virtual_class_name) {
 		// add regular columns
 		$this->columns['wg_audit_tenant_id'] = ['name' => 'Tenant #', 'domain' => 'tenant_id'];
 		$this->columns['wg_audit_id'] = ['name' => 'Audit #', 'domain' => 'big_id_sequence'];
-		$this->determine_model_map($class, 'audit');
+		$this->determineModelMap($class, 'audit', $virtual_class_name);
 		$this->columns['wg_audit_changes'] = ['name' => '# of Changes', 'domain' => 'counter', 'default' => 0];
 		$this->columns['wg_audit_value'] = ['name' => 'Value', 'type' => 'json'];
 		// add constraints
