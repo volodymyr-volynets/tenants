@@ -26,7 +26,7 @@ class Attributes extends \Object\Form\Wrapper\Base {
 			'type' => 'subdetails',
 			'label_name' => 'Models',
 			'details_rendering_type' => 'table',
-			'details_new_rows' => 5,
+			'details_new_rows' => 3,
 			'details_parent_key' => '\Numbers\Tenants\Widgets\Attributes\Model\Attribute\Organizations',
 			'details_key' => '\Numbers\Tenants\Widgets\Attributes\Model\Attribute\Organization\Models',
 			'details_pk' => ['tm_attrmdl_model_id'],
@@ -63,7 +63,7 @@ class Attributes extends \Object\Form\Wrapper\Base {
 		],
 		'models_container' => [
 			'row1' => [
-				'tm_attrmdl_model_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Organization', 'domain' => 'organization_id', 'required' => true, 'null' => true, 'details_unique_select' => true, 'percent' => 95, 'method' => 'select', 'options_model' => '\Numbers\Users\Organizations\DataSource\Organizations::optionsActive', 'onchange' => 'this.form.submit();'],
+				'tm_attrmdl_model_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Model', 'domain' => 'group_id', 'required' => true, 'null' => true, 'details_unique_select' => true, 'percent' => 95, 'method' => 'select', 'options_model' => '\Numbers\Backend\Db\Common\Model\Models', 'options_params' => ['sm_model_widget_attributes' => 1], 'onchange' => 'this.form.submit();'],
 				'tm_attrmdl_inactive' => ['order' => 2, 'label_name' => 'Inactive', 'type' => 'boolean', 'percent' => 5]
 			]
 		],

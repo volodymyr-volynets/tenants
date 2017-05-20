@@ -55,7 +55,12 @@ class Activation {
 			// custom activation model
 			if (!empty($modules[$module_code]['sm_module_activation_model'])) {
 				$activation_model = new $modules[$module_code]['sm_module_activation_model']();
-				$activation_result = $activation_model->process();
+				// see if we have \Object\Activation\Base
+				if (method_exists($activation_model, 'activate')) {
+					$activation_result = $activation_model->activate();
+				} else { // \Object\Import
+					$activation_result = $activation_model->process();
+				}
 				if (!$activation_result['success']) {
 					$result['error'] = array_merge($result['error'], $activation_result['error']);
 					break;
