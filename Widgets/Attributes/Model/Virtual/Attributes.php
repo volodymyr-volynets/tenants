@@ -212,8 +212,11 @@ class Attributes extends \Object\Table {
 				$temp = $field_types[$v['wg_attribute_attribute_id']];
 				$temp['options']['values_key'] = array_merge($parent_keys, [$k, 'wg_attribute_value']);
 				$temp['options']['required'] = true;
-				$error_name = $form->parentKeysToErrorName($parent_keys) . "[{$k}]";
-				$form->validateRequiredOneField($result[$k]['wg_attribute_value'], "{$error_name}[wg_attribute_value]", $temp);
+				// booleans can be empty
+				if ($temp['options']['type'] != 'boolean') {
+					$error_name = $form->parentKeysToErrorName($parent_keys) . "[{$k}]";
+					$form->validateRequiredOneField($result[$k]['wg_attribute_value'], "{$error_name}[wg_attribute_value]", $temp);
+				}
 			}
 		}
 		// convert to json
@@ -247,7 +250,8 @@ class Attributes extends \Object\Table {
 		$owners = $form->triggerMethod('owners');
 		$options['options']['options_model'] = '\Numbers\Tenants\Widgets\Attributes\DataSource\Attributes';
 		$options['options']['options_params'] = [
-			'selected_organizations' => $owners['organization_id']
+			'selected_organizations' => $owners['organization_id'],
+			'model' => '\\' . get_class($form->collection_object->primary_model)
 		];
 	}
 

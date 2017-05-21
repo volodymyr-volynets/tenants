@@ -20,7 +20,7 @@ class Models extends \Object\Table {
 		'tm_attrmdl_attribute_id' => ['name' => 'User #', 'domain' => 'user_id'],
 		'tm_attrmdl_organization_id' => ['name' => 'Organization #', 'domain' => 'organization_id'],
 		'tm_attrmdl_model_id' => ['name' => 'Model #', 'domain' => 'group_id'],
-		'tm_attrmdl_mandatory' => ['name' => 'Mandatory', 'type' => 'boolean'],
+		//'tm_attrmdl_mandatory' => ['name' => 'Mandatory', 'type' => 'boolean'],
 		'tm_attrmdl_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
 	];
 	public $constraints = [
