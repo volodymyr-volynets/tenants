@@ -22,6 +22,7 @@ class Modules extends \Object\Table {
 	public $constraints = [
 		'tm_modules_pk' => ['type' => 'pk', 'columns' => ['tm_module_tenant_id', 'tm_module_id']],
 		'tm_module_module_code_un' => ['type' => 'unique', 'columns' => ['tm_module_tenant_id', 'tm_module_id', 'tm_module_module_code']],
+		'tm_module_name_un' => ['type' => 'unique', 'columns' => ['tm_module_tenant_id', 'tm_module_name']],
 		'tm_module_tenant_id_fk' => [
 			'type' => 'fk',
 			'columns' => ['tm_module_tenant_id'],

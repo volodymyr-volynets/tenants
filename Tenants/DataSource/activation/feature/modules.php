@@ -1,6 +1,6 @@
 <?php
 
-class numbers_tenants_tenants_datasource_activation_feature_modules extends \Object\Datasource {
+class numbers_tenants_tenants_datasource_activation_feature_modules extends \Object\DataSource {
 	public $db_link;
 	public $db_link_flag;
 	public $pk = ['tm_module_id'];

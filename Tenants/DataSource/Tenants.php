@@ -1,7 +1,7 @@
 <?php
 
 namespace Numbers\Tenants\Tenants\DataSource;
-class Tenants extends \Object\Datasource {
+class Tenants extends \Object\DataSource {
 	public $db_link;
 	public $db_link_flag;
 	public $pk = ['tm_tenant_id'];

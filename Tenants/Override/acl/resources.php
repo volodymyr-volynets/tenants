@@ -8,6 +8,11 @@ class Resources {
 				'tenant_datasource' => '\Numbers\Tenants\Tenants\DataSource\Tenants',
 				'column_prefix' => 'tm_tenant_'
 			]
+		],
+		'system' => [
+			'modules_by_code' => [
+				'datasource_name' => '\Numbers\Tenants\Tenants\DataSource\Module\ByCode',
+			]
 		]
 	];
 }

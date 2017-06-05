@@ -1,6 +1,7 @@
 <?php
 
-class numbers_tenants_tenants_datasource_module_features extends \Object\Datasource {
+namespace Numbers\Tenants\Tenants\DataSource\Module;
+class Features extends \Object\DataSource {
 	public $db_link;
 	public $db_link_flag;
 	public $pk = ['module_id', 'feature_code'];
@@ -55,7 +56,7 @@ class numbers_tenants_tenants_datasource_module_features extends \Object\Datasou
 	/**
 	 * @see $this->options()
 	 */
-	public function options_json($options = []) {
+	public function optionsJson($options = []) {
 		$data = $this->get($options);
 		$result = [];
 		foreach ($data as $k => $v) {
