@@ -1,17 +1,17 @@
 <?php
 
 namespace Numbers\Tenants\Tenants\DataSource\Module;
-class ByCode extends \Object\DataSource {
+class AllModules extends \Object\DataSource {
 	public $db_link;
 	public $db_link_flag;
-	public $pk = ['module_id'];
+	public $pk = ['id'];
 	public $columns;
 	public $orderby;
 	public $limit;
 	public $single_row;
 	public $single_value;
 	public $options_map =[
-		'module_name' => 'name'
+		'name' => 'name'
 	];
 	public $column_prefix;
 
@@ -20,17 +20,21 @@ class ByCode extends \Object\DataSource {
 	public $cache_memory = false;
 
 	public $primary_model = '\Numbers\Tenants\Tenants\Model\Modules';
-	public $parameters = [
-		'module_code' => ['name' => 'Module Code', 'domain' => 'module_code', 'required' => true],
-	];
+	public $parameters = [];
 
 	public function query($parameters, $options = []) {
 		$this->query->columns([
-			'module_id' => 'a.tm_module_id',
-			'module_name' => 'a.tm_module_name'
+			'id' => 'a.tm_module_id',
+			'name' => 'a.tm_module_name',
+			'module_code' => 'a.tm_module_module_code',
+			'module_multiple' => 'b.sm_module_multiple',
+		]);
+		// join
+		$this->query->join('INNER', new \Numbers\Backend\System\Modules\Model\Modules(), 'b', 'ON', [
+			['AND', ['b.sm_module_code', '=', 'a.tm_module_module_code', true], false],
 		]);
 		// where
 		$this->query->where('AND', ['a.tm_module_inactive', '=', 0]);
-		$this->query->where('AND', ['a.tm_module_module_code', '=', $parameters['module_code']]);
+		$this->query->where('AND', ['b.sm_module_inactive', '=', 0]);
 	}
 }

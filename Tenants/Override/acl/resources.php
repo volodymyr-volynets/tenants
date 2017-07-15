@@ -9,9 +9,9 @@ class Resources {
 				'column_prefix' => 'tm_tenant_'
 			]
 		],
-		'system' => [
-			'modules_by_code' => [
-				'datasource_name' => '\Numbers\Tenants\Tenants\DataSource\Module\ByCode',
+		'modules' => [
+			'primary' => [
+				'datasource' => '\Numbers\Tenants\Tenants\DataSource\Module\AllModules',
 			]
 		]
 	];

@@ -67,17 +67,23 @@ class Attributes extends \Object\Table {
 		parent::__construct();
 		// preload attributes
 		if (!isset($this->attribute_all_fields)) {
-			$this->attribute_all_fields = \Numbers\Tenants\Widgets\Attributes\Model\Attributes::getStatic([
-				'pk' => ['tm_attribute_id']
-			]);
+			$model = new \Numbers\Tenants\Widgets\Attributes\Model\Attributes();
+			if ($model->dbPresent()) {
+				$this->attribute_all_fields = $model->get([
+					'pk' => ['tm_attribute_id']
+				]);
+			}
 		}
 		// preload models
 		if (!isset($this->attribute_all_models)) {
-			$this->attribute_all_models = \Numbers\Backend\Db\Common\Model\Models::getStatic([
-				'where' => [
-					'sm_model_relation_enabled' => 1
-				]
-			]);
+			$model = new \Numbers\Backend\Db\Common\Model\Models();
+			if ($model->dbPresent()) {
+				$this->attribute_all_models = $model->get([
+					'where' => [
+						'sm_model_relation_enabled' => 1
+					]
+				]);
+			}
 		}
 	}
 
@@ -133,6 +139,7 @@ class Attributes extends \Object\Table {
 		}
 		// collection
 		array_key_set($form->collection, $details_collection_key, [
+			'name' => 'Attribites',
 			'pk' => $this->pk,
 			'type' => '1M',
 			'map' => $this->map,

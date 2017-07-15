@@ -49,12 +49,15 @@ class Audit extends \Object\Table {
 			'type' => 'pk',
 			'columns' => ['wg_audit_tenant_id', 'wg_audit_id']
 		];
+		/**
+		 * Important - we do not use fk constraint on parent
 		$this->constraints[$this->name . '_parent_fk'] = [
 			'type' => 'fk',
 			'columns' => array_values($this->map),
 			'foreign_model' => $class,
 			'foreign_columns' => array_keys($this->map)
 		];
+		*/
 		$this->indexes[$this->name . '_parent_idx'] = ['type' => 'btree', 'columns' => array_values($this->map)];
 		// construct table
 		parent::__construct();

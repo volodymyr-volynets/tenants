@@ -39,6 +39,11 @@ class System extends \Object\Import {
 					'\Numbers\Backend\System\Modules\Model\Resource\Features' => [],
 					'\Numbers\Backend\System\Modules\Model\Resource\Map' => [
 						[
+							'sm_rsrcmp_method_code' => 'AllActions',
+							'sm_rsrcmp_action_id' => '::id::All_Actions',
+							'sm_rsrcmp_inactive' => 0
+						],
+						[
 							'sm_rsrcmp_method_code' => 'Index',
 							'sm_rsrcmp_action_id' => '::id::List_View',
 							'sm_rsrcmp_inactive' => 0
