@@ -35,12 +35,16 @@ class Features extends \Object\Form\Wrapper\Base {
 	];
 
 	public function save(& $form) {
+		// need to disable debug
+		\Application::set('debug.debug', 0);
+		// execution limit is 1 hour
+		set_time_limit(3600);
 		$result = \Numbers\Tenants\Tenants\Model\Activation::activateFeature($form->values['tm_feature_module_id'], '', $form->values['tm_feature_feature_code']);
 		if ($result['success']) {
-			$form->error('success', 'Feature has been activated!');
+			$form->error(SUCCESS, 'Feature has been activated!');
 			return true;
 		} else {
-			$form->error('danger', 'Could not activate feature!');
+			$form->error(DANGER, 'Could not activate feature!');
 			return false;
 		}
 	}
