@@ -65,25 +65,27 @@ class Attributes extends \Object\Table {
 		];
 		// construct table
 		parent::__construct();
+	}
+
+	/**
+	 * Pre-load model and fields
+	 */
+	public function preloadModelsAndFields() {
 		// preload attributes
 		if (!isset($this->attribute_all_fields)) {
 			$model = new \Numbers\Tenants\Widgets\Attributes\Model\Attributes();
-			if ($model->dbPresent()) {
-				$this->attribute_all_fields = $model->get([
-					'pk' => ['tm_attribute_id']
-				]);
-			}
+			$this->attribute_all_fields = $model->get([
+				'pk' => ['tm_attribute_id']
+			]);
 		}
 		// preload models
 		if (!isset($this->attribute_all_models)) {
 			$model = new \Numbers\Backend\Db\Common\Model\Models();
-			if ($model->dbPresent()) {
-				$this->attribute_all_models = $model->get([
-					'where' => [
-						'sm_model_relation_enabled' => 1
-					]
-				]);
-			}
+			$this->attribute_all_models = $model->get([
+				'where' => [
+					'sm_model_relation_enabled' => 1
+				]
+			]);
 		}
 	}
 
@@ -161,6 +163,7 @@ class Attributes extends \Object\Table {
 	 * @return array
 	 */
 	public function formProcessWidgetData(& $form, $parent_keys, $data, $parent_data, $fields, $options) {
+		$this->preloadModelsAndFields();
 		$field_types = [];
 		$result = [];
 		// start processing of keys
@@ -263,6 +266,7 @@ class Attributes extends \Object\Table {
 	}
 
 	public function overrideFieldValue(& $form, & $options, & $value, & $neighbouring_values) {
+		$this->preloadModelsAndFields();
 		// if attribute is not set
 		if (empty($neighbouring_values['wg_attribute_attribute_id']) || empty($this->attribute_all_fields[$neighbouring_values['wg_attribute_attribute_id']])) {
 			$options['options']['method'] = 'span';
