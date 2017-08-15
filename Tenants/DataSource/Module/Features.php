@@ -62,12 +62,15 @@ class Features extends \Object\DataSource {
 		foreach ($data as $k => $v) {
 			foreach ($v as $k2 => $v2) {
 				$parent = \Object\Table\Options::optionJsonFormatKey(['module_id' => $k]);
-				// add method
+				// item key
+				$key = \Object\Table\Options::optionJsonFormatKey(['feature_code' => $k2, 'module_id' => $k]);
+				// filter
+				if (!\Object\Table\Options::processOptionsExistingValuesAndSkipValues($key, $options['existing_values'] ?? null, $options['skip_values'] ?? null)) continue;
+				// add parent
 				if (!isset($result[$parent])) {
 					$result[$parent] = ['name' => $v2['module_name'], 'icon_class' => \HTML::icon(['type' => $v2['module_icon'], 'class_only' => true]), 'parent' => null, 'disabled' => true];
 				}
 				// add item
-				$key = \Object\Table\Options::optionJsonFormatKey(['feature_code' => $k2, 'module_id' => $k]);
 				$result[$key] = ['name' => $v2['feature_name'], 'icon_class' => \HTML::icon(['type' => $v2['feature_icon'], 'class_only' => true]), '__selected_name' => i18n(null, $v2['module_name']) . ': ' . i18n(null, $v2['feature_name']), 'parent' => $parent];
 			}
 		}
