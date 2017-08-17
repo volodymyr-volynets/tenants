@@ -19,7 +19,7 @@ class System extends \Object\Import {
 					'sm_resource_icon' => 'clone',
 					'sm_resource_module_code' => 'TM',
 					'sm_resource_group1_name' => 'Operations',
-					'sm_resource_group2_name' => 'System',
+					'sm_resource_group2_name' => 'System Management',
 					'sm_resource_group3_name' => 'Miscellaneous',
 					'sm_resource_group4_name' => null,
 					'sm_resource_group5_name' => null,
