@@ -14,6 +14,7 @@ class System extends \Object\Import {
 					'sm_resource_id' => '::id::\Numbers\Tenants\Widgets\Attributes\Controller\Attributes',
 					'sm_resource_code' => '\Numbers\Tenants\Widgets\Attributes\Controller\Attributes',
 					'sm_resource_type' => 100,
+					'sm_resource_classification' => 'Settings',
 					'sm_resource_name' => 'T/M Attributes',
 					'sm_resource_description' => null,
 					'sm_resource_icon' => 'clone',
