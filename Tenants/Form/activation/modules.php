@@ -14,7 +14,8 @@ class Modules extends \Object\Form\Wrapper\Base {
 		'actions' => [
 			'refresh' => true,
 			'back' => true
-		]
+		],
+		'no_ajax_form_reload' => true
 	];
 	public $containers = [
 		'default' => ['default_row_type' => 'grid', 'order' => 1]
