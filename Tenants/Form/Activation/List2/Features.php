@@ -53,11 +53,7 @@ class Features extends \Object\Form\Wrapper\List2 {
 				'__order' => ['order' => 2, 'label_name' => 'Order', 'type' => 'smallint', 'default' => SORT_ASC, 'percent' => 50, 'null' => true, 'method' => 'select', 'no_choose' => true, 'options_model' => '\Object\Data\Model\Order', 'onchange' => 'this.form.submit();'],
 			]
 		],
-		'buttons' => [
-			self::BUTTONS => [
-				self::BUTTON_SUBMIT => self::BUTTON_SUBMIT_DATA
-			]
-		],
+		self::LIST_BUTTONS => self::LIST_BUTTONS_DATA,
 		self::LIST_CONTAINER => [
 			'row1' => [
 				'tm_feature_module_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Module #', 'domain' => 'module_id', 'percent' => 10],
