@@ -19,8 +19,8 @@ class Attributes extends \Object\DataSource {
 
 	public $primary_model;
 	public $parameters = [
-		'selected_organizations' => ['name' => 'Selected Organizations', 'domain' => 'organization_id', 'multiple_column' => true, 'required' => true],
-		'model' => ['name' => 'Model', 'type' => 'text'],
+		'model_name' => ['name' => 'Model', 'type' => 'text', 'required' => true],
+		'module_id' => ['name' => 'Module #', 'domain' => 'module_id', 'required' => true],
 		'existing_values' => ['name' => 'Existing Values', 'type' => 'mixed']
 	];
 
@@ -41,29 +41,15 @@ class Attributes extends \Object\DataSource {
 				$query->where('OR', ['a.tm_attribute_id', '=', $parameters['existing_values']]);
 			}
 			$query->where('OR', function (& $query) use ($parameters) {
-				if (!empty($parameters['selected_organizations'])) {
-					// organizations
-					$query->where('AND', function (& $query) use ($parameters) {
-						$query = \Numbers\Tenants\Widgets\Attributes\Model\Attribute\Organizations::queryBuilderStatic(['alias' => 'inner_a'])->select();
-						$query->columns(1);
-						$query->where('AND', ['inner_a.tm_attrorg_attribute_id', '=', 'a.tm_attribute_id', true]);
-						$query->where('AND', ['inner_a.tm_attrorg_organization_id', '=', $parameters['selected_organizations'], false]);
-					}, true);
-					// model
-					$query->where('AND', function (& $query) use ($parameters) {
-						$query = \Numbers\Tenants\Widgets\Attributes\Model\Attribute\Organization\Models::queryBuilderStatic(['alias' => 'inner_b'])->select();
-						$query->columns(1);
-						$query->where('AND', ['inner_b.tm_attrmdl_attribute_id', '=', 'a.tm_attribute_id', true]);
-						$query->where('AND', ['inner_b.tm_attrmdl_organization_id', '=', $parameters['selected_organizations'], false]);
-							$query2 = \Numbers\Backend\Db\Common\Model\Models::queryBuilderStatic(['alias' => 'inner_c'])->select();
-							$query2->columns('sm_model_id');
-							$query2->where('AND', ['inner_c.sm_model_code', '=', $parameters['model'], false]);
-						$query->where('AND', ['inner_b.tm_attrmdl_model_id', '=', '(' . $query2->sql() . ')', true]);
-						$query->where('AND', ['inner_b.tm_attrmdl_inactive', '=', 0]);
-					}, true);
-				}
-				$query->where('AND', ['a.tm_attribute_inactive', '=', 0]);
-			});
+				$query = \Numbers\Tenants\Widgets\Attributes\Model\Attribute\Details::queryBuilderStatic(['alias' => 'inner_a'])->select();
+				$query->where('AND', ['inner_a.tm_attrdetail_attribute_id', '=', 'a.tm_attribute_id', true]);
+				$query->where('AND', ['inner_a.tm_attrdetail_module_id', '=', $parameters['module_id'], false]);
+					$query2 = \Numbers\Backend\Db\Common\Model\Models::queryBuilderStatic(['alias' => 'inner_b'])->select();
+					$query2->columns('sm_model_id');
+					$query2->where('AND', ['inner_b.sm_model_code', '=', $parameters['model_name'], false]);
+				$query->where('AND', ['inner_a.tm_attrdetail_model_id', '=', '(' . $query2->sql() . ')', true]);
+				$query->where('AND', ['inner_a.tm_attrdetail_inactive', '=', 0]);
+			}, 'EXISTS');
 		});
 	}
 }

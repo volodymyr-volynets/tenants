@@ -54,7 +54,11 @@ class Activation {
 			}
 			// custom activation model
 			if (!empty($modules[$module_code]['sm_module_activation_model'])) {
-				$activation_model = new $modules[$module_code]['sm_module_activation_model']();
+				$activation_options = [
+					'module_id' => $module_id,
+					'module_code' => $module_code
+				];
+				$activation_model = new $modules[$module_code]['sm_module_activation_model']($activation_options);
 				// see if we have \Object\Activation\Base
 				if (method_exists($activation_model, 'activate')) {
 					$activation_result = $activation_model->activate();

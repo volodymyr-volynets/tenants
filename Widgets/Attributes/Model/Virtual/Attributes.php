@@ -102,7 +102,6 @@ class Attributes extends \Object\Table {
 		if (!empty($options['details_parent_key'])) {
 			$details_collection_key = ['details', $options['details_parent_key'], 'details', $this->virtual_class_name];
 			$type = 'subdetails';
-			return;
 		} else {
 			$details_collection_key = ['details', $this->virtual_class_name];
 			$type = 'details';
@@ -112,7 +111,7 @@ class Attributes extends \Object\Table {
 			'type' => $type,
 			'label_name' => $options['label_name'] ?? '',
 			'details_rendering_type' => $options['details_rendering_type'] ?? 'table',
-			'details_new_rows' => $options['details_new_rows'] ?? 5,
+			'details_new_rows' => $options['details_new_rows'] ?? 1,
 			'details_parent_key' => $options['details_parent_key'] ?? null,
 			'details_key' => $this->virtual_class_name,
 			'details_pk' => $this->details_pk,
@@ -178,7 +177,8 @@ class Attributes extends \Object\Table {
 			if (($v['wg_attribute_attribute_id'] ?? '') == '' && ($v['wg_attribute_value'] ?? '') == '') continue;
 			$id = (int) $v['wg_attribute_attribute_id'];
 			if (empty($this->attribute_all_fields[$id])) {
-				$form->error('danger', \Object\Content\Messages::INVALID_VALUE, "{$error_name}[wg_attribute_attribute_id]");
+				continue;
+				//$form->error('danger', \Object\Content\Messages::INVALID_VALUES, "{$error_name}[wg_attribute_attribute_id]");
 			} else {
 				$field = $this->attribute_all_fields[$id];
 				// process data types
@@ -211,10 +211,10 @@ class Attributes extends \Object\Table {
 				}
 			}
 			// put everything back into values
-			$result[$k2] = [
+			$result[$k2] = array_merge_hard($detail_key_holder['parent_pks'], [
 				'wg_attribute_attribute_id' => $id,
 				'wg_attribute_value' => $value
-			];
+			]);
 		}
 		// validate required
 		if (!empty($options['validate_required'])) {
@@ -257,11 +257,13 @@ class Attributes extends \Object\Table {
 	 * @param array $neighbouring_values
 	 */
 	public function overrideFieldName(& $form, & $options, & $value, & $neighbouring_values) {
-		$owners = $form->triggerMethod('owners');
+		// determine model
+		$temp = explode('\0Virtual0\\', $this->virtual_class_name);
+		array_pop($temp);
 		$options['options']['options_model'] = '\Numbers\Tenants\Widgets\Attributes\DataSource\Attributes';
 		$options['options']['options_params'] = [
-			'selected_organizations' => $owners['organization_id'],
-			'model' => '\\' . get_class($form->collection_object->primary_model)
+			'model_name' => implode('\0Virtual0\\', $temp),
+			'module_id' => \Application::$controller->module_id
 		];
 	}
 
