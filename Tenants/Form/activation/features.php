@@ -45,7 +45,7 @@ class Features extends \Object\Form\Wrapper\Base {
 			$form->error(SUCCESS, 'Feature has been activated!');
 			return true;
 		} else {
-			$form->error(DANGER, 'Could not activate feature!');
+			$form->error(DANGER, $result['error']);
 			return false;
 		}
 	}
