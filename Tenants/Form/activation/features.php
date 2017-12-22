@@ -2,7 +2,9 @@
 
 namespace Numbers\Tenants\Tenants\Form\Activation;
 class Features extends \Object\Form\Wrapper\Base {
-	public $form_link = 'feature_activation';
+	public $form_link = 'tm_feature_activation';
+	public $module_code = 'TM';
+	public $title = 'T/M Activation Features Form';
 	public $options = [
 		'segment' => [
 			'type' => 'primary',

@@ -2,7 +2,9 @@
 
 namespace Numbers\Tenants\Widgets\Attributes\Form\List2;
 class Attributes extends \Object\Form\Wrapper\List2 {
-	public $form_link = 'attributes_list';
+	public $form_link = 'tm_attributes_list';
+	public $module_code = 'TM';
+	public $title = 'T/M Attributes List';
 	public $options = [
 		'segment' => self::SEGMENT_LIST,
 		'actions' => [

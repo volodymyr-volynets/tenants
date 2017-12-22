@@ -2,7 +2,9 @@
 
 namespace Numbers\Tenants\Tenants\Form\Activation\List2;
 class Features extends \Object\Form\Wrapper\List2 {
-	public $form_link = 'feature_activation_list';
+	public $form_link = 'tm_feature_activation_list';
+	public $module_code = 'TM';
+	public $title = 'T/M Activation Features List';
 	public $options = [
 		'segment' => self::SEGMENT_LIST,
 		'actions' => [

@@ -191,6 +191,9 @@ class Attributes extends \Object\Table {
 				$type_options = \Object\Data\Common::processDomainsAndTypes($type_options);
 				$field_types[$id] = $type_options;
 				$value = $v['wg_attribute_value'] ?? null;
+				if (is_string($value)) {
+					$value = trim($value, '"');
+				}
 				if (!is_null($value)) {
 					if (in_array($field['tm_attribute_method'], ['multiselect', 'multiautocomplete'])) {
 						if (!is_array($value)) {

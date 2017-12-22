@@ -2,7 +2,9 @@
 
 namespace Numbers\Tenants\Widgets\Attributes\Form;
 class Attributes extends \Object\Form\Wrapper\Base {
-	public $form_link = 'attributes';
+	public $form_link = 'tm_attributes';
+	public $module_code = 'TM';
+	public $title = 'T/M Attributes Form';
 	public $options = [
 		'segment' => self::SEGMENT_FORM,
 		'actions' => [
