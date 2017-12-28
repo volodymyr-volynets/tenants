@@ -1,6 +1,7 @@
 <?php
 
-class numbers_tenants_tenants_datasource_activation_feature_features extends \Object\DataSource {
+namespace Numbers\Tenants\Tenants\DataSource\Activation\Feature;
+class Features extends \Object\DataSource {
 	public $db_link;
 	public $db_link_flag;
 	public $pk = ['sm_feature_code'];
@@ -10,7 +11,8 @@ class numbers_tenants_tenants_datasource_activation_feature_features extends \Ob
 	public $single_row;
 	public $single_value;
 	public $options_map =[
-		'sm_feature_name' => 'name'
+		'sm_feature_name' => 'name',
+		'sm_feature_icon' => 'icon_class'
 	];
 	public $column_prefix;
 
@@ -27,6 +29,7 @@ class numbers_tenants_tenants_datasource_activation_feature_features extends \Ob
 		$this->query->columns([
 			'sm_feature_code' => 'a.sm_feature_code',
 			'sm_feature_name' => 'a.sm_feature_name',
+			'sm_feature_icon' => 'a.sm_feature_icon',
 			'sm_feature_activation_model' => 'a.sm_feature_activation_model'
 		]);
 		// join

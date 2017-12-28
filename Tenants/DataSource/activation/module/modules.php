@@ -11,7 +11,8 @@ class Modules extends \Object\DataSource {
 	public $single_row;
 	public $single_value;
 	public $options_map =[
-		'sm_module_name' => 'name'
+		'sm_module_name' => 'name',
+		'sm_module_icon' => 'icon_class'
 	];
 	public $column_prefix;
 
@@ -26,6 +27,7 @@ class Modules extends \Object\DataSource {
 		$this->query->columns([
 			'sm_module_code' => 'a.sm_module_code',
 			'sm_module_name' => 'a.sm_module_name',
+			'sm_module_icon' => 'a.sm_module_icon',
 			'sm_module_activation_model' => 'a.sm_module_activation_model'
 		]);
 		// join

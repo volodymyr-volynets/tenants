@@ -1,6 +1,7 @@
 <?php
 
-class numbers_tenants_tenants_datasource_activation_feature_modules extends \Object\DataSource {
+namespace Numbers\Tenants\Tenants\DataSource\Activation\Feature;
+class Modules extends \Object\DataSource {
 	public $db_link;
 	public $db_link_flag;
 	public $pk = ['tm_module_id'];
@@ -10,7 +11,8 @@ class numbers_tenants_tenants_datasource_activation_feature_modules extends \Obj
 	public $single_row;
 	public $single_value;
 	public $options_map =[
-		'tm_module_name' => 'name'
+		'tm_module_name' => 'name',
+		'sm_module_icon' => 'icon_class'
 	];
 	public $column_prefix;
 
@@ -24,7 +26,11 @@ class numbers_tenants_tenants_datasource_activation_feature_modules extends \Obj
 	public function query($parameters, $options = []) {
 		$this->query->columns([
 			'tm_module_id' => 'a.tm_module_id',
-			'tm_module_name' => 'a.tm_module_name'
+			'tm_module_name' => 'a.tm_module_name',
+			'sm_module_icon' => 'b.sm_module_icon'
+		]);
+		$this->query->join('INNER', new \Numbers\Backend\System\Modules\Model\Modules(), 'b', 'ON', [
+			['AND', ['a.tm_module_module_code', '=', 'b.sm_module_code', true], false],
 		]);
 	}
 }
