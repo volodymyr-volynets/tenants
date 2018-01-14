@@ -22,7 +22,7 @@ class Features extends \Object\DataSource {
 
 	public $primary_model = '\Numbers\Tenants\Tenants\Model\Module\Features';
 	public $parameters = [
-		'sm_feature_type' => ['name' => 'Type', 'domain' => 'type_id', 'required' => true]
+		'sm_feature_type' => ['name' => 'Type', 'domain' => 'type_id']
 	];
 
 	public function query($parameters, $options = []) {
@@ -50,7 +50,9 @@ class Features extends \Object\DataSource {
 		$this->query->where('AND', ['b.tm_module_inactive', '=', 0]);
 		$this->query->where('AND', ['c.sm_feature_inactive', '=', 0]);
 		$this->query->where('AND', ['d.sm_module_inactive', '=', 0]);
-		$this->query->where('AND', ['c.sm_feature_type', '=', $parameters['sm_feature_type']]);
+		if (array_key_exists('sm_feature_type', $parameters)) {
+			$this->query->where('AND', ['c.sm_feature_type', '=', $parameters['sm_feature_type']]);
+		}
 	}
 
 	/**
