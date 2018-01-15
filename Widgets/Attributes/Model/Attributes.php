@@ -14,7 +14,7 @@ class Attributes extends \Object\Table {
 	public $column_prefix = 'tm_attribute_';
 	public $columns = [
 		'tm_attribute_tenant_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id'],
-		'tm_attribute_id' => ['name' => 'Attribute #', 'domain' => 'group_id_sequence'],
+		'tm_attribute_id' => ['name' => 'Attribute #', 'domain' => 'field_id_sequence'],
 		'tm_attribute_code' => ['name' => 'Code', 'domain' => 'group_code'],
 		'tm_attribute_name' => ['name' => 'Name', 'domain' => 'name'],
 		'tm_attribute_method' => ['name' => 'Method', 'domain' => 'code', 'options_model' => '\Numbers\Tenants\Widgets\Attributes\Model\Methods'],
