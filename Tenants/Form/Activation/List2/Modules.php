@@ -77,8 +77,4 @@ class Modules extends \Object\Form\Wrapper\List2 {
 		'tm_module_id' => ['name' => 'Module #'],
 		'tm_module_name' => ['name' => 'Name']
 	];
-
-	public function listQuery(& $form) {
-		//$form->query
-	}
 }
