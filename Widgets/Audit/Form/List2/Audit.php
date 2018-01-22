@@ -133,7 +133,7 @@ class Audit extends \Object\Form\Wrapper\List2 {
 		// columns first
 		if (!empty($value['columns'])) {
 			foreach ($value['columns'] as $k => $v) {
-				if (isset($this->form_data_cached[$value['form_class']])) {
+				if (!empty($value['form_class']) && isset($this->form_data_cached[$value['form_class']])) {
 					$k = $this->form_data_cached[$value['form_class']][$k]['sm_frmfield_name'] ?? $k;
 					$result.= "\t" . $k . ': [' . $v[1] . '] -> [' . $v[0] . ']' . "\n";
 				} else {
@@ -146,7 +146,7 @@ class Audit extends \Object\Form\Wrapper\List2 {
 			foreach ($value['details'] as $k => $v) {
 				foreach ($v as $k2 => $v2) {
 					foreach ($v2['columns'] as $k3 => $v3) {
-						if (isset($this->form_data_cached[$value['form_class']])) {
+						if (!empty($value['form_class']) && isset($this->form_data_cached[$value['form_class']])) {
 							$temp = $this->form_data_cached[$value['form_class']][$k . '[' . $k3 . ']']['sm_frmfield_name'] ?? $k . '[' . $k3 . ']';
 							$result.= "\t" . $temp . ': [' . $v3[1] . '] -> [' . $v3[0] . ']' . "\n";
 						} else {
