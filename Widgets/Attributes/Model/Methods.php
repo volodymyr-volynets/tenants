@@ -15,7 +15,7 @@ class Methods extends \Object\Data {
 		'sm_attrmethod_name' => SORT_ASC
 	];
 	public $data = [
-		'text' => ['sm_attrmethod_name' => 'Text'],
+		'input' => ['sm_attrmethod_name' => 'Input'],
 		'boolean' => ['sm_attrmethod_name' => 'Boolean'],
 		'select' => ['sm_attrmethod_name' => 'Select'],
 		'multiselect' => ['sm_attrmethod_name' => 'Select (Multiple)'],

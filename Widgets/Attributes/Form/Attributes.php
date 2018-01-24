@@ -133,7 +133,7 @@ class Attributes extends \Object\Form\Wrapper\Base {
 				}
 			} else {
 				// method
-				if (!in_array($form->values['tm_attribute_method'], ['text', 'boolean'])) {
+				if (!in_array($form->values['tm_attribute_method'], ['input', 'boolean'])) {
 					$form->error('danger', 'You can only have Text and Boolean!', 'tm_attribute_method');
 				}
 			}
