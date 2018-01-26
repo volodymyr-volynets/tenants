@@ -30,8 +30,14 @@ class Tenants extends \Object\Table {
 	public $history = false;
 	public $audit = false;
 	public $optimistic_lock = true;
-	public $options_map = [];
-	public $options_active = [];
+	public $options_map = [
+		'tm_tenant_name' => 'name',
+		'tm_tenant_code' => 'name',
+		'tm_tenant_id' => 'name'
+	];
+	public $options_active = [
+		'tm_tenant_inactive' => 0
+	];
 	public $engine = [
 		'MySQLi' => 'InnoDB'
 	];

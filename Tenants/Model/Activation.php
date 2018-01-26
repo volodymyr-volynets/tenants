@@ -180,7 +180,9 @@ finish:
 			// activation model
 			if (!empty($feature_result['data']['sm_feature_activation_model'])) {
 				$activation_model_class = $feature_result['data']['sm_feature_activation_model'];
-				$activation_model_model = new $activation_model_class();
+				$activation_model_model = new $activation_model_class([
+					'module_id' => $module_id
+				]);
 				if (method_exists($activation_model_model, 'activate')) {
 					$activation_model_result = $activation_model_model->activate();
 				} else {
