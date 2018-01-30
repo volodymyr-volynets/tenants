@@ -35,11 +35,9 @@ class Attributes extends \Object\Table {
 
 	/**
 	 * Constructor
-	 *
-	 * @param string $class
 	 */
-	public function __construct($class, $virtual_class_name) {
-		$this->determineModelMap($class, 'attributes', $virtual_class_name);
+	public function __construct($class, $virtual_class_name, $options = []) {
+		$this->determineModelMap($class, 'attributes', $virtual_class_name, $options);
 		// add regular columns
 		$this->columns['wg_attribute_tenant_id'] = ['name' => 'Tenant #', 'domain' => 'tenant_id'];
 		$this->columns['wg_attribute_attribute_id'] = ['name' => 'Attribute #', 'domain' => 'group_id'];
@@ -64,7 +62,7 @@ class Attributes extends \Object\Table {
 			'foreign_columns' => ['tm_attribute_tenant_id', 'tm_attribute_id']
 		];
 		// construct table
-		parent::__construct();
+		parent::__construct($options);
 	}
 
 	/**

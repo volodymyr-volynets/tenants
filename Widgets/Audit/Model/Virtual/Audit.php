@@ -34,14 +34,12 @@ class Audit extends \Object\Table {
 
 	/**
 	 * Constructor
-	 *
-	 * @param string $class
 	 */
-	public function __construct($class, $virtual_class_name) {
+	public function __construct($class, $virtual_class_name, $options = []) {
 		// add regular columns
 		$this->columns['wg_audit_tenant_id'] = ['name' => 'Tenant #', 'domain' => 'tenant_id'];
 		$this->columns['wg_audit_id'] = ['name' => 'Audit #', 'domain' => 'big_id_sequence'];
-		$this->determineModelMap($class, 'audit', $virtual_class_name);
+		$this->determineModelMap($class, 'audit', $virtual_class_name, $options);
 		$this->columns['wg_audit_changes'] = ['name' => '# of Changes', 'domain' => 'counter', 'default' => 0];
 		$this->columns['wg_audit_value'] = ['name' => 'Value', 'type' => 'json'];
 		// add constraints
@@ -60,7 +58,7 @@ class Audit extends \Object\Table {
 		*/
 		$this->indexes[$this->name . '_parent_idx'] = ['type' => 'btree', 'columns' => array_values($this->map)];
 		// construct table
-		parent::__construct();
+		parent::__construct($options);
 	}
 
 	/**
