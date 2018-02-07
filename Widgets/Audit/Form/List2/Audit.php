@@ -38,10 +38,14 @@ class Audit extends \Object\Form\Wrapper\List2 {
 		self::LIST_BUTTONS => self::LIST_BUTTONS_DATA,
 		self::LIST_CONTAINER => [
 			'row1' => [
-				'wg_audit_id' => ['order' => 1, 'label_name' => '#', 'domain' => 'big_id', 'percent' => 10],
-				'wg_audit_inserted_timestamp' => ['order' => 3, 'label_name' => 'Datetime', 'type' => 'timestamp', 'percent' => 10, 'format' => '\Format::niceTimestamp'],
-				'wg_audit_inserted_user_id' => ['order' => 4, 'label_name' => 'User', 'domain' => 'user_id', 'percent' => 15, 'options_model' => '\Numbers\Users\Users\Model\Users'],
-				'wg_audit_value' => ['order' => 5, 'label_name' => 'Changes', 'domain' => 'name', 'percent' => 65, 'custom_renderer' => '\Numbers\Tenants\Widgets\Audit\Form\List2\Audit::renderValueField'],
+				'wg_audit_id' => ['order' => 1, 'row_order' => 100, 'label_name' => '#', 'domain' => 'big_id', 'percent' => 15],
+				'wg_audit_inserted_timestamp' => ['order' => 3, 'label_name' => 'Datetime', 'type' => 'timestamp', 'percent' => 15, 'format' => '\Format::niceTimestamp'],
+				'wg_audit_inserted_user_id' => ['order' => 4, 'label_name' => 'User', 'domain' => 'user_id', 'percent' => 25, 'options_model' => '\Numbers\Users\Users\Model\Users'],
+				'blank1' => ['order' => 5, 'label_name' => '', 'percent' => 45],
+			],
+			'row2' => [
+				'blank2' => ['order' => 1, 'row_order' => 200, 'label_name' => '', 'percent' => 15],
+				'wg_audit_value' => ['order' => 2, 'label_name' => 'Changes', 'domain' => 'name', 'percent' => 85, 'custom_renderer' => '\Numbers\Tenants\Widgets\Audit\Form\List2\Audit::renderValueField'],
 			]
 		]
 	];
