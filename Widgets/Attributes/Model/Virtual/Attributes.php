@@ -138,7 +138,7 @@ class Attributes extends \Object\Table {
 		}
 		// collection
 		array_key_set($form->collection, $details_collection_key, [
-			'name' => 'Attribites',
+			'name' => 'Attributes',
 			'pk' => $this->pk,
 			'type' => '1M',
 			'map' => $this->map,
