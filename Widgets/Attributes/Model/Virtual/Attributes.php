@@ -123,7 +123,7 @@ class Attributes extends \Object\Table {
 		// add elements
 		$elements = [
 			'row1' => [
-				'wg_attribute_attribute_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Attribute', 'domain' => 'group_id', 'null' => true, 'percent' => 40, 'required' => true, 'details_unique_select' => true, 'method' => 'select', 'onchange' => 'this.form.submit();', 'custom_renderer' => "{$this->virtual_class_name}::overrideFieldName"],
+				'wg_attribute_attribute_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Attribute', 'domain' => 'group_id', 'null' => true, 'percent' => 40, 'required' => true, 'placeholder' => 'Attribute', 'details_unique_select' => true, 'method' => 'select', 'onchange' => 'this.form.submit();', 'custom_renderer' => "{$this->virtual_class_name}::overrideFieldName"],
 				'wg_attribute_value' => ['order' => 2, 'label_name' => 'Value', 'type' => 'mixed', 'required' => true, 'percent' => 60, 'custom_renderer' => "{$this->virtual_class_name}::overrideFieldValue"]
 			]
 		];
