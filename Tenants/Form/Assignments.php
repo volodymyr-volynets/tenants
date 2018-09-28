@@ -22,7 +22,7 @@ class Assignments extends \Object\Form\Wrapper\Base {
 			'details_rendering_type' => 'table',
 			'details_new_rows' => 1,
 			'details_key' => '\Numbers\Tenants\Tenants\Model\Assignment\Details',
-			'details_pk' => ['tm_assigndet_type_id', 'tm_assigndet_parent_abacattr_id', 'tm_assigndet_child_abacattr_id'],
+			'details_pk' => ['tm_assigndet_id'],
 			'required' => true,
 			'order' => 800
 		],
@@ -41,6 +41,9 @@ class Assignments extends \Object\Form\Wrapper\Base {
 			],
 			'tm_assignment_name' => [
 				'tm_assignment_name' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Name', 'domain' => 'name', 'percent' => 100, 'required' => true],
+			],
+			'tm_assignment_bidirectional' => [
+			    'tm_assignment_bidirectional' => ['order' => 1, 'row_order' => 300, 'label_name' => 'Bidirectional', 'type' => 'boolean'],
 			]
 		],
 		'tabs' => [
@@ -50,14 +53,17 @@ class Assignments extends \Object\Form\Wrapper\Base {
 		],
 		'details_container' => [
 			'row1' => [
-				'tm_assigndet_parent_abacattr_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Parent Attribute', 'domain' => 'attribute_id', 'required' => true, 'null' => true, 'percent' => 50, 'method' => 'select', 'options_model' => '\Numbers\Backend\ABAC\Model\Attributes::optionsActive', 'options_params' => ['sm_abacattr_flag_assingment' => 1], 'searchable' => true, 'onchange' => 'this.form.submit();'],
-				'tm_assigndet_child_abacattr_id' => ['order' => 2, 'label_name' => 'Child Attribute', 'domain' => 'attribute_id', 'required' => true, 'null' => true, 'percent' => 50, 'method' => 'select', 'options_model' => '\Numbers\Backend\ABAC\Model\Attributes::optionsActive', 'options_params' => ['sm_abacattr_flag_assingment' => 1], 'searchable' => true, 'onchange' => 'this.form.submit();'],
+				'tm_assigndet_abacattr_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Attribute', 'domain' => 'attribute_id', 'required' => true, 'null' => true, 'percent' => 100, 'method' => 'select', 'options_model' => '\Numbers\Backend\ABAC\Model\Attributes::optionsActive', 'options_params' => ['sm_abacattr_flag_assingment' => 1], 'searchable' => true, 'onchange' => 'this.form.submit();'],
 			],
 			'row2' => [
-			    'tm_assigndet_type_id' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Type', 'domain' => 'type_id', 'null' => true, 'required' => true, 'percent' => 50, 'method' => 'select', 'options_model' => '\Numbers\Tenants\Tenants\Model\Assignment\Detail\Types', 'onchange' => 'this.form.submit();'],
-			    'tm_assigndet_name' => ['order' => 2, 'label_name' => 'Name', 'domain' => 'name', 'null' => true, 'required' => true, 'percent' => 45],
-			    'tm_assigndet_inactive' => ['order' => 3, 'label_name' => 'Inactive', 'type' => 'boolean', 'percent' => 5]
+				'tm_assigndet_name' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Name', 'domain' => 'name', 'null' => true, 'required' => true, 'percent' => 65],
+				'tm_assigndet_multiple' => ['order' => 2, 'label_name' => 'Multiple', 'type' => 'boolean', 'percent' => 15],
+				'tm_assigndet_primary' => ['order' => 3, 'label_name' => 'Primary', 'type' => 'boolean', 'percent' => 15],
+				'tm_assigndet_inactive' => ['order' => 4, 'label_name' => 'Inactive', 'type' => 'boolean', 'percent' => 5]
 			],
+			self::HIDDEN => [
+				'tm_assigndet_id' => ['label_name' => 'Detail #', 'domain' => 'big_id_sequence', 'null' => true, 'method' => 'hidden'],
+			]
 		],
 		'buttons' => [
 			self::BUTTONS => self::BUTTONS_DATA_GROUP
@@ -69,7 +75,7 @@ class Assignments extends \Object\Form\Wrapper\Base {
 		'details' => [
 			'\Numbers\Tenants\Tenants\Model\Assignment\Details' => [
 				'name' => 'Details',
-				'pk' => ['tm_assigndet_tenant_id', 'tm_assigndet_assignment_id', 'tm_assigndet_type_id', 'tm_assigndet_parent_abacattr_id', 'tm_assigndet_child_abacattr_id'],
+				'pk' => ['tm_assigndet_tenant_id', 'tm_assigndet_assignment_id', 'tm_assigndet_assignment_id', 'tm_assigndet_id'],
 				'type' => '1M',
 				'map' => ['tm_assignment_tenant_id' => 'tm_assigndet_tenant_id', 'tm_assignment_id' => 'tm_assigndet_assignment_id']
 			]
@@ -77,6 +83,12 @@ class Assignments extends \Object\Form\Wrapper\Base {
 	];
 
 	public function validate(& $form) {
-
+		// primary organizations
+		$primary_attribute_id = $form->validateDetailsPrimaryColumn(
+			'\Numbers\Tenants\Tenants\Model\Assignment\Details',
+			'tm_assigndet_primary',
+			'tm_assigndet_inactive',
+			'tm_assigndet_abacattr_id'
+		);
 	}
 }

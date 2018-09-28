@@ -11,6 +11,6 @@ class Types extends \Object\Data {
 	];
 	public $data = [
 		10 => ['tm_assigndtltype_name' => 'Primary'],
-		//20 => ['tm_assigndtltype_name' => 'Secondary']
+		20 => ['tm_assigndtltype_name' => 'Secondary']
 	];
 }
