@@ -40,8 +40,13 @@ class Folders extends \Object\Table {
 	];
 	public $indexes = [];
 	public $history = false;
-	public $audit = false;
-	public $optimistic_lock = false;
+	public $audit = [
+		'map' => [
+			'tm_polfolder_tenant_id' => 'wg_audit_tenant_id',
+			'tm_polfolder_id' => 'wg_audit_polfolder_id'
+		]
+	];
+	public $optimistic_lock = true;
 	public $options_map = [];
 	public $options_active = [];
 	public $engine = [
@@ -57,4 +62,24 @@ class Folders extends \Object\Table {
 		'protection' => 1,
 		'scope' => 'global'
 	];
+
+	public $tree = [
+	    'id' => 'tm_polfolder_id',
+	    'name' => 'tm_polfolder_name',
+	    'parent_id' => 'tm_polfolder_parent_polfolder_id',
+	];
+
+	public function triggerUpdateFolderCounter($action, $data, $audit) {
+		$existing_folders_query = \Numbers\Tenants\Tenants\Model\View\Policy\FoldersGrouppedCounter::queryBuilderStatic(['alias' => 'inner_a'])->select();
+		$existing_folders_query->columns('counter');
+		$existing_folders_query->where('AND', ['inner_a.tm_polfolder_id', '=', 'a.tm_polfolder_id', true]);
+		$existing_policies_query = \Numbers\Tenants\Tenants\Model\View\Policy\PoliciesGrouppedCounter::queryBuilderStatic(['alias' => 'inner_b'])->select();
+		$existing_policies_query->columns('counter');
+		$existing_policies_query->where('AND', ['inner_b.tm_policy_polfolder_id', '=', 'a.tm_polfolder_id', true]);
+		$query_folders_update = $this->queryBuilder()->update();
+		$query_folders_update->set([
+			'tm_polfolder_counter;=;~~' => 'COALESCE((' . $existing_folders_query->sql() . '), 0) + COALESCE((' . $existing_policies_query->sql() . '), 0)'
+		]);
+		return $query_folders_update->query();
+	}
 }

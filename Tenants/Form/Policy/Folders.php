@@ -9,7 +9,6 @@ class Folders extends \Object\Form\Wrapper\Base {
 		'segment' => self::SEGMENT_FORM,
 		'actions' => [
 			'refresh' => true,
-			'back' => true,
 			'new' => true
 		]
 	];
@@ -114,7 +113,7 @@ class Folders extends \Object\Form\Wrapper\Base {
 		if (\Application::$controller->canCached('Record_Edit')) {
 			$toolbar[] = \HTML::a(['href' => 'javascript:void(0);', 'onclick' => 'Numbers.Modal.show(\'form_tm_policy_folders_modal_tree_container_modal_dialog\');', 'value' => i18n(null, 'Edit')]);
 		}
-		if (\Application::$controller->canCached('Record_Delete')) {
+		if (empty($data['tm_polfolder_counter']) && \Application::$controller->canCached('Record_Delete')) {
 			$toolbar[] = \HTML::a(['href' => 'javascript:void(0);', 'onclick' => 'Numbers.Modal.show(\'form_tm_policy_folders_modal_tree_container_modal_dialog\');', 'value' => i18n(null, 'Delete')]);
 		}
 		return [

@@ -20,7 +20,7 @@ class Registries extends \Object\Form\Wrapper\Base {
 	public $rows = [];
 	public $elements = [
 		'top' => [
-			'tm_assignment_id' => [
+			'tm_registry_code' => [
 				'tm_registry_code' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Registry Code', 'domain' => 'code', 'required' => true, 'percent' => 95, 'navigation' => true],
 				'tm_registry_inactive' => ['order' => 2, 'label_name' => 'Inactive', 'type' => 'boolean', 'percent' => 5]
 			],

@@ -1,22 +1,22 @@
 <?php
 
 namespace Numbers\Tenants\Tenants\Controller;
-class Assignments extends \Object\Controller\Permission {
+class Policies extends \Object\Controller\Permission {
 	public function actionIndex() {
-		$form = new \Numbers\Tenants\Tenants\Form\List2\Assignments([
+		$form = new \Numbers\Tenants\Tenants\Form\List2\Policies([
 			'input' => \Request::input()
 		]);
 		echo $form->render();
 	}
 	public function actionEdit() {
-		$form = new \Numbers\Tenants\Tenants\Form\Assignments([
+		$form = new \Numbers\Tenants\Tenants\Form\Policies([
 			'input' => \Request::input()
 		]);
 		echo $form->render();
 	}
 	public function actionImport() {
 		$form = new \Object\Form\Wrapper\Import([
-			'model' => '\Numbers\Tenants\Tenants\Form\Assignments',
+			'model' => '\Numbers\Tenants\Tenants\Form\Policies',
 			'input' => \Request::input()
 		]);
 		echo $form->render();
