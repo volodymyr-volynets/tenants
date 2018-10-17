@@ -25,6 +25,7 @@ class Folders extends \Object\Table {
 	public $constraints = [
 		'tm_policy_folders_pk' => ['type' => 'pk', 'columns' => ['tm_polfolder_tenant_id', 'tm_polfolder_id']],
 		'tm_polfolder_polroot_code_un' => ['type' => 'unique', 'columns' => ['tm_polfolder_tenant_id', 'tm_polfolder_polroot_code', 'tm_polfolder_id']],
+		'tm_polfolder_name_un' => ['type' => 'unique', 'columns' => ['tm_polfolder_tenant_id', 'tm_polfolder_polroot_code', 'tm_polfolder_parent_polfolder_id', 'tm_polfolder_name']],
 		'tm_polfolder_polroot_code_fk' => [
 			'type' => 'fk',
 			'columns' => ['tm_polfolder_tenant_id', 'tm_polfolder_polroot_code'],
@@ -67,6 +68,10 @@ class Folders extends \Object\Table {
 	    'id' => 'tm_polfolder_id',
 	    'name' => 'tm_polfolder_name',
 	    'parent_id' => 'tm_polfolder_parent_polfolder_id',
+	];
+
+	public $unique = [
+		'tm_polfolder_name' => 'tm_polfolder_name_un'
 	];
 
 	public function triggerUpdateFolderCounter($action, $data, $audit) {
