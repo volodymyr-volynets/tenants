@@ -20,6 +20,8 @@ class Policies extends \Object\Table {
 		'tm_policy_polfolder_id' => ['name' => 'Folder #', 'domain' => 'folder_id'],
 		'tm_policy_name' => ['name' => 'Name', 'domain' => 'name'],
 		'tm_policy_icon' => ['name' => 'Icon', 'domain' => 'icon', 'null' => true],
+		'tm_policy_type_code' => ['name' => 'Type', 'domain' => 'group_code'],
+		'tm_policy_global_abacattr_id' => ['name' => 'Global Attribute #', 'domain' => 'attribute_id', 'null' => true],
 		'tm_policy_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
 	];
 	public $constraints = [
@@ -36,6 +38,12 @@ class Policies extends \Object\Table {
 			'columns' => ['tm_policy_tenant_id', 'tm_policy_polroot_code', 'tm_policy_polfolder_id'],
 			'foreign_model' => '\Numbers\Tenants\Tenants\Model\Policy\Folders',
 			'foreign_columns' => ['tm_polfolder_tenant_id', 'tm_polfolder_polroot_code', 'tm_polfolder_id']
+		],
+		'tm_policy_global_abacattr_id_fk' => [
+			'type' => 'fk',
+			'columns' => ['tm_policy_global_abacattr_id'],
+			'foreign_model' => '\Numbers\Backend\ABAC\Model\Attributes',
+			'foreign_columns' => ['sm_abacattr_id']
 		]
 	];
 	public $indexes = [

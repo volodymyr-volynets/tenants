@@ -16,6 +16,7 @@ class Tenants extends \Object\DataSource {
 	public $cache_memory = false;
 
 	public $primary_model = '\Numbers\Tenants\Tenants\Model\Tenants';
+	public $primary_params = ['skip_acl' => true];
 	public $parameters = [
 		'tm_tenant_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id'],
 		'tm_tenant_code' => ['name' => 'Code', 'domain' => 'group_code'],

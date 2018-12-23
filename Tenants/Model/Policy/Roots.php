@@ -16,6 +16,7 @@ class Roots extends \Object\Table {
 		'tm_polroot_tenant_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id'],
 		'tm_polroot_code' => ['name' => 'Code', 'domain' => 'type_code'],
 		'tm_polroot_name' => ['name' => 'Name', 'domain' => 'name'],
+		'tm_polroot_icon' => ['name' => 'Icon', 'domain' => 'icon', 'null' => true],
 		'tm_polroot_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
 	];
 	public $constraints = [
@@ -25,8 +26,14 @@ class Roots extends \Object\Table {
 	public $history = false;
 	public $audit = false;
 	public $optimistic_lock = false;
-	public $options_map = [];
-	public $options_active = [];
+	public $options_map = [
+		'tm_polroot_name' => 'name',
+		'tm_polroot_icon' => 'icon_class',
+		'tm_polroot_inactive' => 'inactive'
+	];
+	public $options_active = [
+		'tm_polroot_inactive' => 0
+	];
 	public $engine = [
 		'MySQLi' => 'InnoDB'
 	];

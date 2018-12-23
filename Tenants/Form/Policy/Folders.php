@@ -26,6 +26,18 @@ class Folders extends \Object\Form\Wrapper\Base {
 			'details_tree_name_only_custom_renderer' => '\Numbers\Tenants\Tenants\Form\Policy\Folders::renderTreeDocumentField',
 			'order' => 200
 		],
+		'tree_policies_container' => [
+			'type' => 'subtrees',
+			'details_rendering_type' => 'name_only_continue',
+			'details_new_rows' => 0,
+			'details_parent_key' => '\Numbers\Tenants\Tenants\Model\Policy\Folders',
+			'details_key' => '\Numbers\Tenants\Tenants\Model\Policies',
+			'details_pk' => ['tm_policy_polfolder_id', 'tm_policy_id'],
+			'details_tree_key' => 'tm_policy_id',
+			'details_tree_parent_key' => 'tm_policy_polfolder_id',
+			'details_tree_name_only_custom_renderer' => '\Numbers\Tenants\Tenants\Form\Policy\Folders::renderTreePolicyDocumentField',
+			'order' => 200
+		],
 		'tree_container_modal' => [
 			'type' => 'modal',
 			'default_row_type' => 'grid',
@@ -42,7 +54,7 @@ class Folders extends \Object\Form\Wrapper\Base {
 		],
 		'tree_container' => [
 			self::HIDDEN => [
-				'tm_polfolder_id' => ['order' => 1, 'label_name' => 'Folder #', 'domain' => 'folder_id_sequence', 'null' => true, 'method' => 'hidden'],
+				'tm_polfolder_id' => ['order' => 1, 'label_name' => 'Folder #', 'domain' => 'folder_id', 'null' => true, 'method' => 'hidden'],
 				'tm_polfolder_polroot_code' => ['order' => 2, 'label_name' => 'Root Code', 'domain' => 'type_code', 'null' => true, 'method' => 'hidden'],
 				'tm_polfolder_parent_polfolder_id' => ['order' => 3, 'label_name' => 'Parent Folder', 'domain' => 'folder_id', 'null' => true, 'method' => 'hidden'],
 				'tm_polfolder_icon' => ['order' => 4, 'row_order' => 100, 'label_name' => 'Icon', 'domain' => 'icon', 'null' => true, 'method' => 'hidden'],
@@ -50,6 +62,18 @@ class Folders extends \Object\Form\Wrapper\Base {
 				'tm_polfolder_inactive' => ['order' => 6, 'label_name' => 'Inactive', 'type' => 'boolean', 'method' => 'hidden'],
 				'tm_polfolder_counter' => ['order' => 7, 'label_name' => 'Counter', 'domain' => 'counter', 'default' => 0, 'method' => 'hidden'],
 				'tm_polfolder_optimistic_lock' => ['order' => 8, 'label_name' => 'Optimistic Lock', 'type' => 'text', 'default' => null, 'method' => 'hidden'],
+			]
+		],
+		'tree_policies_container' => [
+			self::HIDDEN => [
+				'tm_policy_id' => ['label_name' => 'Policy #', 'domain' => 'policy_id'],
+				'tm_policy_code' => ['label_name' => 'Code', 'domain' => 'group_code'],
+				'tm_policy_polroot_code' => ['label_name' => 'Root Code', 'domain' => 'type_code'],
+				'tm_policy_polfolder_id' => ['label_name' => 'Folder #', 'domain' => 'folder_id'],
+				'tm_policy_name' => ['label_name' => 'Name', 'domain' => 'name'],
+				'tm_policy_icon' => ['label_name' => 'Icon', 'domain' => 'icon', 'null' => true],
+				'tm_policy_type_code' => ['label_name' => 'Type', 'domain' => 'group_code'],
+				'tm_policy_inactive' => ['label_name' => 'Inactive', 'type' => 'boolean']
 			]
 		],
 		'tree_container_modal' => [
@@ -84,6 +108,15 @@ class Folders extends \Object\Form\Wrapper\Base {
 				'type' => '1M',
 				'map' => ['tm_polroot_tenant_id' => 'tm_polfolder_tenant_id', 'tm_polroot_code' => 'tm_polfolder_polroot_code'],
 				'readonly' => true,
+				'details' => [
+					'\Numbers\Tenants\Tenants\Model\Policies' => [
+						'name' => 'Policies',
+						'pk' => ['tm_policy_tenant_id', 'tm_policy_polroot_code', 'tm_policy_polfolder_id', 'tm_policy_id'],
+						'type' => '1M',
+						'map' => ['tm_polfolder_tenant_id' => 'tm_policy_tenant_id', 'tm_polfolder_polroot_code' => 'tm_policy_polroot_code', 'tm_polfolder_id' => 'tm_policy_polfolder_id'],
+						'readonly' => true,
+					]
+				]
 			],
 		],
 	];
@@ -96,6 +129,10 @@ class Folders extends \Object\Form\Wrapper\Base {
 			];
 		} else {
 			$form->options['actions']['new'] = false;
+		}
+		// if we need to reset tree
+		if (empty($form->values['tm_polroot_code'])) {
+			$form->values['\Numbers\Tenants\Tenants\Model\Policy\Folders'] = [];
 		}
 	}
 
@@ -151,26 +188,44 @@ class Folders extends \Object\Form\Wrapper\Base {
 		$result.= '(' . $data['tm_polfolder_counter'] . ')';
 		// permissions
 		$toolbar = [];
+		$can_delete = \Application::$controller->canCached('Record_Delete') ? 'true' : 'false';
 		if (\Application::$controller->canCached('Record_New')) {
-			$new_link = "Numbers.NumbersTenantsTenantsFormPolicyFolders.newOrEditSubFolder(this, null, {$data['tm_polfolder_id']}, '', '', 0);";
+			$new_link = "Numbers.NumbersTenantsTenantsFormPolicyFolders.newOrEditSubFolder(this, null, {$data['tm_polfolder_id']}, '', '', 0, {$can_delete});";
 			$toolbar[] = \HTML::a(['href' => 'javascript:void(0);', 'onclick' => $new_link, 'value' => i18n(null, 'New')]);
 		}
 		if (\Application::$controller->canCached('Record_Edit')) {
 			$temp_parent_id = $data['tm_polfolder_parent_polfolder_id'] ?? 'null';
-			$edit_link = "Numbers.NumbersTenantsTenantsFormPolicyFolders.newOrEditSubFolder(this, {$data['tm_polfolder_id']}, {$temp_parent_id}, '{$data['tm_polfolder_name']}', '{$data['tm_polfolder_icon']}', {$data['tm_polfolder_inactive']}, '{$data['tm_polfolder_optimistic_lock']}');";
+			$edit_link = "Numbers.NumbersTenantsTenantsFormPolicyFolders.newOrEditSubFolder(this, {$data['tm_polfolder_id']}, {$temp_parent_id}, '{$data['tm_polfolder_name']}', '{$data['tm_polfolder_icon']}', {$data['tm_polfolder_inactive']}, '{$data['tm_polfolder_optimistic_lock']}', {$can_delete});";
 			$toolbar[] = \HTML::a(['href' => 'javascript:void(0);', 'onclick' => $edit_link, 'value' => i18n(null, 'Edit')]);
 		}
-		/*
-		if (empty($data['tm_polfolder_counter']) && \Application::$controller->canCached('Record_Delete')) {
-			$temp_parent_id = $data['tm_polfolder_parent_polfolder_id'] ?? 'null';
-			$edit_link = "Numbers.NumbersTenantsTenantsFormPolicyFolders.newOrEditSubFolder(this, {$data['tm_polfolder_id']}, {$temp_parent_id}, '{$data['tm_polfolder_name']}', '{$data['tm_polfolder_icon']}', {$data['tm_polfolder_inactive']}, '{$data['tm_polfolder_optimistic_lock']}');";
-			$edit_link.= '';
-			$toolbar[] = \HTML::a(['href' => 'javascript:void(0);', 'onclick' => $edit_link, 'value' => i18n(null, 'Delete')]);
-		}
-		*/
 		return [
 			'name' => $result,
 			'icon_class' => $data['tm_polfolder_icon'] ?? 'far fa-folder',
+			'toolbar' => $toolbar
+		];
+	}
+
+	public function renderTreePolicyDocumentField(& $form, & $rows, & $data) {
+		$result = $data['tm_policy_name'] . ' ';
+		if (!empty($data['tm_policy_inactive'])) {
+			$result.= '(' . i18n(null, 'Inactive') . ')' . ' ';
+		}
+		$result.= '(' . $data['tm_polfolder_counter'] . ')';
+		// permissions
+		$toolbar = [];
+		$can_delete = \Application::$controller->canCached('Record_Delete') ? 'true' : 'false';
+		if (\Application::$controller->canCached('Record_New')) {
+			$new_link = "Numbers.NumbersTenantsTenantsFormPolicyFolders.newOrEditSubFolder(this, null, {$data['tm_polfolder_id']}, '', '', 0, {$can_delete});";
+			$toolbar[] = \HTML::a(['href' => 'javascript:void(0);', 'onclick' => $new_link, 'value' => i18n(null, 'New')]);
+		}
+		if (\Application::$controller->canCached('Record_Edit')) {
+			$temp_parent_id = $data['tm_polfolder_parent_polfolder_id'] ?? 'null';
+			$edit_link = "Numbers.NumbersTenantsTenantsFormPolicyFolders.newOrEditSubFolder(this, {$data['tm_polfolder_id']}, {$temp_parent_id}, '{$data['tm_polfolder_name']}', '{$data['tm_polfolder_icon']}', {$data['tm_polfolder_inactive']}, '{$data['tm_polfolder_optimistic_lock']}', {$can_delete});";
+			$toolbar[] = \HTML::a(['href' => 'javascript:void(0);', 'onclick' => $edit_link, 'value' => i18n(null, 'Edit')]);
+		}
+		return [
+			'name' => $result,
+			'icon_class' => $data['tm_policy_icon'] ?? 'far fa-list-alt',
 			'toolbar' => $toolbar
 		];
 	}

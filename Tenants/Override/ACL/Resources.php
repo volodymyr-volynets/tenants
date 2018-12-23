@@ -18,6 +18,11 @@ class Resources {
 			'primary' => [
 				'datasource' => '\Numbers\Tenants\Tenants\DataSource\Registries'
 			]
+		],
+		'abac' => [
+			'model' => [
+				'get' => '\Numbers\Tenants\Tenants\Helper\ABAC\Get'
+			]
 		]
 	];
 }

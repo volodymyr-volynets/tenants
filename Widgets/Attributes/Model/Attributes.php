@@ -18,7 +18,7 @@ class Attributes extends \Object\Table {
 		'tm_attribute_code' => ['name' => 'Code', 'domain' => 'group_code'],
 		'tm_attribute_name' => ['name' => 'Name', 'domain' => 'name'],
 		'tm_attribute_method' => ['name' => 'Method', 'domain' => 'code', 'options_model' => '\Numbers\Tenants\Widgets\Attributes\Model\Methods'],
-		'tm_attribute_abacattr_id' => ['name' => 'ABAC Attribute #', 'domain' => 'attribute_id'],
+		'tm_attribute_abacattr_id' => ['name' => 'ABAC Attribute #', 'domain' => 'attribute_id', 'null' => true],
 		'tm_attribute_domain' => ['name' => 'Domain', 'domain' => 'code', 'null' => true],
 		'tm_attribute_type' => ['name' => 'Type', 'domain' => 'code'],
 		'tm_attribute_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
