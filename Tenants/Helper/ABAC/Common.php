@@ -46,6 +46,10 @@ abstract class Common {
 	 * Constructor
 	 */
 	public function __construct() {
+		// disable ABAC when running from command line
+		if (\Application::get('manager.enabled')) {
+			return;
+		}
 		// preload models
 		if (!isset(self::$cached_models)) {
 			self::$cached_models = \Numbers\Backend\Db\Common\Model\Models::getStatic([
