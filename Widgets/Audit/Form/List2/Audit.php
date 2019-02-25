@@ -41,7 +41,7 @@ class Audit extends \Object\Form\Wrapper\List2 {
 				'wg_audit_id' => ['order' => 1, 'row_order' => 100, 'label_name' => '#', 'domain' => 'big_id', 'percent' => 15],
 				'wg_audit_inserted_timestamp' => ['order' => 3, 'label_name' => 'Datetime', 'type' => 'timestamp', 'percent' => 15, 'format' => '\Format::niceTimestamp'],
 				'wg_audit_inserted_user_id' => ['order' => 4, 'label_name' => 'User', 'domain' => 'user_id', 'percent' => 25, 'options_model' => '\Numbers\Users\Users\Model\Users'],
-				'blank1' => ['order' => 5, 'label_name' => '', 'percent' => 45],
+				'wg_audit_description' => ['order' => 5, 'label_name' => 'Description', 'percent' => 45],
 			],
 			'row2' => [
 				'blank2' => ['order' => 1, 'row_order' => 200, 'label_name' => '', 'percent' => 15],
@@ -120,46 +120,10 @@ class Audit extends \Object\Form\Wrapper\List2 {
 		return $result;
 	}
 
-	private $form_data_cached;
 	public function renderValueField(& $form, & $options, & $value, & $neighbouring_values) {
-		$value = json_decode($value, true);
-		if (!empty($value['form_class']) && empty($this->form_data_cached[$value['form_class']])) {
-			$temp = \Numbers\Backend\System\Modules\Model\Form\Fields::getStatic([
-				'where' => [
-					'sm_frmfield_form_code' => $value['form_class']
-				],
-				'pk' => ['sm_frmfield_code']
-			]);
-			$this->form_data_cached[$value['form_class']] = $temp;
+		if (is_json($value)) {
+			$value = json_decode($value, true);
 		}
-		$result = i18n(null, 'Action:') . ' ' . $value['action'] . "\n";
-		$result.= i18n(null, 'Changes:') . "\n";
-		// columns first
-		if (!empty($value['columns'])) {
-			foreach ($value['columns'] as $k => $v) {
-				if (!empty($value['form_class']) && isset($this->form_data_cached[$value['form_class']])) {
-					$k = $this->form_data_cached[$value['form_class']][$k]['sm_frmfield_name'] ?? $k;
-					$result.= "\t" . $k . ': [' . $v[1] . '] -> [' . $v[0] . ']' . "\n";
-				} else {
-					$result.= "\t" . $k . ': [' . $v[1] . '] -> [' . $v[0] . ']' . "\n";
-				}
-			}
-		}
-		// details
-		if (!empty($value['details'])) {
-			foreach ($value['details'] as $k => $v) {
-				foreach ($v as $k2 => $v2) {
-					foreach ($v2['columns'] as $k3 => $v3) {
-						if (!empty($value['form_class']) && isset($this->form_data_cached[$value['form_class']])) {
-							$temp = $this->form_data_cached[$value['form_class']][$k . '[' . $k3 . ']']['sm_frmfield_name'] ?? $k . '[' . $k3 . ']';
-							$result.= "\t" . $temp . ': [' . $v3[1] . '] -> [' . $v3[0] . ']' . "\n";
-						} else {
-							$result.= "\t" . $k . '[' . $k3 . ']' . ': [' . $v3[1] . '] -> [' . $v3[0] . ']' . "\n";
-						}
-					}
-				}
-			}
-		}
-		return nl2br2($result);
+		return '<pre>' . print_r2($value, '', true) . '</pre>';
 	}
 }

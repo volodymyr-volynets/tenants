@@ -41,21 +41,14 @@ class Audit extends \Object\Table {
 		$this->columns['wg_audit_id'] = ['name' => 'Audit #', 'domain' => 'big_id_sequence'];
 		$this->determineModelMap($class, 'audit', $virtual_class_name, $options);
 		$this->columns['wg_audit_changes'] = ['name' => '# of Changes', 'domain' => 'counter', 'default' => 0];
+		$this->columns['wg_audit_description'] = ['name' => 'Description', 'type' => 'text', 'null' => true];
+		$this->columns['wg_audit_action'] = ['name' => 'Action', 'type' => 'text', 'null' => true];
 		$this->columns['wg_audit_value'] = ['name' => 'Value', 'type' => 'json'];
 		// add constraints
 		$this->constraints[$this->name . '_pk'] = [
 			'type' => 'pk',
 			'columns' => ['wg_audit_tenant_id', 'wg_audit_id']
 		];
-		/**
-		 * Important - we do not use fk constraint on parent
-		$this->constraints[$this->name . '_parent_fk'] = [
-			'type' => 'fk',
-			'columns' => array_values($this->map),
-			'foreign_model' => $class,
-			'foreign_columns' => array_keys($this->map)
-		];
-		*/
 		$this->indexes[$this->name . '_parent_idx'] = ['type' => 'btree', 'columns' => array_values($this->map)];
 		// construct table
 		parent::__construct($options);
@@ -70,9 +63,13 @@ class Audit extends \Object\Table {
 	 */
 	public function merge($data, $options = []) {
 		$save = [];
+		$this->columns['wg_audit_tenant_id'] = \Tenant::id();
 		foreach ($this->map as $k => $v) {
 			$save[$v] = $data['pk'][$k];
 		}
+		$save['wg_audit_description'] = $data['description'];
+		$save['wg_audit_action'] = $data['action'];
+		unset($data['description'], $data['action']);
 		$save['wg_audit_value'] = json_encode($data);
 		$save['wg_audit_changes'] = $options['changes'];
 		$this->processWhoColumns(['inserted'], $save);
