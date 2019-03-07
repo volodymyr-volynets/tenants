@@ -57,7 +57,7 @@ class Policies extends \Object\Form\Wrapper\Base {
 		],
 		'global_primary_attribute_container' => [
 			'tm_policy_global_abacattr_id' => [
-				'tm_policy_global_abacattr_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Attribute', 'domain' => 'attribute_id', 'null' => true, 'required' => 'c', 'percent' => 100, 'method' => 'select', 'options_model' => '\Numbers\Backend\ABAC\Model\Attributes', 'options_params' => ['sm_abacattr_flag_abac' => 1, 'sm_abacattr_flag_link' => 0]],
+				'tm_policy_global_abacattr_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Attribute', 'domain' => 'attribute_id', 'null' => true, 'required' => 'c', 'percent' => 100, 'method' => 'select', 'searchable' => true, 'options_model' => '\Numbers\Backend\ABAC\Model\Attributes', 'options_params' => ['sm_abacattr_flag_abac' => 1, 'sm_abacattr_flag_link' => 0]],
 			]
 		],
 		'buttons' => [
