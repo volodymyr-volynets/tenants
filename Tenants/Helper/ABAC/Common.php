@@ -228,7 +228,7 @@ abstract class Common {
 						$alias1 . '.' . $column => \Factory::model($method[0], true)->{$method[1]}(),
 					];
 					if (!empty($this->options['existing_values'])) {
-						$temp_on_where[$alias1 . '.' . $column . ';IN'] = $this->options['existing_values'];
+						$temp_on_where[$alias1 . '.' . $column2 . ';IN'] = $this->options['existing_values'];
 					}
 					$temp_on_sql = $model->db_object->prepareCondition($temp_on_where, 'OR');
 					// build query
@@ -260,7 +260,7 @@ abstract class Common {
 						$alias1 . '.' . $column => \Factory::model($method[0], true)->{$method[1]}(),
 					];
 					if (!empty($this->options['existing_values'])) {
-						$temp_on_where[$alias1 . '.' . $column . ';IN'] = $this->options['existing_values'];
+						$temp_on_where[$alias1 . '.' . $column2 . ';IN'] = $this->options['existing_values'];
 					}
 					$temp_on_sql = $model->db_object->prepareCondition($temp_on_where, 'OR');
 					// build query
