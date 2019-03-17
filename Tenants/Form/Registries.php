@@ -27,6 +27,9 @@ class Registries extends \Object\Form\Wrapper\Base {
 			'tm_registry_value' => [
 				'tm_registry_value' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Value', 'type' => 'text', 'percent' => 100, 'maxlength' => 255],
 			],
+			'tm_registry_description' => [
+				'tm_registry_description' => ['order' => 1, 'row_order' => 300, 'label_name' => 'Description', 'domain' => 'description', 'null' => true, 'percent' => 100, 'method' => 'textarea'],
+			]
 		],
 		'buttons' => [
 			self::BUTTONS => self::BUTTONS_DATA_GROUP

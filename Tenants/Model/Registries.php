@@ -16,6 +16,7 @@ class Registries extends \Object\Table {
 		'tm_registry_tenant_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id'],
 		'tm_registry_code' => ['name' => 'Registry Code', 'domain' => 'code'],
 		'tm_registry_value' => ['name' => 'Value', 'type' => 'text'],
+		'tm_registry_description' => ['name' => 'Description', 'domain' => 'description', 'null' => true],
 		'tm_registry_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
 	];
 	public $constraints = [
