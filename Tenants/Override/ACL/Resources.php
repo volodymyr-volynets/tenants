@@ -14,6 +14,11 @@ class Resources {
 				'datasource' => '\Numbers\Tenants\Tenants\DataSource\Module\AllModules',
 			]
 		],
+		'features' => [
+			'primary' => [
+				'datasource' => '\Numbers\Tenants\Tenants\DataSource\Module\AllFeatures',
+			]
+		],
 		'registries' => [
 			'primary' => [
 				'datasource' => '\Numbers\Tenants\Tenants\DataSource\Registries'
