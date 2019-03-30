@@ -163,6 +163,7 @@ abstract class Common {
 		}
 		// we do not process policies for super admins
 		if (\User::get('super_admin')) return false;
+		if (!\User::authorized()) return false;
 		// some variables
 		$model_code = '\\' . $model_code;
 		if (!isset(self::$cached_models[$model_code])) {
