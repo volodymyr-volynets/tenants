@@ -28,6 +28,11 @@ class Resources {
 			'model' => [
 				'get' => '\Numbers\Tenants\Tenants\Helper\ABAC\Get'
 			]
-		]
+		],
+		'notifications' => [
+			'primary' => [
+				'datasource' => '\Numbers\Tenants\Tenants\DataSource\Module\AllNotifications',
+			]
+		],
 	];
 }

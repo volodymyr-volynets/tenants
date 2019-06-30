@@ -228,8 +228,22 @@ abstract class Common {
 					$temp_on_where = [
 						$alias1 . '.' . $column => \Factory::model($method[0], true)->{$method[1]}(),
 					];
+					$temp_combined = [];
 					if (!empty($this->options['existing_values'])) {
-						$temp_on_where[$alias1 . '.' . $column2 . ';IN'] = $this->options['existing_values'];
+						foreach ($this->options['existing_values'] as $k0 => $v0) {
+							if (is_json($v0)) {
+								$temp_existing = json_decode($v0, true);
+								foreach ($temp_existing as $k => $v) {
+									if (strpos($column2, $k) !== false) {
+										$temp_combined[] = $v;
+										break;
+									}
+								}
+							} else {
+								$temp_combined[] = $v0;
+							}
+						}
+						$temp_on_where[$alias1 . '.' . $column2 . ';IN'] = $temp_combined;
 					}
 					$temp_on_sql = $model->db_object->prepareCondition($temp_on_where, 'OR');
 					// build query
@@ -238,6 +252,24 @@ abstract class Common {
 						['AND', [$alias1 . '.' . $column, '=', $alias2 . '.' . $column, true], false],
 						['AND', '(' . $temp_on_sql . ')', false]
 					]);
+					// where
+					if (!empty($this->options['where'])) {
+						$temp_where = [];
+						foreach ($this->options['where'] as $k => $v) {
+							$temp_where[$alias2 . '.' . $k] = $v;
+						}
+						if (!empty($temp_combined)) {
+							$pk2 = end($this->options['pk']);
+							$temp_query->where('AND', function (& $query) use ($pk2, $temp_combined, $temp_where, $alias2) {
+								$query->where('OR', [$alias2 . '.' . $pk2, '=', $temp_combined, false]);
+								$query->where('OR', function (& $query) use ($temp_where) {
+									$query->whereMultiple('AND', $temp_where);
+								});
+							});
+						} else {
+							$temp_query->whereMultiple('AND', $temp_where);
+						}
+					}
 					$temp_columns = [];
 					$temp_columns['__acl_id'] = $model->db_object->cast($alias1 . '.' . $column2, 'varchar');
 					$temp_columns['__acl_failed'] = '(CASE WHEN ' . $alias2 . '.' . $column . ' IS NULL THEN 1 ELSE 0 END)';
@@ -266,7 +298,7 @@ abstract class Common {
 					$temp_on_sql = $model->db_object->prepareCondition($temp_on_where, 'OR');
 					// build query
 					$temp_query = $model->queryBuilder(['alias' => $alias1, 'skip_acl' => true])->select();
-					$temp_query->join('LEFT', new $class(['skip_acl' => true]), $alias2, 'ON', [
+					$temp_query->join('INNER', new $class(['skip_acl' => true]), $alias2, 'ON', [
 						['AND', [$alias1 . '.' . $column, '=', $alias2 . '.' . $column, true], false],
 						['AND', '(' . $temp_on_sql . ')', false]
 					]);
