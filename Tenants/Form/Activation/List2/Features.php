@@ -60,9 +60,12 @@ class Features extends \Object\Form\Wrapper\List2 {
 			'row1' => [
 				'tm_feature_module_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'Module #', 'domain' => 'module_id', 'percent' => 10],
 				'tm_module_name' => ['order' => 2, 'label_name' => 'Module Name', 'domain' => 'name', 'percent' => 25],
-				'tm_feature_feature_code' => ['order' => 3, 'label_name' => 'Feature Code', 'domain' => 'feature_code', 'percent' => 30],
-				'sm_feature_name' => ['order' => 4, 'label_name' => 'Feature Name', 'domain' => 'name', 'percent' => 30],
+				'sm_feature_name' => ['order' => 4, 'label_name' => 'Feature Name', 'domain' => 'name', 'percent' => 60],
 				'tm_feature_inactive' => ['order' => 5, 'label_name' => 'Inactive', 'type' => 'boolean', 'percent' => 5]
+			],
+			'row2' => [
+				'__blank' => ['order' => 1, 'row_order' => 200, 'label_name' => '', 'percent' => 10],
+				'tm_feature_feature_code' => ['order' => 2, 'label_name' => 'Feature Code', 'domain' => 'feature_code', 'percent' => 90],
 			]
 		]
 	];
