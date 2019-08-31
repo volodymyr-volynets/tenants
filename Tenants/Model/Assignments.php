@@ -17,7 +17,7 @@ class Assignments extends \Object\Table {
 		'tm_assignment_tenant_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id'],
 		'tm_assignment_id' => ['name' => 'Assignment #', 'domain' => 'assignment_id_sequence'],
 		'tm_assignment_code' => ['name' => 'Code', 'domain' => 'group_code'],
-		'tm_assignment_type_code' => ['name' => 'Type', 'domain' => 'group_code', 'options_model' => '\Numbers\Tenants\Tenants\Model\Assignment\Types'],
+		'tm_assignment_type_code' => ['name' => 'Type', 'domain' => 'group_code'], // , 'options_model' => '\Numbers\Tenants\Tenants\Model\Assignment\Types'
 		'tm_assignment_name' => ['name' => 'Name', 'domain' => 'name'],
 		'tm_assignment_bidirectional' => ['name' => 'Bidirectional', 'type' => 'boolean'],
 		'tm_assignment_inactive' => ['name' => 'Inactive', 'type' => 'boolean']

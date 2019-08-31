@@ -5,6 +5,7 @@ class PoliciesGrouppedCounter extends \Object\View {
 	public $db_link;
 	public $db_link_flag;
 	public $module_code = 'TM';
+	public $title = 'T/M Groupped Policies';
 	public $schema;
 	public $name = 'tm_policies_groupped_counter_view';
 	public $pk = ['tm_policy_tenant_id', 'tm_policy_polfolder_id'];

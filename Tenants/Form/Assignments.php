@@ -43,7 +43,7 @@ class Assignments extends \Object\Form\Wrapper\Base {
 				'tm_assignment_name' => ['order' => 1, 'row_order' => 200, 'label_name' => 'Name', 'domain' => 'name', 'percent' => 100, 'required' => true],
 			],
 			'tm_assignment_bidirectional' => [
-			    'tm_assignment_bidirectional' => ['order' => 1, 'row_order' => 300, 'label_name' => 'Bidirectional', 'type' => 'boolean'],
+				'tm_assignment_bidirectional' => ['order' => 1, 'row_order' => 300, 'label_name' => 'Bidirectional', 'type' => 'boolean'],
 			]
 		],
 		'tabs' => [

@@ -2,6 +2,8 @@
 
 namespace Numbers\Tenants\Widgets\Attributes\Model;
 class Methods extends \Object\Data {
+	public $module_code = 'TM';
+	public $title = 'T/M Attribute Methods';
 	public $column_key = 'sm_attrmethod_code';
 	public $column_prefix = 'sm_attrmethod_';
 	public $columns = [

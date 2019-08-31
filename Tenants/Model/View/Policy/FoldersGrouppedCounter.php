@@ -5,6 +5,7 @@ class FoldersGrouppedCounter extends \Object\View {
 	public $db_link;
 	public $db_link_flag;
 	public $module_code = 'TM';
+	public $title = 'T/M Policy Groupped Folders View';
 	public $schema;
 	public $name = 'tm_policy_folders_groupped_counter_view';
 	public $pk = ['tm_polfolder_tenant_id', 'tm_polfolder_id'];
