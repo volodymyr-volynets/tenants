@@ -156,7 +156,7 @@ abstract class Common {
 	 * @param string $model_code
 	 * @return bool
 	 */
-	public function hasPolicies(string $model_code) : bool {
+	public function hasPolicies(string $model_code, \Object\Query\Builder & $query, string $alias_main_table) : bool {
 		// fix existing values
 		if (!empty($this->options['existing_values']) && !is_array($this->options['existing_values'])) {
 			$this->options['existing_values'] = [$this->options['existing_values']];
@@ -179,6 +179,18 @@ abstract class Common {
 		}
 		$model_id = self::$cached_models[$model_code]['sm_model_id'];
 		$alias = 1000;
+		// columns from main table
+		$pk9 = $query->primary_model->pk;
+		if (!empty($query->primary_model->tenant)) {
+			unset($pk9[0]);
+		}
+		if (count($pk9) == 1) {
+			$column9 = $query->db_object->cast($alias_main_table . '.' . current($pk9), 'varchar');
+		} else {
+			$pk10 = $pk9;
+			array_key_prefix_and_suffix($pk10, $alias_main_table . '.');
+			$column9 = "concat_ws('::', " . implode(', ', $pk10) . ")";
+		}
 		foreach (self::$cached_policies as $k => $v) {
 			// global assignment
 			if ($v['type'] == 'GLOBAL_ASSIGNMENT_ENFORCEMENT') {
@@ -206,13 +218,11 @@ abstract class Common {
 						['AND', [$alias1 . '.' . $column, '=', $alias2 . '.' . $column, true], false],
 						['AND', '(' . $temp_on_sql . ')', false]
 					]);
-					$temp_columns = [];
-					$temp_columns['__acl_id'] = $model->db_object->cast($alias1 . '.' . $column, 'varchar');
-					$temp_columns['__acl_failed'] = '(CASE WHEN ' . $alias2 . '.' . $column . ' IS NULL THEN 1 ELSE 0 END)';
-					$temp_query->columns($temp_columns);
+					$temp_query->columns(1);
+					$temp_query->where('AND', '(CASE WHEN ' . $alias2 . '.' . $column . ' IS NULL THEN false ELSE true END)');
+					$temp_query->where('AND', [$model->db_object->cast($alias1 . '.' . $column, 'varchar'), '=', $column9, true, true]);
 					$this->subqueries[] = [
-						//'map' => self::$cached_attributes_by_models[$model_id]['links']['same_table'][$model_id]['map'],
-						'sql' => $temp_query->sql(),
+						'exists' => $temp_query->sql(),
 					];
 				} else if (!empty(self::$cached_attributes_by_models[$model_id]['links']['other_table'][$parent_model_id]['parent_columns'][$v['global_abacattr_id']])) {
 					$temp_data = self::$cached_attributes_by_models[$model_id]['links']['other_table'][$parent_model_id];
@@ -248,20 +258,16 @@ abstract class Common {
 					$temp_on_sql = $model->db_object->prepareCondition($temp_on_where, 'OR');
 					// build query
 					$temp_query = $model->queryBuilder(['alias' => $alias1, 'skip_acl' => true])->select();
-					$temp_query->join('LEFT', new $class(['skip_acl' => true]), $alias2, 'ON', [
-						['AND', [$alias1 . '.' . $column, '=', $alias2 . '.' . $column, true], false],
-						['AND', '(' . $temp_on_sql . ')', false]
-					]);
 					// where
 					if (!empty($this->options['where'])) {
 						$temp_where = [];
 						foreach ($this->options['where'] as $k => $v) {
-							$temp_where[$alias2 . '.' . $k] = $v;
+							$temp_where[$alias1 . '.' . $k] = $v;
 						}
 						if (!empty($temp_combined)) {
 							$pk2 = end($this->options['pk']);
-							$temp_query->where('AND', function (& $query) use ($pk2, $temp_combined, $temp_where, $alias2) {
-								$query->where('OR', [$alias2 . '.' . $pk2, '=', $temp_combined, false]);
+							$temp_query->where('AND', function (& $query) use ($pk2, $temp_combined, $temp_where, $alias1) {
+								$query->where('OR', [$alias1 . '.' . $pk2, '=', $temp_combined, false]);
 								$query->where('OR', function (& $query) use ($temp_where) {
 									$query->whereMultiple('AND', $temp_where);
 								});
@@ -270,13 +276,12 @@ abstract class Common {
 							$temp_query->whereMultiple('AND', $temp_where);
 						}
 					}
-					$temp_columns = [];
-					$temp_columns['__acl_id'] = $model->db_object->cast($alias1 . '.' . $column2, 'varchar');
-					$temp_columns['__acl_failed'] = '(CASE WHEN ' . $alias2 . '.' . $column . ' IS NULL THEN 1 ELSE 0 END)';
-					$temp_query->columns($temp_columns);
+					$temp_query->columns(1);
+					$temp_query->where('AND', '(CASE WHEN ' . $alias1 . '.' . $column . ' IS NULL THEN false ELSE true END)');
+					$temp_query->where('AND', '(' . $temp_on_sql . ')');
+					$temp_query->where('AND', [$model->db_object->cast($alias1 . '.' . $column2, 'varchar'), '=', $column9, true, true]);
 					$this->subqueries[] = [
-						//'map' => self::$cached_attributes_by_models[$model_id]['links']['same_table'][$model_id]['map'],
-						'sql' => $temp_query->sql(),
+						'exists' => $temp_query->sql(),
 					];
 				} else if (!empty(self::$cached_attributes_by_models[$parent_model_id]['links']['link_table'][$model_id]['parent_columns'][$v['global_abacattr_id']])) {
 					$temp_data = self::$cached_attributes_by_models[$parent_model_id]['links']['link_table'][$model_id];
@@ -298,17 +303,12 @@ abstract class Common {
 					$temp_on_sql = $model->db_object->prepareCondition($temp_on_where, 'OR');
 					// build query
 					$temp_query = $model->queryBuilder(['alias' => $alias1, 'skip_acl' => true])->select();
-					$temp_query->join('INNER', new $class(['skip_acl' => true]), $alias2, 'ON', [
-						['AND', [$alias1 . '.' . $column, '=', $alias2 . '.' . $column, true], false],
-						['AND', '(' . $temp_on_sql . ')', false]
-					]);
-					$temp_columns = [];
-					$temp_columns['__acl_id'] = $model->db_object->cast($alias1 . '.' . $column2, 'varchar');
-					$temp_columns['__acl_failed'] = '(CASE WHEN ' . $alias2 . '.' . $column . ' IS NULL THEN 1 ELSE 0 END)';
-					$temp_query->columns($temp_columns);
+					$temp_query->columns(1);
+					$temp_query->where('AND', '(CASE WHEN ' . $alias1 . '.' . $column . ' IS NULL THEN false ELSE true END)');
+					$temp_query->where('AND', '(' . $temp_on_sql . ')');
+					$temp_query->where('AND', [$model->db_object->cast($alias1 . '.' . $column2, 'varchar'), '=', $column9, true, true]);
 					$this->subqueries[] = [
-						//'map' => self::$cached_attributes_by_models[$model_id]['links']['same_table'][$model_id]['map'],
-						'sql' => $temp_query->sql(),
+						'exists' => $temp_query->sql(),
 					];
 				}
 			}
@@ -326,31 +326,44 @@ abstract class Common {
 	 */
 	public function mergeQueries(\Object\Query\Builder & $query, string $alias, array $options = []) : bool {
 		$inner_query = new \Object\Query\Builder($query->db_link);
-		$temp = [];
+		$inners = [];
+		$exists = [];
 		foreach ($this->subqueries as $v) {
-			$temp[] = $v['sql'];
+			if (!empty($v['sql'])) {
+				$inners[] = $v['sql'];
+			} else if (!empty($v['exists'])) {
+				$exists[] = $v['exists'];
+			}
 		}
-		// columns
-		$pk = $query->primary_model->pk;
-		if (!empty($query->primary_model->tenant)) {
-			unset($pk[0]);
+		// exists
+		if (!empty($exists)) {
+			$exists = implode('UNION ALL', $exists);
+			$query->where('AND', '(' . $exists . ')', 'EXISTS');
 		}
-		if (count($pk) == 1) {
-			$column = $query->db_object->cast($alias . '.' . current($pk), 'varchar');
-		} else {
-			$column = "concat_ws('::', " . implode(', ', $pk) . ")";
+		// inner joins
+		if (!empty($inners)) {
+			// columns
+			$pk = $query->primary_model->pk;
+			if (!empty($query->primary_model->tenant)) {
+				unset($pk[0]);
+			}
+			if (count($pk) == 1) {
+				$column = $query->db_object->cast($alias . '.' . current($pk), 'varchar');
+			} else {
+				$column = "concat_ws('::', " . implode(', ', $pk) . ")";
+			}
+			$inners = implode('UNION ALL', $inners);
+			$inner_query->from('(' . $inners . ')', '__acl_groupped_inner');
+			$inner_query->columns([
+				'__acl_id' => '__acl_id',
+				'__acl_failed' => 'SUM(__acl_failed)'
+			]);
+			$inner_query->groupby(['__acl_id']);
+			$query->join('INNER', $inner_query, '__acl_groupped_outer', 'ON', [
+				['AND', ['__acl_groupped_outer.__acl_id', '=', $column, true], false],
+				['AND', ['__acl_groupped_outer.__acl_failed', '=', 0, false], false]
+			]);
 		}
-		$temp = implode('UNION ALL', $temp);
-		$inner_query->from('(' . $temp . ')', '__acl_groupped_inner');
-		$inner_query->columns([
-			'__acl_id' => '__acl_id',
-			'__acl_failed' => 'SUM(__acl_failed)'
-		]);
-		$inner_query->groupby(['__acl_id']);
-		$query->join('INNER', $inner_query, '__acl_groupped_outer', 'ON', [
-			['AND', ['__acl_groupped_outer.__acl_id', '=', $column, true], false],
-			['AND', ['__acl_groupped_outer.__acl_failed', '=', 0, false], false]
-		]);
 		return true;
 	}
 
