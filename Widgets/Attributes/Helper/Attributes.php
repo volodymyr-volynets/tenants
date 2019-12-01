@@ -59,7 +59,7 @@ class Attributes {
 		$attributes = [];
 		$counter = 1;
 		foreach ($existing_attribues as $k => $v) {
-			if (!self::inModel($v['wg_attribute_attribute_id'], '\Numbers\Accounting\GeneralLedger\Model\Transaction\JournalEntries', $module_id)) {
+			if (!self::inModel($v['wg_attribute_attribute_id'], $model_code, $module_id)) {
 				continue;
 			}
 			// we need to update module #

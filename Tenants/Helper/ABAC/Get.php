@@ -13,7 +13,7 @@ class Get extends \Numbers\Tenants\Tenants\Helper\ABAC\Common {
 	 */
 	public function process(string $model_code, \Object\Query\Builder & $query, string $alias, array $options = []) : bool {
 		$this->options = $options;
-		if ($this->hasPolicies($model_code)) {
+		if ($this->hasPolicies($model_code, $query, $alias)) {
 			return $this->mergeQueries($query, $alias);
 		}
 		return false;
