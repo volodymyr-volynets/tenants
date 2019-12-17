@@ -34,5 +34,11 @@ class Resources {
 				'datasource' => '\Numbers\Tenants\Tenants\DataSource\Module\AllNotifications',
 			]
 		],
+		'routes' => [
+			'short_urls' => [
+				'regex' => '/u/',
+				'new' => '/Numbers/Tenants/Tenants/Controller/ShortUrlRun/_Index/'
+			]
+		]
 	];
 }
