@@ -242,8 +242,10 @@ class Attributes extends \Object\Table {
 	 * @param mixed $values
 	 */
 	public function convertMultipleColumns(& $form, & $values) {
-		foreach ($values as $k => $v) {
-			$values[$k]['wg_attribute_value'] = json_decode($v['wg_attribute_value'], true);
+		if (is_array($values)) {
+			foreach ($values as $k => $v) {
+				$values[$k]['wg_attribute_value'] = json_decode($v['wg_attribute_value'], true);
+			}
 		}
 	}
 
