@@ -35,6 +35,19 @@ class Filters {
 		// methods
 		$form->wrapper_methods['refresh']['filters'] = [& $this, 'refresh'];
 		$form->wrapper_methods['filterChanged']['filters'] = [& $this, 'filterChanged'];
+		// delete filter
+		$__form_filter_id_delete = (int) \Application::get('flag.global.__form_filter_id_delete');
+		if (!empty($__form_filter_id_delete)) {
+			$result = \Numbers\Tenants\Widgets\Filters\Model\Forms::collectionStatic()->merge([
+				'tm_filterform_id' => $__form_filter_id_delete,
+				'tm_filterform_resource_code' => \Application::get('mvc.controller'),
+				'tm_filterform_user_id' => \User::id(),
+			], [
+				'flag_delete_row' => true,
+				'skip_optimistic_lock' => true
+			]);
+			$form->error(SUCCESS, \Object\Content\Messages::FILTER_DELETED);
+		}
 		// preload filter
 		$__form_filter_id = (int) \Application::get('flag.global.__form_filter_id');
 		if (!empty($__form_filter_id)) {
@@ -113,6 +126,7 @@ class Filters {
 				$result.= '<th width="1%">&nbsp;</th>';
 				$result.= '<th nowrap width="94%">' . i18n(null, 'Name') . '</th>';
 				$result.= '<th nowrap width="5%">' . i18n(null, 'Datetime') . '</th>';
+				$result.= '<th nowrap width="5%">' . i18n(null, 'Action') . '</th>';
 			$result.= '</tr>';
 			$counter = 1;
 			foreach ($filters as $k => $v) {
@@ -120,6 +134,7 @@ class Filters {
 					$result.= '<td nowrap>' . \Format::id($counter) . '.</td>';
 					$result.= '<td nowrap>' . \HTML::a(['href' => \Request::buildURL(\Application::get('mvc.full'), ['__form_filter_id' => $k]), 'value' => $v['name']]) . '</td>';
 					$result.= '<td nowrap>' . \Format::datetime($v['timestamp']) . '</td>';
+					$result.= '<td nowrap>' . \HTML::a(['href' => \Request::buildURL(\Application::get('mvc.full'), ['__form_filter_id_delete' => $k]), 'value' => i18n(null, 'Delete')]) . '</td>';
 				$result.= '</tr>';
 				$counter++;
 			}
