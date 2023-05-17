@@ -39,6 +39,14 @@ class Resources {
 				'regex' => '/u/',
 				'new' => '/Numbers/Tenants/Tenants/Controller/ShortUrlRun/_Index/'
 			]
+		],
+		'firewalls' => [
+			'primary' => [
+				'model' => '\Numbers\Tenants\Tenants\Model\Firewalls',
+				'prefix' => 'tm_firewall_',
+				'method' => ['\Numbers\Tenants\Tenants\Model\Firewalls', 'updateOrCreateEntry'],
+				'list' => ['\Numbers\Tenants\Tenants\Model\Firewalls', 'getListOfIPs']
+			]
 		]
 	];
 }
