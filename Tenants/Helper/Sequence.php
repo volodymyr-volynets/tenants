@@ -21,6 +21,9 @@ class Sequence {
 		$query->columns([
 			'counter' => "tm_next_sequence_value('{$type_code}', {$tenant_id}, {$module_id})"
 		]);
+		$query->dblink([
+			'counter' => 'bigint'
+		]);
 		$result = $query->query();
 		if (!$result['success']) {
 			Throw new \Exception($result['error'][0]);

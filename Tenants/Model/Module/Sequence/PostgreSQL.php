@@ -10,7 +10,7 @@ class PostgreSQL extends \Object\Function2 {
 	public $name = 'tm_next_sequence_value';
 	public $backend = 'PostgreSQL';
 	public $header = 'tm_next_sequence_value(type_code character varying, tenant_id integer, module_id integer)';
-	public $sql_version = '1.0.0';
+	public $sql_version = '1.0.1';
 	public $definition = 'CREATE OR REPLACE FUNCTION public.tm_next_sequence_value(type_code character varying, tenant_id integer, module_id integer)
  RETURNS bigint
  LANGUAGE plpgsql
@@ -19,10 +19,10 @@ AS $function$
 DECLARE
 	result bigint;
 BEGIN
-	SELECT tm_mdlseq_counter INTO result FROM tm_module_sequences WHERE tm_mdlseq_type_code = type_code AND tm_mdlseq_tenant_id = tenant_id AND tm_mdlseq_module_id = module_id FOR UPDATE;
+	SELECT tm_mdlseq_counter INTO result FROM public.tm_module_sequences WHERE tm_mdlseq_type_code = type_code AND tm_mdlseq_tenant_id = tenant_id AND tm_mdlseq_module_id = module_id FOR UPDATE;
 	IF FOUND THEN
 		result:= result + 1;
-		UPDATE tm_module_sequences SET tm_mdlseq_counter = result WHERE tm_mdlseq_type_code = type_code AND tm_mdlseq_tenant_id = tenant_id AND tm_mdlseq_module_id = module_id;
+		UPDATE public.tm_module_sequences SET tm_mdlseq_counter = result WHERE tm_mdlseq_type_code = type_code AND tm_mdlseq_tenant_id = tenant_id AND tm_mdlseq_module_id = module_id;
 	END IF;
 	RETURN result;
 END;
