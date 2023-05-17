@@ -179,6 +179,9 @@ abstract class Common {
 		}
 		$model_id = self::$cached_models[$model_code]['sm_model_id'];
 		$alias = 1000;
+		if (!empty($this->options['skip_acl'])) {
+			return false;
+		}
 		// columns from main table
 		$pk9 = $query->primary_model->pk;
 		if (!empty($query->primary_model->tenant)) {

@@ -12,7 +12,8 @@ class Features extends \Object\DataSource {
 	public $single_value;
 	public $options_map =[
 		'module_name' => 'name',
-		'feature_name' => 'name'
+		'feature_name' => 'name',
+		'feature_roles' => 'feature_roles'
 	];
 	public $column_prefix;
 
@@ -33,6 +34,7 @@ class Features extends \Object\DataSource {
 			'feature_code' => 'a.tm_feature_feature_code',
 			'feature_name' => 'c.sm_feature_name',
 			'feature_icon' => 'c.sm_feature_icon',
+			'feature_roles' => 'c.sm_feature_role_codes',
 			'inactive' => 'a.tm_feature_inactive'
 		]);
 		// join
@@ -63,9 +65,21 @@ class Features extends \Object\DataSource {
 		$result = [];
 		foreach ($data as $k => $v) {
 			foreach ($v as $k2 => $v2) {
+				$readonly = false;
+				if (!empty($v2['feature_roles'])) {
+					$v2['feature_roles'] = explode(',', $v2['feature_roles']);
+					$intersect = array_intersect($v2['feature_roles'], \User::get('roles'));
+					if (empty($intersect)) {
+						$readonly = true;
+					}
+				}
 				$parent = \Object\Table\Options::optionJsonFormatKey(['module_id' => $k]);
 				// item key
 				$key = \Object\Table\Options::optionJsonFormatKey(['feature_code' => $k2, 'module_id' => $k]);
+				// we hide if not set.
+				if ($readonly && trim($options['existing_values'] ?? '') != $key) {
+					continue;
+				}
 				// filter
 				if (!\Object\Table\Options::processOptionsExistingValuesAndSkipValues($key, $options['existing_values'] ?? null, $options['skip_values'] ?? null)) continue;
 				// add parent
@@ -73,7 +87,7 @@ class Features extends \Object\DataSource {
 					$result[$parent] = ['name' => $v2['module_name'], 'icon_class' => \HTML::icon(['type' => $v2['module_icon'], 'class_only' => true]), 'parent' => null, 'disabled' => true];
 				}
 				// add item
-				$result[$key] = ['name' => $v2['feature_name'], 'icon_class' => \HTML::icon(['type' => $v2['feature_icon'], 'class_only' => true]), '__selected_name' => i18n(null, $v2['module_name']) . ': ' . i18n(null, $v2['feature_name']), 'parent' => $parent];
+				$result[$key] = ['name' => $v2['feature_name'], 'icon_class' => \HTML::icon(['type' => $v2['feature_icon'], 'class_only' => true]), '__selected_name' => i18n(null, $v2['module_name']) . ': ' . i18n(null, $v2['feature_name']), 'parent' => $parent, '__readonly' => $readonly, 'readonly' => $readonly];
 			}
 		}
 		if (!empty($result)) {
