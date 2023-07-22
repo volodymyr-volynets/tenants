@@ -7,7 +7,7 @@ class Sequences extends \Object\Table {
 	public $module_code = 'TM';
 	public $title = 'T/M Module Sequences';
 	public $name = 'tm_module_sequences';
-	public $pk = ['tm_mdlseq_tenant_id', 'tm_mdlseq_module_id', 'tm_mdlseq_type_code'];
+	public $pk = ['tm_mdlseq_tenant_id', 'tm_mdlseq_module_id', 'tm_mdlseq_group_code', 'tm_mdlseq_type_code'];
 	public $tenant = true;
 	public $module = true;
 	public $orderby;
@@ -16,14 +16,15 @@ class Sequences extends \Object\Table {
 	public $columns = [
 		'tm_mdlseq_tenant_id' => ['name' => 'Tenant #', 'domain' => 'tenant_id'],
 		'tm_mdlseq_module_id' => ['name' => 'Module #', 'domain' => 'module_id'],
-		'tm_mdlseq_type_code' => ['name' => 'Type', 'domain' => 'type_code'],
+		'tm_mdlseq_group_code' => ['name' => 'Group', 'domain' => 'code', 'default' => 'DEFAULT'],
+		'tm_mdlseq_type_code' => ['name' => 'Type', 'domain' => 'code'],
 		'tm_mdlseq_prefix' => ['name' => 'Prefix', 'domain' => 'type_code', 'null' => true],
 		'tm_mdlseq_length' => ['name' => 'Length', 'domain' => 'counter'],
 		'tm_mdlseq_suffix' => ['name' => 'Suffix', 'domain' => 'type_code', 'null' => true],
 		'tm_mdlseq_counter' => ['name' => 'Counter', 'domain' => 'bigcounter'],
 	];
 	public $constraints = [
-		'tm_module_sequences_pk' => ['type' => 'pk', 'columns' => ['tm_mdlseq_tenant_id', 'tm_mdlseq_module_id', 'tm_mdlseq_type_code']],
+		'tm_module_sequences_pk' => ['type' => 'pk', 'columns' => ['tm_mdlseq_tenant_id', 'tm_mdlseq_module_id', 'tm_mdlseq_group_code', 'tm_mdlseq_type_code']],
 		'tm_mdlseq_module_id_fk' => [
 			'type' => 'fk',
 			'columns' => ['tm_mdlseq_tenant_id', 'tm_mdlseq_module_id'],
