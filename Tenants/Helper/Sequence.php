@@ -11,7 +11,7 @@ class Sequence {
 	 * @param int $tenant_id
 	 * @return int|string
 	 */
-	public static function nextval(string $type_code, int $module_id, $tenant_id = null, $extended = false) {
+	public static function nextval(string $group_code, string $type_code, int $module_id, $tenant_id = null, $extended = false) {
 		$model = new \Numbers\Tenants\Tenants\Model\Module\Sequences();
 		$query = new \Object\Query\Builder($model->db_link);
 		// extended sequence
@@ -19,7 +19,7 @@ class Sequence {
 			$tenant_id = \Tenant::id();
 		}
 		$query->columns([
-			'counter' => "tm_next_sequence_value('{$type_code}', {$tenant_id}, {$module_id})"
+			'counter' => "tm_next_sequence_value('{$group_code}', '{$type_code}', {$tenant_id}, {$module_id})"
 		]);
 		$query->dblink([
 			'counter' => 'bigint'
@@ -32,6 +32,7 @@ class Sequence {
 			$data = $model->get([
 				'where' => [
 					'tm_mdlseq_module_id' => $module_id,
+					'tm_mdlseq_group_code' => $group_code,
 					'tm_mdlseq_type_code' => $type_code,
 				],
 				'pk' => null,
