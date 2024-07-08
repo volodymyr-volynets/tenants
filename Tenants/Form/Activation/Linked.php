@@ -40,9 +40,9 @@ class Linked extends \Object\Form\Wrapper\Base {
 	public function save(& $form) {
 		$result = \Numbers\Tenants\Tenants\Model\Module\Linked::collectionStatic()->merge([
 			'tm_modlinked_parent_module_id' => $form->values['tm_modlinked_parent_module_id'],
-			'tm_modlinked_parent_module_code' => \Numbers\Tenants\Tenants\Model\Modules::loadById($form->values['tm_modlinked_parent_module_id'], 'tm_module_module_code'),
+			'tm_modlinked_parent_module_code' => \Numbers\Tenants\Tenants\Model\Modules::loadByIdStatic($form->values['tm_modlinked_parent_module_id'], 'tm_module_module_code'),
 			'tm_modlinked_child_module_id' => $form->values['tm_modlinked_child_module_id'],
-			'tm_modlinked_child_module_code' => \Numbers\Tenants\Tenants\Model\Modules::loadById($form->values['tm_modlinked_child_module_id'], 'tm_module_module_code'),
+			'tm_modlinked_child_module_code' => \Numbers\Tenants\Tenants\Model\Modules::loadByIdStatic($form->values['tm_modlinked_child_module_id'], 'tm_module_module_code'),
 			'tm_modlinked_inactive' => 0
 		]);
 		if ($result['success']) {
