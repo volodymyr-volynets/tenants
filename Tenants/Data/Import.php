@@ -62,6 +62,32 @@ class Import extends \Object\Import {
 				]
 			]
 		],
+		'databases' => [
+			'options' => [
+				'pk' => ['tm_database_code'],
+				'model' => '\Numbers\Tenants\Tenants\Model\Databases',
+				'method' => 'save'
+			],
+			'data' => [
+				[
+					'tm_database_code' => 'vvcluster_db000',
+					'tm_database_name' => 'DB 000 (Main)',
+					'tm_database_schema_set' => 1,
+					'tm_database_data_set' => 1,
+					'tm_database_current' => 0,
+					'tm_database_inactive' => 0
+				],
+				[
+					'tm_database_code' => 'vvcluster_db001',
+					'tm_database_name' => 'Farm 001',
+					'tm_database_schema_set' => 0,
+					'tm_database_data_set' => 0,
+					'tm_database_current' => 1,
+					'tm_database_next_tm_tenant_id' => 250,
+					'tm_database_inactive' => 0
+				]
+			]
+		],
 		'tenants' => [
 			'options' => [
 				'pk' => ['tm_tenant_code'],

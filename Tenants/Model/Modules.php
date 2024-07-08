@@ -41,9 +41,13 @@ class Modules extends \Object\Table {
 	public $audit = false;
 	public $optimistic_lock = false;
 	public $options_map = [
-		'tm_module_name' => 'name'
+		'tm_module_name' => 'name',
+		'tm_module_inactive' => 'inactive'
 	];
-	public $options_active = [];
+	public $options_active = [
+		'tm_module_inactive' => 0
+	];
+	public const selectOptionsActive = '\Numbers\Tenants\Tenants\Model\Modules::optionsActive';
 	public $engine = [
 		'MySQLi' => 'InnoDB'
 	];
