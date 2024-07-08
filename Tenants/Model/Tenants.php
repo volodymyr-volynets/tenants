@@ -18,11 +18,19 @@ class Tenants extends \Object\Table {
 		'tm_tenant_name' => ['name' => 'Name', 'domain' => 'name'],
 		'tm_tenant_email' => ['name' => 'Primary Email', 'domain' => 'email', 'null' => true],
 		'tm_tenant_phone' => ['name' => 'Primary Phone', 'domain' => 'phone', 'null' => true],
+		'tm_tenant_tm_database_code' => ['name' => 'Database', 'domain' => 'database', 'null' => true],
+		'tm_tenant_um_regten_id' => ['name' => 'Registration #', 'domain' => 'group_id', 'null' => true],
 		'tm_tenant_inactive' => ['name' => 'Inactive', 'type' => 'boolean']
 	];
 	public $constraints = [
 		'tm_tenants_pk' => ['type' => 'pk', 'columns' => ['tm_tenant_id']],
 		'tm_tenant_code_un' => ['type' => 'unique', 'columns' => ['tm_tenant_code']],
+		'tm_tenant_tm_database_code_fk' => [
+			'type' => 'fk',
+			'columns' => ['tm_tenant_tm_database_code'],
+			'foreign_model' => \Numbers\Tenants\Tenants\Model\Databases::class,
+			'foreign_columns' => ['tm_database_code']
+		],
 	];
 	public $indexes = [
 		'tm_tenants_fulltext_idx' => ['type' => 'fulltext', 'columns' => ['tm_tenant_code', 'tm_tenant_name']]

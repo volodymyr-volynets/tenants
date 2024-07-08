@@ -1,7 +1,7 @@
 <?php
 
 namespace Numbers\Tenants\Tenants\Model;
-class Modules extends \Object\Table {
+class Subscriptions extends \Object\Table {
 	public $db_link;
 	public $db_link_flag;
 	public $module_code = 'TM';

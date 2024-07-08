@@ -50,15 +50,17 @@ class Sequence {
 	 *
 	 * @param object $form
 	 * @param array $default_sequences
+	 * @param string|null $key
 	 */
-	public static function presetIfNotSet(& $form, array $default_sequences) {
-		if (!is_array($form->values['\Numbers\Tenants\Tenants\Model\Module\Sequences'])) {
-			$form->values['\Numbers\Tenants\Tenants\Model\Module\Sequences'] = [];
+	public static function presetIfNotSet(& $form, array $default_sequences, ?string $key = null) {
+		$key = $key ?? '\Numbers\Tenants\Tenants\Model\Module\Sequences';
+		if (!is_array($form->values[$key])) {
+			$form->values[$key] = [];
 		}
-		$existing_sequences = array_extract_values_by_key($form->values['\Numbers\Tenants\Tenants\Model\Module\Sequences'], 'tm_mdlseq_type_code');
+		$existing_sequences = array_extract_values_by_key($form->values[$key], 'tm_mdlseq_type_code');
 		foreach ($default_sequences as $k => $v) {
 			if (!in_array($v['tm_mdlseq_type_code'], $existing_sequences)) {
-				$form->values['\Numbers\Tenants\Tenants\Model\Module\Sequences'][] = $v;
+				$form->values[$key][] = $v;
 			}
 		}
 	}
@@ -68,15 +70,16 @@ class Sequence {
 	 *
 	 * @param object $form
 	 */
-	public static function validateSequenceTypes(& $form) {
+	public static function validateSequenceTypes(& $form, ?string $key = null) {
 		// check sequence length
-		foreach ($form->values['\Numbers\Tenants\Tenants\Model\Module\Sequences'] as $k => $v) {
+		$key = $key ?? '\Numbers\Tenants\Tenants\Model\Module\Sequences';
+		foreach ($form->values[$key] as $k => $v) {
 			$length = $v['tm_mdlseq_length'] - strlen($v['tm_mdlseq_prefix'] . '') + strlen($v['tm_mdlseq_suffix'] . '');
 			if ($length > 19 || $length < 5) {
-				$form->error(DANGER, \Numbers\Tenants\Tenants\Helper\Messages::SEQUENCE_LENGTH, "\Numbers\Tenants\Tenants\Model\Module\Sequences[{$k}][tm_mdlseq_length]");
+				$form->error(DANGER, \Numbers\Tenants\Tenants\Helper\Messages::SEQUENCE_LENGTH, $key . "[{$k}][tm_mdlseq_length]");
 			}
 			if ($v['tm_mdlseq_counter'] < 0) {
-				$form->error(DANGER,  \Numbers\Tenants\Tenants\Helper\Messages::SEQUENCE_MIN, "\Numbers\Tenants\Tenants\Model\Module\Sequences[{$k}][tm_mdlseq_length]");
+				$form->error(DANGER,  \Numbers\Tenants\Tenants\Helper\Messages::SEQUENCE_MIN, $key . "[{$k}][tm_mdlseq_length]");
 			}
 		}
 	}
