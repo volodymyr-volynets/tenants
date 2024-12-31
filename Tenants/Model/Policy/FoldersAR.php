@@ -2,119 +2,168 @@
 
 namespace Numbers\Tenants\Tenants\Model\Policy;
 class FoldersAR extends \Object\ActiveRecord {
-	/**
-	 * @var string
-	 */
-	public string $object_table_class = \Numbers\Tenants\Tenants\Model\Policy\Folders::class;
 
-	/**
-	 * Constructing object
-	 *
-	 * @param array $options
-	 *		skip_db_object
-	 *		skip_table_object
-	 */
-	public function __construct($options = []) {
-		if (empty($options['skip_table_object'])) {
-			$this->object_table_object = new $this->object_table_class($options);
-		}
-	}
-	/**
-	 * Tenant #
-	 *
-	 *
-	 *
-	 * {domain{tenant_id}}
-	 *
-	 * @var int Domain: tenant_id Type: integer
-	 */
-	public ?int $tm_polfolder_tenant_id = NULL;
 
-	/**
-	 * Folder #
-	 *
-	 *
-	 *
-	 * {domain{folder_id_sequence}}
-	 *
-	 * @var int Domain: folder_id_sequence Type: serial
-	 */
-	public ?int $tm_polfolder_id = null;
 
-	/**
-	 * Root Code
-	 *
-	 *
-	 *
-	 * {domain{type_code}}
-	 *
-	 * @var string Domain: type_code Type: varchar
-	 */
-	public ?string $tm_polfolder_polroot_code = null;
+    /**
+     * @var string
+     */
+    public string $object_table_class = \Numbers\Tenants\Tenants\Model\Policy\Folders::class;
 
-	/**
-	 * Parent Folder #
-	 *
-	 *
-	 *
-	 * {domain{folder_id}}
-	 *
-	 * @var int Domain: folder_id Type: integer
-	 */
-	public ?int $tm_polfolder_parent_polfolder_id = NULL;
+    /**
+     * @var array
+     */
+    public array $object_table_pk = ['tm_polfolder_tenant_id','tm_polfolder_id'];
+    /**
+     * Tenant #
+     *
+     *
+     *
+     * {domain{tenant_id}}
+     *
+     * @var int|null Domain: tenant_id Type: integer
+     */
+    public int|null $tm_polfolder_tenant_id = NULL {
+                        get => $this->tm_polfolder_tenant_id;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_polfolder_tenant_id', $value);
+                            $this->tm_polfolder_tenant_id = $value;
+                        }
+                    }
 
-	/**
-	 * Name
-	 *
-	 *
-	 *
-	 * {domain{name}}
-	 *
-	 * @var string Domain: name Type: varchar
-	 */
-	public ?string $tm_polfolder_name = null;
+    /**
+     * Folder #
+     *
+     *
+     *
+     * {domain{folder_id_sequence}}
+     *
+     * @var int|null Domain: folder_id_sequence Type: serial
+     */
+    public int|null $tm_polfolder_id = null {
+                        get => $this->tm_polfolder_id;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_polfolder_id', $value);
+                            $this->tm_polfolder_id = $value;
+                        }
+                    }
 
-	/**
-	 * Icon
-	 *
-	 *
-	 *
-	 * {domain{icon}}
-	 *
-	 * @var string Domain: icon Type: varchar
-	 */
-	public ?string $tm_polfolder_icon = null;
+    /**
+     * Root Code
+     *
+     *
+     *
+     * {domain{type_code}}
+     *
+     * @var string|null Domain: type_code Type: varchar
+     */
+    public string|null $tm_polfolder_polroot_code = null {
+                        get => $this->tm_polfolder_polroot_code;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_polfolder_polroot_code', $value);
+                            $this->tm_polfolder_polroot_code = $value;
+                        }
+                    }
 
-	/**
-	 * Counter
-	 *
-	 *
-	 *
-	 * {domain{counter}}
-	 *
-	 * @var int Domain: counter Type: integer
-	 */
-	public ?int $tm_polfolder_counter = 0;
+    /**
+     * Parent Folder #
+     *
+     *
+     *
+     * {domain{folder_id}}
+     *
+     * @var int|null Domain: folder_id Type: integer
+     */
+    public int|null $tm_polfolder_parent_polfolder_id = NULL {
+                        get => $this->tm_polfolder_parent_polfolder_id;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_polfolder_parent_polfolder_id', $value);
+                            $this->tm_polfolder_parent_polfolder_id = $value;
+                        }
+                    }
 
-	/**
-	 * Inactive
-	 *
-	 *
-	 *
-	 *
-	 *
-	 * @var int Type: boolean
-	 */
-	public ?int $tm_polfolder_inactive = 0;
+    /**
+     * Name
+     *
+     *
+     *
+     * {domain{name}}
+     *
+     * @var string|null Domain: name Type: varchar
+     */
+    public string|null $tm_polfolder_name = null {
+                        get => $this->tm_polfolder_name;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_polfolder_name', $value);
+                            $this->tm_polfolder_name = $value;
+                        }
+                    }
 
-	/**
-	 * Optimistic Lock
-	 *
-	 *
-	 *
-	 * {domain{optimistic_lock}}
-	 *
-	 * @var string Domain: optimistic_lock Type: timestamp
-	 */
-	public ?string $tm_polfolder_optimistic_lock = 'now()';
+    /**
+     * Icon
+     *
+     *
+     *
+     * {domain{icon}}
+     *
+     * @var string|null Domain: icon Type: varchar
+     */
+    public string|null $tm_polfolder_icon = null {
+                        get => $this->tm_polfolder_icon;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_polfolder_icon', $value);
+                            $this->tm_polfolder_icon = $value;
+                        }
+                    }
+
+    /**
+     * Counter
+     *
+     *
+     *
+     * {domain{counter}}
+     *
+     * @var int|null Domain: counter Type: integer
+     */
+    public int|null $tm_polfolder_counter = 0 {
+                        get => $this->tm_polfolder_counter;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_polfolder_counter', $value);
+                            $this->tm_polfolder_counter = $value;
+                        }
+                    }
+
+    /**
+     * Inactive
+     *
+     *
+     *
+     *
+     *
+     * @var int|null Type: boolean
+     */
+    public int|null $tm_polfolder_inactive = 0 {
+                        get => $this->tm_polfolder_inactive;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_polfolder_inactive', $value);
+                            $this->tm_polfolder_inactive = $value;
+                        }
+                    }
+
+    /**
+     * Optimistic Lock
+     *
+     *
+     *
+     * {domain{optimistic_lock}}
+     *
+     * @var string|null Domain: optimistic_lock Type: timestamp
+     */
+    public string|null $tm_polfolder_optimistic_lock = 'now()' {
+                        get => $this->tm_polfolder_optimistic_lock;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_polfolder_optimistic_lock', $value);
+                            $this->tm_polfolder_optimistic_lock = $value;
+                        }
+                    }
 }

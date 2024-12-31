@@ -2,86 +2,117 @@
 
 namespace Numbers\Tenants\Widgets\Attributes\Model\Attribute;
 class DetailsAR extends \Object\ActiveRecord {
-	/**
-	 * @var string
-	 */
-	public string $object_table_class = \Numbers\Tenants\Widgets\Attributes\Model\Attribute\Details::class;
 
-	/**
-	 * Constructing object
-	 *
-	 * @param array $options
-	 *		skip_db_object
-	 *		skip_table_object
-	 */
-	public function __construct($options = []) {
-		if (empty($options['skip_table_object'])) {
-			$this->object_table_object = new $this->object_table_class($options);
-		}
-	}
-	/**
-	 * Tenant #
-	 *
-	 *
-	 *
-	 * {domain{tenant_id}}
-	 *
-	 * @var int Domain: tenant_id Type: integer
-	 */
-	public ?int $tm_attrdetail_tenant_id = NULL;
 
-	/**
-	 * Timestamp
-	 *
-	 *
-	 *
-	 * {domain{timestamp_now}}
-	 *
-	 * @var string Domain: timestamp_now Type: timestamp
-	 */
-	public ?string $tm_attrdetail_timestamp = 'now()';
 
-	/**
-	 * Attribute #
-	 *
-	 *
-	 *
-	 * {domain{attribute_id}}
-	 *
-	 * @var int Domain: attribute_id Type: integer
-	 */
-	public ?int $tm_attrdetail_attribute_id = NULL;
+    /**
+     * @var string
+     */
+    public string $object_table_class = \Numbers\Tenants\Widgets\Attributes\Model\Attribute\Details::class;
 
-	/**
-	 * Module #
-	 *
-	 *
-	 *
-	 * {domain{module_id}}
-	 *
-	 * @var int Domain: module_id Type: integer
-	 */
-	public ?int $tm_attrdetail_module_id = NULL;
+    /**
+     * @var array
+     */
+    public array $object_table_pk = ['tm_attrdetail_tenant_id','tm_attrdetail_attribute_id','tm_attrdetail_module_id','tm_attrdetail_model_id'];
+    /**
+     * Tenant #
+     *
+     *
+     *
+     * {domain{tenant_id}}
+     *
+     * @var int|null Domain: tenant_id Type: integer
+     */
+    public int|null $tm_attrdetail_tenant_id = NULL {
+                        get => $this->tm_attrdetail_tenant_id;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_attrdetail_tenant_id', $value);
+                            $this->tm_attrdetail_tenant_id = $value;
+                        }
+                    }
 
-	/**
-	 * Model #
-	 *
-	 *
-	 *
-	 * {domain{model_id}}
-	 *
-	 * @var int Domain: model_id Type: integer
-	 */
-	public ?int $tm_attrdetail_model_id = NULL;
+    /**
+     * Timestamp
+     *
+     *
+     *
+     * {domain{timestamp_now}}
+     *
+     * @var string|null Domain: timestamp_now Type: timestamp
+     */
+    public string|null $tm_attrdetail_timestamp = 'now()' {
+                        get => $this->tm_attrdetail_timestamp;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_attrdetail_timestamp', $value);
+                            $this->tm_attrdetail_timestamp = $value;
+                        }
+                    }
 
-	/**
-	 * Inactive
-	 *
-	 *
-	 *
-	 *
-	 *
-	 * @var int Type: boolean
-	 */
-	public ?int $tm_attrdetail_inactive = 0;
+    /**
+     * Attribute #
+     *
+     *
+     *
+     * {domain{attribute_id}}
+     *
+     * @var int|null Domain: attribute_id Type: integer
+     */
+    public int|null $tm_attrdetail_attribute_id = NULL {
+                        get => $this->tm_attrdetail_attribute_id;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_attrdetail_attribute_id', $value);
+                            $this->tm_attrdetail_attribute_id = $value;
+                        }
+                    }
+
+    /**
+     * Module #
+     *
+     *
+     *
+     * {domain{module_id}}
+     *
+     * @var int|null Domain: module_id Type: integer
+     */
+    public int|null $tm_attrdetail_module_id = NULL {
+                        get => $this->tm_attrdetail_module_id;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_attrdetail_module_id', $value);
+                            $this->tm_attrdetail_module_id = $value;
+                        }
+                    }
+
+    /**
+     * Model #
+     *
+     *
+     *
+     * {domain{model_id}}
+     *
+     * @var int|null Domain: model_id Type: integer
+     */
+    public int|null $tm_attrdetail_model_id = NULL {
+                        get => $this->tm_attrdetail_model_id;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_attrdetail_model_id', $value);
+                            $this->tm_attrdetail_model_id = $value;
+                        }
+                    }
+
+    /**
+     * Inactive
+     *
+     *
+     *
+     *
+     *
+     * @var int|null Type: boolean
+     */
+    public int|null $tm_attrdetail_inactive = 0 {
+                        get => $this->tm_attrdetail_inactive;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_attrdetail_inactive', $value);
+                            $this->tm_attrdetail_inactive = $value;
+                        }
+                    }
 }

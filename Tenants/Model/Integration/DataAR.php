@@ -2,97 +2,134 @@
 
 namespace Numbers\Tenants\Tenants\Model\Integration;
 class DataAR extends \Object\ActiveRecord {
-	/**
-	 * @var string
-	 */
-	public string $object_table_class = \Numbers\Tenants\Tenants\Model\Integration\Data::class;
 
-	/**
-	 * Constructing object
-	 *
-	 * @param array $options
-	 *		skip_db_object
-	 *		skip_table_object
-	 */
-	public function __construct($options = []) {
-		if (empty($options['skip_table_object'])) {
-			$this->object_table_object = new $this->object_table_class($options);
-		}
-	}
-	/**
-	 * Tenant #
-	 *
-	 *
-	 *
-	 * {domain{tenant_id}}
-	 *
-	 * @var int Domain: tenant_id Type: integer
-	 */
-	public ?int $tm_integdata_tenant_id = NULL;
 
-	/**
-	 * Integration Type Code
-	 *
-	 *
-	 *
-	 * {domain{group_code}}
-	 *
-	 * @var string Domain: group_code Type: varchar
-	 */
-	public ?string $tm_integdata_integtype_code = null;
 
-	/**
-	 * Integration Model Code
-	 *
-	 *
-	 *
-	 * {domain{group_code}}
-	 *
-	 * @var string Domain: group_code Type: varchar
-	 */
-	public ?string $tm_integdata_integmodel_code = null;
+    /**
+     * @var string
+     */
+    public string $object_table_class = \Numbers\Tenants\Tenants\Model\Integration\Data::class;
 
-	/**
-	 * Code
-	 *
-	 *
-	 *
-	 * {domain{code}}
-	 *
-	 * @var string Domain: code Type: varchar
-	 */
-	public ?string $tm_integdata_code = null;
+    /**
+     * @var array
+     */
+    public array $object_table_pk = ['tm_integdata_tenant_id','tm_integdata_integtype_code','tm_integdata_integmodel_code','tm_integdata_code'];
+    /**
+     * Tenant #
+     *
+     *
+     *
+     * {domain{tenant_id}}
+     *
+     * @var int|null Domain: tenant_id Type: integer
+     */
+    public int|null $tm_integdata_tenant_id = NULL {
+                        get => $this->tm_integdata_tenant_id;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_integdata_tenant_id', $value);
+                            $this->tm_integdata_tenant_id = $value;
+                        }
+                    }
 
-	/**
-	 * Name
-	 *
-	 *
-	 *
-	 * {domain{name}}
-	 *
-	 * @var string Domain: name Type: varchar
-	 */
-	public ?string $tm_integdata_name = null;
+    /**
+     * Integration Type Code
+     *
+     *
+     *
+     * {domain{group_code}}
+     *
+     * @var string|null Domain: group_code Type: varchar
+     */
+    public string|null $tm_integdata_integtype_code = null {
+                        get => $this->tm_integdata_integtype_code;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_integdata_integtype_code', $value);
+                            $this->tm_integdata_integtype_code = $value;
+                        }
+                    }
 
-	/**
-	 * Map
-	 *
-	 *
-	 *
-	 *
-	 *
-	 * @var string Type: text
-	 */
-	public ?string $tm_integdata_map = null;
+    /**
+     * Integration Model Code
+     *
+     *
+     *
+     * {domain{group_code}}
+     *
+     * @var string|null Domain: group_code Type: varchar
+     */
+    public string|null $tm_integdata_integmodel_code = null {
+                        get => $this->tm_integdata_integmodel_code;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_integdata_integmodel_code', $value);
+                            $this->tm_integdata_integmodel_code = $value;
+                        }
+                    }
 
-	/**
-	 * Inactive
-	 *
-	 *
-	 *
-	 *
-	 *
-	 * @var int Type: boolean
-	 */
-	public ?int $tm_integdata_inactive = 0;
+    /**
+     * Code
+     *
+     *
+     *
+     * {domain{code}}
+     *
+     * @var string|null Domain: code Type: varchar
+     */
+    public string|null $tm_integdata_code = null {
+                        get => $this->tm_integdata_code;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_integdata_code', $value);
+                            $this->tm_integdata_code = $value;
+                        }
+                    }
+
+    /**
+     * Name
+     *
+     *
+     *
+     * {domain{name}}
+     *
+     * @var string|null Domain: name Type: varchar
+     */
+    public string|null $tm_integdata_name = null {
+                        get => $this->tm_integdata_name;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_integdata_name', $value);
+                            $this->tm_integdata_name = $value;
+                        }
+                    }
+
+    /**
+     * Map
+     *
+     *
+     *
+     *
+     *
+     * @var string|null Type: text
+     */
+    public string|null $tm_integdata_map = null {
+                        get => $this->tm_integdata_map;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_integdata_map', $value);
+                            $this->tm_integdata_map = $value;
+                        }
+                    }
+
+    /**
+     * Inactive
+     *
+     *
+     *
+     *
+     *
+     * @var int|null Type: boolean
+     */
+    public int|null $tm_integdata_inactive = 0 {
+                        get => $this->tm_integdata_inactive;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_integdata_inactive', $value);
+                            $this->tm_integdata_inactive = $value;
+                        }
+                    }
 }

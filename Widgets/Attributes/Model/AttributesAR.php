@@ -2,130 +2,185 @@
 
 namespace Numbers\Tenants\Widgets\Attributes\Model;
 class AttributesAR extends \Object\ActiveRecord {
-	/**
-	 * @var string
-	 */
-	public string $object_table_class = \Numbers\Tenants\Widgets\Attributes\Model\Attributes::class;
 
-	/**
-	 * Constructing object
-	 *
-	 * @param array $options
-	 *		skip_db_object
-	 *		skip_table_object
-	 */
-	public function __construct($options = []) {
-		if (empty($options['skip_table_object'])) {
-			$this->object_table_object = new $this->object_table_class($options);
-		}
-	}
-	/**
-	 * Tenant #
-	 *
-	 *
-	 *
-	 * {domain{tenant_id}}
-	 *
-	 * @var int Domain: tenant_id Type: integer
-	 */
-	public ?int $tm_attribute_tenant_id = NULL;
 
-	/**
-	 * Attribute #
-	 *
-	 *
-	 *
-	 * {domain{attribute_id_sequence}}
-	 *
-	 * @var int Domain: attribute_id_sequence Type: serial
-	 */
-	public ?int $tm_attribute_id = null;
 
-	/**
-	 * Code
-	 *
-	 *
-	 *
-	 * {domain{group_code}}
-	 *
-	 * @var string Domain: group_code Type: varchar
-	 */
-	public ?string $tm_attribute_code = null;
+    /**
+     * @var string
+     */
+    public string $object_table_class = \Numbers\Tenants\Widgets\Attributes\Model\Attributes::class;
 
-	/**
-	 * Name
-	 *
-	 *
-	 *
-	 * {domain{name}}
-	 *
-	 * @var string Domain: name Type: varchar
-	 */
-	public ?string $tm_attribute_name = null;
+    /**
+     * @var array
+     */
+    public array $object_table_pk = ['tm_attribute_tenant_id','tm_attribute_id'];
+    /**
+     * Tenant #
+     *
+     *
+     *
+     * {domain{tenant_id}}
+     *
+     * @var int|null Domain: tenant_id Type: integer
+     */
+    public int|null $tm_attribute_tenant_id = NULL {
+                        get => $this->tm_attribute_tenant_id;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_attribute_tenant_id', $value);
+                            $this->tm_attribute_tenant_id = $value;
+                        }
+                    }
 
-	/**
-	 * Method
-	 *
-	 *
-	 * {options_model{\Numbers\Tenants\Widgets\Attributes\Model\Methods}}
-	 * {domain{code}}
-	 *
-	 * @var string Domain: code Type: varchar
-	 */
-	public ?string $tm_attribute_method = null;
+    /**
+     * Attribute #
+     *
+     *
+     *
+     * {domain{attribute_id_sequence}}
+     *
+     * @var int|null Domain: attribute_id_sequence Type: serial
+     */
+    public int|null $tm_attribute_id = null {
+                        get => $this->tm_attribute_id;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_attribute_id', $value);
+                            $this->tm_attribute_id = $value;
+                        }
+                    }
 
-	/**
-	 * ABAC Attribute #
-	 *
-	 *
-	 *
-	 * {domain{attribute_id}}
-	 *
-	 * @var int Domain: attribute_id Type: integer
-	 */
-	public ?int $tm_attribute_abacattr_id = NULL;
+    /**
+     * Code
+     *
+     *
+     *
+     * {domain{group_code}}
+     *
+     * @var string|null Domain: group_code Type: varchar
+     */
+    public string|null $tm_attribute_code = null {
+                        get => $this->tm_attribute_code;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_attribute_code', $value);
+                            $this->tm_attribute_code = $value;
+                        }
+                    }
 
-	/**
-	 * Domain
-	 *
-	 *
-	 *
-	 * {domain{code}}
-	 *
-	 * @var string Domain: code Type: varchar
-	 */
-	public ?string $tm_attribute_domain = null;
+    /**
+     * Name
+     *
+     *
+     *
+     * {domain{name}}
+     *
+     * @var string|null Domain: name Type: varchar
+     */
+    public string|null $tm_attribute_name = null {
+                        get => $this->tm_attribute_name;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_attribute_name', $value);
+                            $this->tm_attribute_name = $value;
+                        }
+                    }
 
-	/**
-	 * Type
-	 *
-	 *
-	 *
-	 * {domain{code}}
-	 *
-	 * @var string Domain: code Type: varchar
-	 */
-	public ?string $tm_attribute_type = null;
+    /**
+     * Method
+     *
+     *
+     * {options_model{\Numbers\Tenants\Widgets\Attributes\Model\Methods}}
+     * {domain{code}}
+     *
+     * @var string|null Domain: code Type: varchar
+     */
+    public string|null $tm_attribute_method = null {
+                        get => $this->tm_attribute_method;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_attribute_method', $value);
+                            $this->tm_attribute_method = $value;
+                        }
+                    }
 
-	/**
-	 * Inactive
-	 *
-	 *
-	 *
-	 *
-	 *
-	 * @var int Type: boolean
-	 */
-	public ?int $tm_attribute_inactive = 0;
+    /**
+     * ABAC Attribute #
+     *
+     *
+     *
+     * {domain{attribute_id}}
+     *
+     * @var int|null Domain: attribute_id Type: integer
+     */
+    public int|null $tm_attribute_abacattr_id = NULL {
+                        get => $this->tm_attribute_abacattr_id;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_attribute_abacattr_id', $value);
+                            $this->tm_attribute_abacattr_id = $value;
+                        }
+                    }
 
-	/**
-	 * Optimistic Lock
-	 *
-	 *
-	 *
-	 * {domain{optimistic_lock}}
-	 *
-	 * @var string Domain: optimistic_lock Type: timestamp
-	 */
-	public ?string $tm_attribute_optimistic_lock = 'now()';
+    /**
+     * Domain
+     *
+     *
+     *
+     * {domain{code}}
+     *
+     * @var string|null Domain: code Type: varchar
+     */
+    public string|null $tm_attribute_domain = null {
+                        get => $this->tm_attribute_domain;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_attribute_domain', $value);
+                            $this->tm_attribute_domain = $value;
+                        }
+                    }
+
+    /**
+     * Type
+     *
+     *
+     *
+     * {domain{code}}
+     *
+     * @var string|null Domain: code Type: varchar
+     */
+    public string|null $tm_attribute_type = null {
+                        get => $this->tm_attribute_type;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_attribute_type', $value);
+                            $this->tm_attribute_type = $value;
+                        }
+                    }
+
+    /**
+     * Inactive
+     *
+     *
+     *
+     *
+     *
+     * @var int|null Type: boolean
+     */
+    public int|null $tm_attribute_inactive = 0 {
+                        get => $this->tm_attribute_inactive;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_attribute_inactive', $value);
+                            $this->tm_attribute_inactive = $value;
+                        }
+                    }
+
+    /**
+     * Optimistic Lock
+     *
+     *
+     *
+     * {domain{optimistic_lock}}
+     *
+     * @var string|null Domain: optimistic_lock Type: timestamp
+     */
+    public string|null $tm_attribute_optimistic_lock = 'now()' {
+                        get => $this->tm_attribute_optimistic_lock;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_attribute_optimistic_lock', $value);
+                            $this->tm_attribute_optimistic_lock = $value;
+                        }
+                    }
 }

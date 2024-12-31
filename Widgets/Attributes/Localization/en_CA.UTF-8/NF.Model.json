@@ -1,0 +1,17 @@
+{
+    "ABACAttributeID": "ABAC Attribute #",
+    "AttributeID": "Attribute #",
+    "Code": "Code",
+    "Domain": "Domain",
+    "Inactive": "Inactive",
+    "Method": "Method",
+    "ModelID": "Model #",
+    "ModuleID": "Module #",
+    "Name": "Name",
+    "OptimisticLock": "Optimistic Lock",
+    "TMAttributeDetails": "T/M Attribute Details",
+    "TMAttributes": "T/M Attributes",
+    "TenantID": "Tenant #",
+    "Timestamp": "Timestamp",
+    "Type": "Type"
+}
