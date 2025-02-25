@@ -22,7 +22,7 @@ class Attributes extends List2
         'segment' => self::SEGMENT_LIST,
         'actions' => [
             'refresh' => true,
-            'new' => true,
+            //'new' => true,
             'filter_sort' => ['value' => 'Filter/Sort', 'sort' => 32000, 'icon' => 'fas fa-filter', 'onclick' => 'Numbers.Form.listFilterSortToggle(this);']
         ]
     ];

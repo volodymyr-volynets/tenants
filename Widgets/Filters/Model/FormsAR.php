@@ -1,38 +1,19 @@
 <?php
 
-/*
- * This file is part of Numbers Framework.
- *
- * (c) Volodymyr Volynets <volodymyr.volynets@gmail.com>
- *
- * This source file is subject to the Apache 2.0 license that is bundled
- * with this source code in the file LICENSE.
- */
-
 namespace Numbers\Tenants\Widgets\Filters\Model;
+class FormsAR extends \Object\ActiveRecord {
 
-use Object\ActiveRecord;
 
-class FormsAR extends ActiveRecord
-{
+
     /**
      * @var string
      */
-    public string $object_table_class = Forms::class;
+    public string $object_table_class = \Numbers\Tenants\Widgets\Filters\Model\Forms::class;
 
     /**
-     * Constructing object
-     *
-     * @param array $options
-     *		skip_db_object
-     *		skip_table_object
+     * @var array
      */
-    public function __construct($options = [])
-    {
-        if (empty($options['skip_table_object'])) {
-            $this->object_table_object = new $this->object_table_class($options);
-        }
-    }
+    public array $object_table_pk = ['tm_filterform_tenant_id','tm_filterform_id'];
     /**
      * Tenant #
      *
@@ -40,9 +21,15 @@ class FormsAR extends ActiveRecord
      *
      * {domain{tenant_id}}
      *
-     * @var int Domain: tenant_id Type: integer
+     * @var int|null Domain: tenant_id Type: integer
      */
-    public ?int $tm_filterform_tenant_id = null;
+    public int|null $tm_filterform_tenant_id = NULL {
+                        get => $this->tm_filterform_tenant_id;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_filterform_tenant_id', $value);
+                            $this->tm_filterform_tenant_id = $value;
+                        }
+                    }
 
     /**
      * Filter #
@@ -51,9 +38,15 @@ class FormsAR extends ActiveRecord
      *
      * {domain{big_id_sequence}}
      *
-     * @var int Domain: big_id_sequence Type: bigserial
+     * @var int|null Domain: big_id_sequence Type: bigserial
      */
-    public ?int $tm_filterform_id = null;
+    public int|null $tm_filterform_id = null {
+                        get => $this->tm_filterform_id;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_filterform_id', $value);
+                            $this->tm_filterform_id = $value;
+                        }
+                    }
 
     /**
      * Timestamp
@@ -62,9 +55,15 @@ class FormsAR extends ActiveRecord
      *
      * {domain{timestamp_now}}
      *
-     * @var string Domain: timestamp_now Type: timestamp
+     * @var string|null Domain: timestamp_now Type: timestamp
      */
-    public ?string $tm_filterform_timestamp = 'now()';
+    public string|null $tm_filterform_timestamp = 'now()' {
+                        get => $this->tm_filterform_timestamp;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_filterform_timestamp', $value);
+                            $this->tm_filterform_timestamp = $value;
+                        }
+                    }
 
     /**
      * Name
@@ -73,9 +72,15 @@ class FormsAR extends ActiveRecord
      *
      * {domain{name}}
      *
-     * @var string Domain: name Type: varchar
+     * @var string|null Domain: name Type: varchar
      */
-    public ?string $tm_filterform_name = null;
+    public string|null $tm_filterform_name = null {
+                        get => $this->tm_filterform_name;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_filterform_name', $value);
+                            $this->tm_filterform_name = $value;
+                        }
+                    }
 
     /**
      * Code
@@ -84,9 +89,15 @@ class FormsAR extends ActiveRecord
      *
      * {domain{code}}
      *
-     * @var string Domain: code Type: varchar
+     * @var string|null Domain: code Type: varchar
      */
-    public ?string $tm_filterform_resource_code = null;
+    public string|null $tm_filterform_resource_code = null {
+                        get => $this->tm_filterform_resource_code;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_filterform_resource_code', $value);
+                            $this->tm_filterform_resource_code = $value;
+                        }
+                    }
 
     /**
      * User #
@@ -95,9 +106,15 @@ class FormsAR extends ActiveRecord
      *
      * {domain{user_id}}
      *
-     * @var int Domain: user_id Type: bigint
+     * @var int|null Domain: user_id Type: bigint
      */
-    public ?int $tm_filterform_user_id = null;
+    public int|null $tm_filterform_user_id = NULL {
+                        get => $this->tm_filterform_user_id;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_filterform_user_id', $value);
+                            $this->tm_filterform_user_id = $value;
+                        }
+                    }
 
     /**
      * Parameters
@@ -108,7 +125,13 @@ class FormsAR extends ActiveRecord
      *
      * @var mixed Type: json
      */
-    public ?mixed $tm_filterform_params = null;
+    public mixed $tm_filterform_params = null {
+                        get => $this->tm_filterform_params;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_filterform_params', $value);
+                            $this->tm_filterform_params = $value;
+                        }
+                    }
 
     /**
      * Inactive
@@ -117,9 +140,15 @@ class FormsAR extends ActiveRecord
      *
      *
      *
-     * @var int Type: boolean
+     * @var int|null Type: boolean
      */
-    public ?int $tm_filterform_inactive = 0;
+    public int|null $tm_filterform_inactive = 0 {
+                        get => $this->tm_filterform_inactive;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_filterform_inactive', $value);
+                            $this->tm_filterform_inactive = $value;
+                        }
+                    }
 
     /**
      * Optimistic Lock
@@ -128,7 +157,13 @@ class FormsAR extends ActiveRecord
      *
      * {domain{optimistic_lock}}
      *
-     * @var string Domain: optimistic_lock Type: timestamp
+     * @var string|null Domain: optimistic_lock Type: timestamp
      */
-    public ?string $tm_filterform_optimistic_lock = 'now()';
+    public string|null $tm_filterform_optimistic_lock = 'now()' {
+                        get => $this->tm_filterform_optimistic_lock;
+                        set {
+                            $this->setFullPkAndFilledColumn('tm_filterform_optimistic_lock', $value);
+                            $this->tm_filterform_optimistic_lock = $value;
+                        }
+                    }
 }

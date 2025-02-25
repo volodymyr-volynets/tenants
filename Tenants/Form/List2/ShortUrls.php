@@ -62,7 +62,7 @@ class ShortUrls extends List2
         self::LIST_CONTAINER => [
             'row1' => [
                 'tm_shorturl_id' => ['order' => 1, 'row_order' => 100, 'label_name' => 'URL #', 'domain' => 'big_id', 'percent' => 15, 'url_edit' => true],
-                'tm_shorturl_name' => ['order' => 2, 'label_name' => 'Name', 'domain' => 'name', 'percent' => 50],
+                'tm_shorturl_name' => ['order' => 2, 'label_name' => 'Name', 'domain' => 'name', 'percent' => 80],
                 'tm_shorturl_inactive' => ['order' => 3, 'label_name' => 'Inactive', 'type' => 'boolean', 'percent' => 5],
             ],
             'row2' => [

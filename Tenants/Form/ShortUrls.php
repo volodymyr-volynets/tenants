@@ -61,7 +61,8 @@ class ShortUrls extends Base
     public function post(& $form)
     {
         if (empty($form->values['tm_shorturl_short_key'])) {
-            $form->values['tm_shorturl_short_key'] = \Crypt::nanoCreate($form->values['tm_shorturl_id']);
+            $crypt = new \Crypt();
+            $form->values['tm_shorturl_short_key'] = $crypt->nanoCreate($form->values['tm_shorturl_id']);
             $form->values['tm_shorturl_short_url'] = '/u/' . $form->values['tm_shorturl_short_key'];
             \Numbers\Tenants\Tenants\Model\ShortUrls::collectionStatic()->merge($form->values);
         }

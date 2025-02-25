@@ -309,7 +309,7 @@ class System extends Import
                     'sm_resource_menu_acl_action_id' => null,
                     'sm_resource_menu_url' => null,
                     'sm_resource_menu_options_generator' => null,
-                    'sm_resource_inactive' => 0,
+                    'sm_resource_inactive' => 1,
                     '\Numbers\Backend\System\Modules\Model\Resource\Features' => [],
                     '\Numbers\Backend\System\Modules\Model\Resource\Map' => [
                         [
@@ -1241,7 +1241,7 @@ class System extends Import
                     'sm_resource_menu_acl_action_id' => '::id::List_View',
                     'sm_resource_menu_url' => '/Numbers/Tenants/Tenants/Controller/Assignments',
                     'sm_resource_menu_options_generator' => null,
-                    'sm_resource_inactive' => 0
+                    'sm_resource_inactive' => 1
                 ],
                 [
                     'sm_resource_id' => '::id::\Menu\Numbers\Tenants\Tenants\Controller\Registries',
