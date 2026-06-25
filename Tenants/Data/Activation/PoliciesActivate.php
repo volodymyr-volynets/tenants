@@ -27,14 +27,14 @@ class PoliciesActivate extends Import
                     'tm_polroot_tenant_id' => null,
                     'tm_polroot_code' => 'SYSTEM',
                     'tm_polroot_name' => 'System Policies',
-                    'tm_polroot_icon' => 'fas fa-wrench',
+                    'tm_polroot_icon' => 'fa-solid fa-wrench',
                     'tm_polroot_inactive' => 0
                 ],
                 [
                     'tm_polroot_tenant_id' => null,
                     'tm_polroot_code' => 'USER',
                     'tm_polroot_name' => 'User Defined Policies',
-                    'tm_polroot_icon' => 'far fa-user',
+                    'tm_polroot_icon' => 'fa-regular fa-user',
                     'tm_polroot_inactive' => 0
                 ],
             ]
@@ -52,7 +52,7 @@ class PoliciesActivate extends Import
                     'tm_polfolder_polroot_code' => 'SYSTEM',
                     'tm_polfolder_parent_polfolder_id' => null,
                     'tm_polfolder_name' => 'Global Assignments',
-                    'tm_polfolder_icon' => 'fas fa-assistive-listening-systems',
+                    'tm_polfolder_icon' => 'fa-solid fa-assistive-listening-systems',
                     'tm_polfolder_counter' => 0,
                     'tm_polfolder_inactive' => 0
                 ],

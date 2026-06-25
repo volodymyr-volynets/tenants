@@ -46,7 +46,7 @@ class Folders extends DataSource
             'id' => 'a.tm_polfolder_id',
             'name' => 'a.tm_polfolder_name',
             'parent' => 'a.tm_polfolder_parent_polfolder_id',
-            'icon_class' => "COALESCE(a.tm_polfolder_icon, 'far fa-folder')",
+            'icon_class' => "COALESCE(a.tm_polfolder_icon, 'fa-regular fa-folder')",
             'inactive' => 'a.tm_polfolder_inactive'
         ]);
         // where

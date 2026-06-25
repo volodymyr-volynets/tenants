@@ -1,0 +1,16 @@
+{
+    "": "",
+    "Code": "Código",
+    "FilterID": "Filtro #",
+    "Inactive": "Inactivo",
+    "Name": "Nombre",
+    "OptimisticLock": "Bloqueo optimista",
+    "Parameters": "Parámetros",
+    "Sequence": "Secuencia",
+    "TMFilterForms": "Formas de filtro T/M",
+    "TenantID": "Arrendatario #",
+    "Timestamp": "Marca de tiempo",
+    "User": "Usuario",
+    "UserID": "Usuario #",
+    "YesNo": "Sí / No"
+}

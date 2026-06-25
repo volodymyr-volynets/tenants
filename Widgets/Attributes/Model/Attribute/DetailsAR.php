@@ -1,19 +1,30 @@
 <?php
 
+/*
+ * This file is part of Numbers Framework.
+ *
+ * (c) Volodymyr Volynets <volodymyr.volynets@gmail.com>
+ *
+ * This source file is subject to the Apache 2.0 license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Numbers\Tenants\Widgets\Attributes\Model\Attribute;
-class DetailsAR extends \Object\ActiveRecord {
 
+use Object\ActiveRecord;
 
-
+class DetailsAR extends ActiveRecord
+{
     /**
      * @var string
      */
-    public string $object_table_class = \Numbers\Tenants\Widgets\Attributes\Model\Attribute\Details::class;
+    public string $object_table_class = Details::class;
 
     /**
      * @var array
      */
     public array $object_table_pk = ['tm_attrdetail_tenant_id','tm_attrdetail_attribute_id','tm_attrdetail_module_id','tm_attrdetail_model_id'];
+
     /**
      * Tenant #
      *
@@ -23,13 +34,13 @@ class DetailsAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: tenant_id Type: integer
      */
-    public int|null $tm_attrdetail_tenant_id = NULL {
-                        get => $this->tm_attrdetail_tenant_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_attrdetail_tenant_id', $value);
-                            $this->tm_attrdetail_tenant_id = $value;
-                        }
-                    }
+    public int|null $tm_attrdetail_tenant_id = null {
+        get => $this->tm_attrdetail_tenant_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_attrdetail_tenant_id', $value);
+            $this->tm_attrdetail_tenant_id = $value;
+        }
+    }
 
     /**
      * Timestamp
@@ -41,12 +52,12 @@ class DetailsAR extends \Object\ActiveRecord {
      * @var string|null Domain: timestamp_now Type: timestamp
      */
     public string|null $tm_attrdetail_timestamp = 'now()' {
-                        get => $this->tm_attrdetail_timestamp;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_attrdetail_timestamp', $value);
-                            $this->tm_attrdetail_timestamp = $value;
-                        }
-                    }
+        get => $this->tm_attrdetail_timestamp;
+        set {
+            $this->setFullPkAndFilledColumn('tm_attrdetail_timestamp', $value);
+            $this->tm_attrdetail_timestamp = $value;
+        }
+    }
 
     /**
      * Attribute #
@@ -57,13 +68,13 @@ class DetailsAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: attribute_id Type: integer
      */
-    public int|null $tm_attrdetail_attribute_id = NULL {
-                        get => $this->tm_attrdetail_attribute_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_attrdetail_attribute_id', $value);
-                            $this->tm_attrdetail_attribute_id = $value;
-                        }
-                    }
+    public int|null $tm_attrdetail_attribute_id = null {
+        get => $this->tm_attrdetail_attribute_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_attrdetail_attribute_id', $value);
+            $this->tm_attrdetail_attribute_id = $value;
+        }
+    }
 
     /**
      * Module #
@@ -74,13 +85,13 @@ class DetailsAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: module_id Type: integer
      */
-    public int|null $tm_attrdetail_module_id = NULL {
-                        get => $this->tm_attrdetail_module_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_attrdetail_module_id', $value);
-                            $this->tm_attrdetail_module_id = $value;
-                        }
-                    }
+    public int|null $tm_attrdetail_module_id = null {
+        get => $this->tm_attrdetail_module_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_attrdetail_module_id', $value);
+            $this->tm_attrdetail_module_id = $value;
+        }
+    }
 
     /**
      * Model #
@@ -91,13 +102,13 @@ class DetailsAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: model_id Type: integer
      */
-    public int|null $tm_attrdetail_model_id = NULL {
-                        get => $this->tm_attrdetail_model_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_attrdetail_model_id', $value);
-                            $this->tm_attrdetail_model_id = $value;
-                        }
-                    }
+    public int|null $tm_attrdetail_model_id = null {
+        get => $this->tm_attrdetail_model_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_attrdetail_model_id', $value);
+            $this->tm_attrdetail_model_id = $value;
+        }
+    }
 
     /**
      * Inactive
@@ -109,10 +120,10 @@ class DetailsAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_attrdetail_inactive = 0 {
-                        get => $this->tm_attrdetail_inactive;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_attrdetail_inactive', $value);
-                            $this->tm_attrdetail_inactive = $value;
-                        }
-                    }
+        get => $this->tm_attrdetail_inactive;
+        set {
+            $this->setFullPkAndFilledColumn('tm_attrdetail_inactive', $value);
+            $this->tm_attrdetail_inactive = $value;
+        }
+    }
 }

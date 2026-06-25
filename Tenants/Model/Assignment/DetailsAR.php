@@ -1,19 +1,30 @@
 <?php
 
+/*
+ * This file is part of Numbers Framework.
+ *
+ * (c) Volodymyr Volynets <volodymyr.volynets@gmail.com>
+ *
+ * This source file is subject to the Apache 2.0 license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Numbers\Tenants\Tenants\Model\Assignment;
-class DetailsAR extends \Object\ActiveRecord {
 
+use Object\ActiveRecord;
 
-
+class DetailsAR extends ActiveRecord
+{
     /**
      * @var string
      */
-    public string $object_table_class = \Numbers\Tenants\Tenants\Model\Assignment\Details::class;
+    public string $object_table_class = Details::class;
 
     /**
      * @var array
      */
     public array $object_table_pk = ['tm_assigndet_tenant_id','tm_assigndet_assignment_id','tm_assigndet_id'];
+
     /**
      * Tenant #
      *
@@ -23,13 +34,13 @@ class DetailsAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: tenant_id Type: integer
      */
-    public int|null $tm_assigndet_tenant_id = NULL {
-                        get => $this->tm_assigndet_tenant_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_assigndet_tenant_id', $value);
-                            $this->tm_assigndet_tenant_id = $value;
-                        }
-                    }
+    public int|null $tm_assigndet_tenant_id = null {
+        get => $this->tm_assigndet_tenant_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_assigndet_tenant_id', $value);
+            $this->tm_assigndet_tenant_id = $value;
+        }
+    }
 
     /**
      * Assignment #
@@ -40,13 +51,13 @@ class DetailsAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: assignment_id Type: integer
      */
-    public int|null $tm_assigndet_assignment_id = NULL {
-                        get => $this->tm_assigndet_assignment_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_assigndet_assignment_id', $value);
-                            $this->tm_assigndet_assignment_id = $value;
-                        }
-                    }
+    public int|null $tm_assigndet_assignment_id = null {
+        get => $this->tm_assigndet_assignment_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_assigndet_assignment_id', $value);
+            $this->tm_assigndet_assignment_id = $value;
+        }
+    }
 
     /**
      * Detail #
@@ -58,12 +69,12 @@ class DetailsAR extends \Object\ActiveRecord {
      * @var int|null Domain: big_id_sequence Type: bigserial
      */
     public int|null $tm_assigndet_id = null {
-                        get => $this->tm_assigndet_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_assigndet_id', $value);
-                            $this->tm_assigndet_id = $value;
-                        }
-                    }
+        get => $this->tm_assigndet_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_assigndet_id', $value);
+            $this->tm_assigndet_id = $value;
+        }
+    }
 
     /**
      * Attribute #
@@ -74,13 +85,13 @@ class DetailsAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: attribute_id Type: integer
      */
-    public int|null $tm_assigndet_abacattr_id = NULL {
-                        get => $this->tm_assigndet_abacattr_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_assigndet_abacattr_id', $value);
-                            $this->tm_assigndet_abacattr_id = $value;
-                        }
-                    }
+    public int|null $tm_assigndet_abacattr_id = null {
+        get => $this->tm_assigndet_abacattr_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_assigndet_abacattr_id', $value);
+            $this->tm_assigndet_abacattr_id = $value;
+        }
+    }
 
     /**
      * Name
@@ -92,12 +103,12 @@ class DetailsAR extends \Object\ActiveRecord {
      * @var string|null Domain: name Type: varchar
      */
     public string|null $tm_assigndet_name = null {
-                        get => $this->tm_assigndet_name;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_assigndet_name', $value);
-                            $this->tm_assigndet_name = $value;
-                        }
-                    }
+        get => $this->tm_assigndet_name;
+        set {
+            $this->setFullPkAndFilledColumn('tm_assigndet_name', $value);
+            $this->tm_assigndet_name = $value;
+        }
+    }
 
     /**
      * Primary
@@ -109,12 +120,12 @@ class DetailsAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_assigndet_primary = 0 {
-                        get => $this->tm_assigndet_primary;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_assigndet_primary', $value);
-                            $this->tm_assigndet_primary = $value;
-                        }
-                    }
+        get => $this->tm_assigndet_primary;
+        set {
+            $this->setFullPkAndFilledColumn('tm_assigndet_primary', $value);
+            $this->tm_assigndet_primary = $value;
+        }
+    }
 
     /**
      * Multiple
@@ -126,12 +137,12 @@ class DetailsAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_assigndet_multiple = 0 {
-                        get => $this->tm_assigndet_multiple;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_assigndet_multiple', $value);
-                            $this->tm_assigndet_multiple = $value;
-                        }
-                    }
+        get => $this->tm_assigndet_multiple;
+        set {
+            $this->setFullPkAndFilledColumn('tm_assigndet_multiple', $value);
+            $this->tm_assigndet_multiple = $value;
+        }
+    }
 
     /**
      * Inactive
@@ -143,10 +154,10 @@ class DetailsAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_assigndet_inactive = 0 {
-                        get => $this->tm_assigndet_inactive;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_assigndet_inactive', $value);
-                            $this->tm_assigndet_inactive = $value;
-                        }
-                    }
+        get => $this->tm_assigndet_inactive;
+        set {
+            $this->setFullPkAndFilledColumn('tm_assigndet_inactive', $value);
+            $this->tm_assigndet_inactive = $value;
+        }
+    }
 }

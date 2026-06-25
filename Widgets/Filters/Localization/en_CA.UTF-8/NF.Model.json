@@ -1,12 +1,16 @@
 {
+    "": "",
     "Code": "Code",
     "FilterID": "Filter #",
     "Inactive": "Inactive",
     "Name": "Name",
     "OptimisticLock": "Optimistic Lock",
     "Parameters": "Parameters",
+    "Sequence": "Sequence",
     "TMFilterForms": "T/M Filter Forms",
     "TenantID": "Tenant #",
     "Timestamp": "Timestamp",
-    "UserID": "User #"
+    "User": "User",
+    "UserID": "User #",
+    "YesNo": "Yes / No"
 }
