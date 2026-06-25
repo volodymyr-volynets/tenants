@@ -1,19 +1,30 @@
 <?php
 
+/*
+ * This file is part of Numbers Framework.
+ *
+ * (c) Volodymyr Volynets <volodymyr.volynets@gmail.com>
+ *
+ * This source file is subject to the Apache 2.0 license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Numbers\Tenants\Tenants\Model\Module;
-class LinkedAR extends \Object\ActiveRecord {
 
+use Object\ActiveRecord;
 
-
+class LinkedAR extends ActiveRecord
+{
     /**
      * @var string
      */
-    public string $object_table_class = \Numbers\Tenants\Tenants\Model\Module\Linked::class;
+    public string $object_table_class = Linked::class;
 
     /**
      * @var array
      */
     public array $object_table_pk = ['tm_modlinked_tenant_id','tm_modlinked_parent_module_id','tm_modlinked_child_module_id'];
+
     /**
      * Tenant #
      *
@@ -23,13 +34,13 @@ class LinkedAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: tenant_id Type: integer
      */
-    public int|null $tm_modlinked_tenant_id = NULL {
-                        get => $this->tm_modlinked_tenant_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_modlinked_tenant_id', $value);
-                            $this->tm_modlinked_tenant_id = $value;
-                        }
-                    }
+    public int|null $tm_modlinked_tenant_id = null {
+        get => $this->tm_modlinked_tenant_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_modlinked_tenant_id', $value);
+            $this->tm_modlinked_tenant_id = $value;
+        }
+    }
 
     /**
      * Parent Module #
@@ -40,13 +51,13 @@ class LinkedAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: module_id Type: integer
      */
-    public int|null $tm_modlinked_parent_module_id = NULL {
-                        get => $this->tm_modlinked_parent_module_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_modlinked_parent_module_id', $value);
-                            $this->tm_modlinked_parent_module_id = $value;
-                        }
-                    }
+    public int|null $tm_modlinked_parent_module_id = null {
+        get => $this->tm_modlinked_parent_module_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_modlinked_parent_module_id', $value);
+            $this->tm_modlinked_parent_module_id = $value;
+        }
+    }
 
     /**
      * Parent Module Code
@@ -58,12 +69,12 @@ class LinkedAR extends \Object\ActiveRecord {
      * @var string|null Domain: module_code Type: char
      */
     public string|null $tm_modlinked_parent_module_code = null {
-                        get => $this->tm_modlinked_parent_module_code;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_modlinked_parent_module_code', $value);
-                            $this->tm_modlinked_parent_module_code = $value;
-                        }
-                    }
+        get => $this->tm_modlinked_parent_module_code;
+        set {
+            $this->setFullPkAndFilledColumn('tm_modlinked_parent_module_code', $value);
+            $this->tm_modlinked_parent_module_code = $value;
+        }
+    }
 
     /**
      * Child Module #
@@ -74,13 +85,13 @@ class LinkedAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: module_id Type: integer
      */
-    public int|null $tm_modlinked_child_module_id = NULL {
-                        get => $this->tm_modlinked_child_module_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_modlinked_child_module_id', $value);
-                            $this->tm_modlinked_child_module_id = $value;
-                        }
-                    }
+    public int|null $tm_modlinked_child_module_id = null {
+        get => $this->tm_modlinked_child_module_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_modlinked_child_module_id', $value);
+            $this->tm_modlinked_child_module_id = $value;
+        }
+    }
 
     /**
      * Child Module Code
@@ -92,12 +103,12 @@ class LinkedAR extends \Object\ActiveRecord {
      * @var string|null Domain: module_code Type: char
      */
     public string|null $tm_modlinked_child_module_code = null {
-                        get => $this->tm_modlinked_child_module_code;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_modlinked_child_module_code', $value);
-                            $this->tm_modlinked_child_module_code = $value;
-                        }
-                    }
+        get => $this->tm_modlinked_child_module_code;
+        set {
+            $this->setFullPkAndFilledColumn('tm_modlinked_child_module_code', $value);
+            $this->tm_modlinked_child_module_code = $value;
+        }
+    }
 
     /**
      * Inactive
@@ -109,10 +120,10 @@ class LinkedAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_modlinked_inactive = 0 {
-                        get => $this->tm_modlinked_inactive;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_modlinked_inactive', $value);
-                            $this->tm_modlinked_inactive = $value;
-                        }
-                    }
+        get => $this->tm_modlinked_inactive;
+        set {
+            $this->setFullPkAndFilledColumn('tm_modlinked_inactive', $value);
+            $this->tm_modlinked_inactive = $value;
+        }
+    }
 }

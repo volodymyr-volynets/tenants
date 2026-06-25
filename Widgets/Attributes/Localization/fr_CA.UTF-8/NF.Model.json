@@ -1,0 +1,23 @@
+{
+    "": "",
+    "ABACAttributeID": "Attribut ABAC #",
+    "Attribute": "Attribut",
+    "AttributeID": "Attribut #",
+    "Code": "Code",
+    "Domain": "Domaine",
+    "Inactive": "Inactif",
+    "Method": "Méthode",
+    "Model": "Modèle",
+    "ModelID": "Modèle #",
+    "Module": "Module",
+    "ModuleID": "Module #",
+    "Name": "Nom",
+    "OptimisticLock": "Verrouillage optimiste",
+    "Sequence": "Séquence",
+    "TMAttributeDetails": "Détails des attributs T/M",
+    "TMAttributes": "Attributs T/M",
+    "TenantID": "Locataire #",
+    "Timestamp": "Horodatage",
+    "Type": "Taper",
+    "YesNo": "Oui / Non"
+}

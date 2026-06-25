@@ -1,0 +1,23 @@
+{
+    "": "",
+    "ABACAttributeID": "Атрибут ABAC №",
+    "Attribute": "Атрибут",
+    "AttributeID": "Атрибут №",
+    "Code": "Код",
+    "Domain": "Домен",
+    "Inactive": "Неактивный",
+    "Method": "Метод",
+    "Model": "Модель",
+    "ModelID": "Модель №",
+    "Module": "Модуль",
+    "ModuleID": "Номер модуля",
+    "Name": "Имя",
+    "OptimisticLock": "Оптимистический замок",
+    "Sequence": "Последовательность",
+    "TMAttributeDetails": "Подробности атрибутов T/M",
+    "TMAttributes": "Атрибуты Т/М",
+    "TenantID": "Жилец #",
+    "Timestamp": "Метка времени",
+    "Type": "Тип",
+    "YesNo": "Да / Нет"
+}

@@ -1,19 +1,30 @@
 <?php
 
+/*
+ * This file is part of Numbers Framework.
+ *
+ * (c) Volodymyr Volynets <volodymyr.volynets@gmail.com>
+ *
+ * This source file is subject to the Apache 2.0 license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Numbers\Tenants\Tenants\Model;
-class DatabasesAR extends \Object\ActiveRecord {
 
+use Object\ActiveRecord;
 
-
+class DatabasesAR extends ActiveRecord
+{
     /**
      * @var string
      */
-    public string $object_table_class = \Numbers\Tenants\Tenants\Model\Databases::class;
+    public string $object_table_class = Databases::class;
 
     /**
      * @var array
      */
     public array $object_table_pk = ['tm_database_code'];
+
     /**
      * Code
      *
@@ -24,12 +35,12 @@ class DatabasesAR extends \Object\ActiveRecord {
      * @var string|null Domain: database Type: varchar
      */
     public string|null $tm_database_code = null {
-                        get => $this->tm_database_code;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_database_code', $value);
-                            $this->tm_database_code = $value;
-                        }
-                    }
+        get => $this->tm_database_code;
+        set {
+            $this->setFullPkAndFilledColumn('tm_database_code', $value);
+            $this->tm_database_code = $value;
+        }
+    }
 
     /**
      * Name
@@ -41,12 +52,12 @@ class DatabasesAR extends \Object\ActiveRecord {
      * @var string|null Domain: name Type: varchar
      */
     public string|null $tm_database_name = null {
-                        get => $this->tm_database_name;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_database_name', $value);
-                            $this->tm_database_name = $value;
-                        }
-                    }
+        get => $this->tm_database_name;
+        set {
+            $this->setFullPkAndFilledColumn('tm_database_name', $value);
+            $this->tm_database_name = $value;
+        }
+    }
 
     /**
      * Schema Set
@@ -58,12 +69,12 @@ class DatabasesAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_database_schema_set = 0 {
-                        get => $this->tm_database_schema_set;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_database_schema_set', $value);
-                            $this->tm_database_schema_set = $value;
-                        }
-                    }
+        get => $this->tm_database_schema_set;
+        set {
+            $this->setFullPkAndFilledColumn('tm_database_schema_set', $value);
+            $this->tm_database_schema_set = $value;
+        }
+    }
 
     /**
      * Data Set
@@ -75,12 +86,12 @@ class DatabasesAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_database_data_set = 0 {
-                        get => $this->tm_database_data_set;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_database_data_set', $value);
-                            $this->tm_database_data_set = $value;
-                        }
-                    }
+        get => $this->tm_database_data_set;
+        set {
+            $this->setFullPkAndFilledColumn('tm_database_data_set', $value);
+            $this->tm_database_data_set = $value;
+        }
+    }
 
     /**
      * Current
@@ -92,12 +103,12 @@ class DatabasesAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_database_current = 0 {
-                        get => $this->tm_database_current;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_database_current', $value);
-                            $this->tm_database_current = $value;
-                        }
-                    }
+        get => $this->tm_database_current;
+        set {
+            $this->setFullPkAndFilledColumn('tm_database_current', $value);
+            $this->tm_database_current = $value;
+        }
+    }
 
     /**
      * Next Tenant #
@@ -108,13 +119,13 @@ class DatabasesAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: tenant_id Type: integer
      */
-    public int|null $tm_database_next_tm_tenant_id = NULL {
-                        get => $this->tm_database_next_tm_tenant_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_database_next_tm_tenant_id', $value);
-                            $this->tm_database_next_tm_tenant_id = $value;
-                        }
-                    }
+    public int|null $tm_database_next_tm_tenant_id = null {
+        get => $this->tm_database_next_tm_tenant_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_database_next_tm_tenant_id', $value);
+            $this->tm_database_next_tm_tenant_id = $value;
+        }
+    }
 
     /**
      * Inactive
@@ -126,12 +137,12 @@ class DatabasesAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_database_inactive = 0 {
-                        get => $this->tm_database_inactive;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_database_inactive', $value);
-                            $this->tm_database_inactive = $value;
-                        }
-                    }
+        get => $this->tm_database_inactive;
+        set {
+            $this->setFullPkAndFilledColumn('tm_database_inactive', $value);
+            $this->tm_database_inactive = $value;
+        }
+    }
 
     /**
      * Optimistic Lock
@@ -143,10 +154,10 @@ class DatabasesAR extends \Object\ActiveRecord {
      * @var string|null Domain: optimistic_lock Type: timestamp
      */
     public string|null $tm_database_optimistic_lock = 'now()' {
-                        get => $this->tm_database_optimistic_lock;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_database_optimistic_lock', $value);
-                            $this->tm_database_optimistic_lock = $value;
-                        }
-                    }
+        get => $this->tm_database_optimistic_lock;
+        set {
+            $this->setFullPkAndFilledColumn('tm_database_optimistic_lock', $value);
+            $this->tm_database_optimistic_lock = $value;
+        }
+    }
 }

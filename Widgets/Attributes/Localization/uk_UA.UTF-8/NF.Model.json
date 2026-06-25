@@ -1,0 +1,23 @@
+{
+    "": "",
+    "ABACAttributeID": "Атрибут ABAC №",
+    "Attribute": "Атрибут",
+    "AttributeID": "Атрибут №",
+    "Code": "Код",
+    "Domain": "Домен",
+    "Inactive": "Неактивний",
+    "Method": "Метод",
+    "Model": "Модель",
+    "ModelID": "Модель №",
+    "Module": "Модуль",
+    "ModuleID": "Модуль №",
+    "Name": "Ім&#39;я",
+    "OptimisticLock": "Оптимістичний замок",
+    "Sequence": "Послідовність",
+    "TMAttributeDetails": "Деталі атрибута T/M",
+    "TMAttributes": "Атрибути терміналу/матеріалу",
+    "TenantID": "№ орендаря",
+    "Timestamp": "Позначка часу",
+    "Type": "Тип",
+    "YesNo": "Так / Ні"
+}

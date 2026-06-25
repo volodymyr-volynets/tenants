@@ -31,7 +31,7 @@ class Modules extends Base
         'actions' => [
             'refresh' => true,
             'back' => true,
-            'activate_feature' => ['href' => '/Numbers/Tenants/Tenants/Controller/Activation/Features/_Edit?__submit_blank=1', 'value' => 'Activate Feature', 'icon' => 'far fa-file']
+            'activate_feature' => ['href' => '/Numbers/Tenants/Tenants/Controller/Activation/Features/_Edit?__submit_blank=1', 'value' => 'Activate Feature', 'icon' => 'fa-regular fa-file']
         ],
         'no_ajax_form_reload' => true
     ];

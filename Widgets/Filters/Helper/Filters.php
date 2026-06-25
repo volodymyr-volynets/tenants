@@ -46,7 +46,7 @@ class Filters
         $form->element('tabs', '__filters', '__filter_existing', ['container' => '__filter_existing', 'order' => 200]);
         // new filter form
         $form->element('__filter_new', '__filter_new', '__filter_name', ['order' => 1, 'label_name' => 'New Filter Name', 'domain' => 'name', 'null' => true, 'required' => 'c', 'percent' => 50, 'empty_value' => true]);
-        $form->element('__filter_new', '__filter_new', $form::BUTTON_SUBMIT_OTHER, ['order' => 2, 'label_name' => ' ', 'value' => 'Save', 'method' => 'button2', 'icon' => 'fas fa-mouse-pointer', 'accesskey' => 's', 'process_submit' => 'other']);
+        $form->element('__filter_new', '__filter_new', $form::BUTTON_SUBMIT_FILTER_OTHER, ['order' => 2, 'label_name' => ' ', 'value' => 'Save', 'method' => 'button2', 'icon' => 'fa-solid fa-mouse-pointer', 'process_submit' => 'other']);
         // methods
         $form->wrapper_methods['refresh']['filters'] = [& $this, 'refresh'];
         $form->wrapper_methods['filterChanged']['filters'] = [& $this, 'filterChanged'];
@@ -107,7 +107,7 @@ class Filters
      */
     public function refresh(& $form)
     {
-        if (!empty($form->values[$form::BUTTON_SUBMIT_OTHER])) {
+        if (!empty($form->process_submit[$form::BUTTON_SUBMIT_FILTER_OTHER])) {
             if (empty($form->values['__filter_name'])) {
                 $form->error(DANGER, Messages::REQUIRED_FIELD, '__filter_name');
             } else {

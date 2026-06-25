@@ -198,11 +198,11 @@ abstract class Common
             }
             // check for alias
             $temp_model = new $model_code();
-            if (!empty($temp_model->alias_model)) {
+            if (!empty($temp_model->alias_model) && isset($temp_model->alias_for)) {
                 $model_code = $temp_model->alias_for;
             }
         }
-        $model_id = self::$cached_models[$model_code]['sm_model_id'];
+        $model_id = self::$cached_models[$model_code]['sm_model_id'] ?? null;
         $alias = 1000;
         if (!empty($this->options['skip_acl'])) {
             return false;

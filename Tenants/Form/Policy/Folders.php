@@ -219,7 +219,7 @@ class Folders extends Base
         }
         return [
             'name' => $result,
-            'icon_class' => $data['tm_polfolder_icon'] ?? 'far fa-folder',
+            'icon_class' => $data['tm_polfolder_icon'] ?? 'fa-regular fa-folder',
             'toolbar' => $toolbar
         ];
     }
@@ -245,7 +245,7 @@ class Folders extends Base
         }
         return [
             'name' => $result,
-            'icon_class' => $data['tm_policy_icon'] ?? 'far fa-list-alt',
+            'icon_class' => $data['tm_policy_icon'] ?? 'fa-regular fa-list-alt',
             'toolbar' => $toolbar
         ];
     }

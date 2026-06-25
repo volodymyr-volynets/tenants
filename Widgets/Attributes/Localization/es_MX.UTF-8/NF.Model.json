@@ -1,0 +1,23 @@
+{
+    "": "",
+    "ABACAttributeID": "Atributo ABAC n.°",
+    "Attribute": "Atributo",
+    "AttributeID": "Atributo #",
+    "Code": "Código",
+    "Domain": "Dominio",
+    "Inactive": "Inactivo",
+    "Method": "Método",
+    "Model": "Modelo",
+    "ModelID": "Modelo #",
+    "Module": "Módulo",
+    "ModuleID": "Módulo #",
+    "Name": "Nombre",
+    "OptimisticLock": "Bloqueo optimista",
+    "Sequence": "Secuencia",
+    "TMAttributeDetails": "Detalles de los atributos T/M",
+    "TMAttributes": "Atributos T/M",
+    "TenantID": "Arrendatario #",
+    "Timestamp": "Marca de tiempo",
+    "Type": "Tipo",
+    "YesNo": "Sí / No"
+}

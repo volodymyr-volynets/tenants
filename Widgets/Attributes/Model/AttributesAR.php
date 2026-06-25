@@ -1,19 +1,30 @@
 <?php
 
+/*
+ * This file is part of Numbers Framework.
+ *
+ * (c) Volodymyr Volynets <volodymyr.volynets@gmail.com>
+ *
+ * This source file is subject to the Apache 2.0 license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Numbers\Tenants\Widgets\Attributes\Model;
-class AttributesAR extends \Object\ActiveRecord {
 
+use Object\ActiveRecord;
 
-
+class AttributesAR extends ActiveRecord
+{
     /**
      * @var string
      */
-    public string $object_table_class = \Numbers\Tenants\Widgets\Attributes\Model\Attributes::class;
+    public string $object_table_class = Attributes::class;
 
     /**
      * @var array
      */
     public array $object_table_pk = ['tm_attribute_tenant_id','tm_attribute_id'];
+
     /**
      * Tenant #
      *
@@ -23,13 +34,13 @@ class AttributesAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: tenant_id Type: integer
      */
-    public int|null $tm_attribute_tenant_id = NULL {
-                        get => $this->tm_attribute_tenant_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_attribute_tenant_id', $value);
-                            $this->tm_attribute_tenant_id = $value;
-                        }
-                    }
+    public int|null $tm_attribute_tenant_id = null {
+        get => $this->tm_attribute_tenant_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_attribute_tenant_id', $value);
+            $this->tm_attribute_tenant_id = $value;
+        }
+    }
 
     /**
      * Attribute #
@@ -41,12 +52,12 @@ class AttributesAR extends \Object\ActiveRecord {
      * @var int|null Domain: attribute_id_sequence Type: serial
      */
     public int|null $tm_attribute_id = null {
-                        get => $this->tm_attribute_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_attribute_id', $value);
-                            $this->tm_attribute_id = $value;
-                        }
-                    }
+        get => $this->tm_attribute_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_attribute_id', $value);
+            $this->tm_attribute_id = $value;
+        }
+    }
 
     /**
      * Code
@@ -58,12 +69,12 @@ class AttributesAR extends \Object\ActiveRecord {
      * @var string|null Domain: group_code Type: varchar
      */
     public string|null $tm_attribute_code = null {
-                        get => $this->tm_attribute_code;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_attribute_code', $value);
-                            $this->tm_attribute_code = $value;
-                        }
-                    }
+        get => $this->tm_attribute_code;
+        set {
+            $this->setFullPkAndFilledColumn('tm_attribute_code', $value);
+            $this->tm_attribute_code = $value;
+        }
+    }
 
     /**
      * Name
@@ -75,12 +86,12 @@ class AttributesAR extends \Object\ActiveRecord {
      * @var string|null Domain: name Type: varchar
      */
     public string|null $tm_attribute_name = null {
-                        get => $this->tm_attribute_name;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_attribute_name', $value);
-                            $this->tm_attribute_name = $value;
-                        }
-                    }
+        get => $this->tm_attribute_name;
+        set {
+            $this->setFullPkAndFilledColumn('tm_attribute_name', $value);
+            $this->tm_attribute_name = $value;
+        }
+    }
 
     /**
      * Method
@@ -92,12 +103,12 @@ class AttributesAR extends \Object\ActiveRecord {
      * @var string|null Domain: code Type: varchar
      */
     public string|null $tm_attribute_method = null {
-                        get => $this->tm_attribute_method;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_attribute_method', $value);
-                            $this->tm_attribute_method = $value;
-                        }
-                    }
+        get => $this->tm_attribute_method;
+        set {
+            $this->setFullPkAndFilledColumn('tm_attribute_method', $value);
+            $this->tm_attribute_method = $value;
+        }
+    }
 
     /**
      * ABAC Attribute #
@@ -108,13 +119,13 @@ class AttributesAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: attribute_id Type: integer
      */
-    public int|null $tm_attribute_abacattr_id = NULL {
-                        get => $this->tm_attribute_abacattr_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_attribute_abacattr_id', $value);
-                            $this->tm_attribute_abacattr_id = $value;
-                        }
-                    }
+    public int|null $tm_attribute_abacattr_id = null {
+        get => $this->tm_attribute_abacattr_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_attribute_abacattr_id', $value);
+            $this->tm_attribute_abacattr_id = $value;
+        }
+    }
 
     /**
      * Domain
@@ -126,12 +137,12 @@ class AttributesAR extends \Object\ActiveRecord {
      * @var string|null Domain: code Type: varchar
      */
     public string|null $tm_attribute_domain = null {
-                        get => $this->tm_attribute_domain;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_attribute_domain', $value);
-                            $this->tm_attribute_domain = $value;
-                        }
-                    }
+        get => $this->tm_attribute_domain;
+        set {
+            $this->setFullPkAndFilledColumn('tm_attribute_domain', $value);
+            $this->tm_attribute_domain = $value;
+        }
+    }
 
     /**
      * Type
@@ -143,12 +154,12 @@ class AttributesAR extends \Object\ActiveRecord {
      * @var string|null Domain: code Type: varchar
      */
     public string|null $tm_attribute_type = null {
-                        get => $this->tm_attribute_type;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_attribute_type', $value);
-                            $this->tm_attribute_type = $value;
-                        }
-                    }
+        get => $this->tm_attribute_type;
+        set {
+            $this->setFullPkAndFilledColumn('tm_attribute_type', $value);
+            $this->tm_attribute_type = $value;
+        }
+    }
 
     /**
      * Inactive
@@ -160,12 +171,12 @@ class AttributesAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_attribute_inactive = 0 {
-                        get => $this->tm_attribute_inactive;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_attribute_inactive', $value);
-                            $this->tm_attribute_inactive = $value;
-                        }
-                    }
+        get => $this->tm_attribute_inactive;
+        set {
+            $this->setFullPkAndFilledColumn('tm_attribute_inactive', $value);
+            $this->tm_attribute_inactive = $value;
+        }
+    }
 
     /**
      * Optimistic Lock
@@ -177,10 +188,10 @@ class AttributesAR extends \Object\ActiveRecord {
      * @var string|null Domain: optimistic_lock Type: timestamp
      */
     public string|null $tm_attribute_optimistic_lock = 'now()' {
-                        get => $this->tm_attribute_optimistic_lock;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_attribute_optimistic_lock', $value);
-                            $this->tm_attribute_optimistic_lock = $value;
-                        }
-                    }
+        get => $this->tm_attribute_optimistic_lock;
+        set {
+            $this->setFullPkAndFilledColumn('tm_attribute_optimistic_lock', $value);
+            $this->tm_attribute_optimistic_lock = $value;
+        }
+    }
 }
