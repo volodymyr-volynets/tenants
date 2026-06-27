@@ -1,14 +1,24 @@
 <?php
 
+/*
+ * This file is part of Numbers Framework.
+ *
+ * (c) Volodymyr Volynets <volodymyr.volynets@gmail.com>
+ *
+ * This source file is subject to the Apache 2.0 license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Numbers\Tenants\Tenants\Model\Module;
-class FeaturesAR extends \Object\ActiveRecord {
 
+use Object\ActiveRecord;
 
-
+class FeaturesAR extends ActiveRecord
+{
     /**
      * @var string
      */
-    public string $object_table_class = \Numbers\Tenants\Tenants\Model\Module\Features::class;
+    public string $object_table_class = Features::class;
 
     /**
      * @var array
@@ -23,13 +33,13 @@ class FeaturesAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: tenant_id Type: integer
      */
-    public int|null $tm_feature_tenant_id = NULL {
-                        get => $this->tm_feature_tenant_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_feature_tenant_id', $value);
-                            $this->tm_feature_tenant_id = $value;
-                        }
-                    }
+    public int|null $tm_feature_tenant_id = null {
+        get => $this->tm_feature_tenant_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_feature_tenant_id', $value);
+            $this->tm_feature_tenant_id = $value;
+        }
+    }
 
     /**
      * Module #
@@ -40,13 +50,13 @@ class FeaturesAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: module_id Type: integer
      */
-    public int|null $tm_feature_module_id = NULL {
-                        get => $this->tm_feature_module_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_feature_module_id', $value);
-                            $this->tm_feature_module_id = $value;
-                        }
-                    }
+    public int|null $tm_feature_module_id = null {
+        get => $this->tm_feature_module_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_feature_module_id', $value);
+            $this->tm_feature_module_id = $value;
+        }
+    }
 
     /**
      * Module Code
@@ -58,12 +68,12 @@ class FeaturesAR extends \Object\ActiveRecord {
      * @var string|null Domain: module_code Type: char
      */
     public string|null $tm_feature_module_code = null {
-                        get => $this->tm_feature_module_code;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_feature_module_code', $value);
-                            $this->tm_feature_module_code = $value;
-                        }
-                    }
+        get => $this->tm_feature_module_code;
+        set {
+            $this->setFullPkAndFilledColumn('tm_feature_module_code', $value);
+            $this->tm_feature_module_code = $value;
+        }
+    }
 
     /**
      * Feature Code
@@ -75,12 +85,12 @@ class FeaturesAR extends \Object\ActiveRecord {
      * @var string|null Domain: feature_code Type: varchar
      */
     public string|null $tm_feature_feature_code = null {
-                        get => $this->tm_feature_feature_code;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_feature_feature_code', $value);
-                            $this->tm_feature_feature_code = $value;
-                        }
-                    }
+        get => $this->tm_feature_feature_code;
+        set {
+            $this->setFullPkAndFilledColumn('tm_feature_feature_code', $value);
+            $this->tm_feature_feature_code = $value;
+        }
+    }
 
     /**
      * Inactive
@@ -92,10 +102,10 @@ class FeaturesAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_feature_inactive = 0 {
-                        get => $this->tm_feature_inactive;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_feature_inactive', $value);
-                            $this->tm_feature_inactive = $value;
-                        }
-                    }
+        get => $this->tm_feature_inactive;
+        set {
+            $this->setFullPkAndFilledColumn('tm_feature_inactive', $value);
+            $this->tm_feature_inactive = $value;
+        }
+    }
 }

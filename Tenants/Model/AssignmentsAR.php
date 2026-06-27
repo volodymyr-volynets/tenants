@@ -1,14 +1,24 @@
 <?php
 
+/*
+ * This file is part of Numbers Framework.
+ *
+ * (c) Volodymyr Volynets <volodymyr.volynets@gmail.com>
+ *
+ * This source file is subject to the Apache 2.0 license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Numbers\Tenants\Tenants\Model;
-class AssignmentsAR extends \Object\ActiveRecord {
 
+use Object\ActiveRecord;
 
-
+class AssignmentsAR extends ActiveRecord
+{
     /**
      * @var string
      */
-    public string $object_table_class = \Numbers\Tenants\Tenants\Model\Assignments::class;
+    public string $object_table_class = Assignments::class;
 
     /**
      * @var array
@@ -23,13 +33,13 @@ class AssignmentsAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: tenant_id Type: integer
      */
-    public int|null $tm_assignment_tenant_id = NULL {
-                        get => $this->tm_assignment_tenant_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_assignment_tenant_id', $value);
-                            $this->tm_assignment_tenant_id = $value;
-                        }
-                    }
+    public int|null $tm_assignment_tenant_id = null {
+        get => $this->tm_assignment_tenant_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_assignment_tenant_id', $value);
+            $this->tm_assignment_tenant_id = $value;
+        }
+    }
 
     /**
      * Assignment #
@@ -41,12 +51,12 @@ class AssignmentsAR extends \Object\ActiveRecord {
      * @var int|null Domain: assignment_id_sequence Type: serial
      */
     public int|null $tm_assignment_id = null {
-                        get => $this->tm_assignment_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_assignment_id', $value);
-                            $this->tm_assignment_id = $value;
-                        }
-                    }
+        get => $this->tm_assignment_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_assignment_id', $value);
+            $this->tm_assignment_id = $value;
+        }
+    }
 
     /**
      * Code
@@ -58,12 +68,12 @@ class AssignmentsAR extends \Object\ActiveRecord {
      * @var string|null Domain: group_code Type: varchar
      */
     public string|null $tm_assignment_code = null {
-                        get => $this->tm_assignment_code;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_assignment_code', $value);
-                            $this->tm_assignment_code = $value;
-                        }
-                    }
+        get => $this->tm_assignment_code;
+        set {
+            $this->setFullPkAndFilledColumn('tm_assignment_code', $value);
+            $this->tm_assignment_code = $value;
+        }
+    }
 
     /**
      * Type
@@ -75,12 +85,12 @@ class AssignmentsAR extends \Object\ActiveRecord {
      * @var string|null Domain: group_code Type: varchar
      */
     public string|null $tm_assignment_type_code = null {
-                        get => $this->tm_assignment_type_code;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_assignment_type_code', $value);
-                            $this->tm_assignment_type_code = $value;
-                        }
-                    }
+        get => $this->tm_assignment_type_code;
+        set {
+            $this->setFullPkAndFilledColumn('tm_assignment_type_code', $value);
+            $this->tm_assignment_type_code = $value;
+        }
+    }
 
     /**
      * Name
@@ -92,12 +102,12 @@ class AssignmentsAR extends \Object\ActiveRecord {
      * @var string|null Domain: name Type: varchar
      */
     public string|null $tm_assignment_name = null {
-                        get => $this->tm_assignment_name;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_assignment_name', $value);
-                            $this->tm_assignment_name = $value;
-                        }
-                    }
+        get => $this->tm_assignment_name;
+        set {
+            $this->setFullPkAndFilledColumn('tm_assignment_name', $value);
+            $this->tm_assignment_name = $value;
+        }
+    }
 
     /**
      * Bidirectional
@@ -109,12 +119,12 @@ class AssignmentsAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_assignment_bidirectional = 0 {
-                        get => $this->tm_assignment_bidirectional;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_assignment_bidirectional', $value);
-                            $this->tm_assignment_bidirectional = $value;
-                        }
-                    }
+        get => $this->tm_assignment_bidirectional;
+        set {
+            $this->setFullPkAndFilledColumn('tm_assignment_bidirectional', $value);
+            $this->tm_assignment_bidirectional = $value;
+        }
+    }
 
     /**
      * Inactive
@@ -126,12 +136,12 @@ class AssignmentsAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_assignment_inactive = 0 {
-                        get => $this->tm_assignment_inactive;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_assignment_inactive', $value);
-                            $this->tm_assignment_inactive = $value;
-                        }
-                    }
+        get => $this->tm_assignment_inactive;
+        set {
+            $this->setFullPkAndFilledColumn('tm_assignment_inactive', $value);
+            $this->tm_assignment_inactive = $value;
+        }
+    }
 
     /**
      * Optimistic Lock
@@ -143,10 +153,10 @@ class AssignmentsAR extends \Object\ActiveRecord {
      * @var string|null Domain: optimistic_lock Type: timestamp
      */
     public string|null $tm_assignment_optimistic_lock = 'now()' {
-                        get => $this->tm_assignment_optimistic_lock;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_assignment_optimistic_lock', $value);
-                            $this->tm_assignment_optimistic_lock = $value;
-                        }
-                    }
+        get => $this->tm_assignment_optimistic_lock;
+        set {
+            $this->setFullPkAndFilledColumn('tm_assignment_optimistic_lock', $value);
+            $this->tm_assignment_optimistic_lock = $value;
+        }
+    }
 }

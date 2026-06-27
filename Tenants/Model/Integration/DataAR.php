@@ -1,14 +1,24 @@
 <?php
 
+/*
+ * This file is part of Numbers Framework.
+ *
+ * (c) Volodymyr Volynets <volodymyr.volynets@gmail.com>
+ *
+ * This source file is subject to the Apache 2.0 license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Numbers\Tenants\Tenants\Model\Integration;
-class DataAR extends \Object\ActiveRecord {
 
+use Object\ActiveRecord;
 
-
+class DataAR extends ActiveRecord
+{
     /**
      * @var string
      */
-    public string $object_table_class = \Numbers\Tenants\Tenants\Model\Integration\Data::class;
+    public string $object_table_class = Data::class;
 
     /**
      * @var array
@@ -23,13 +33,13 @@ class DataAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: tenant_id Type: integer
      */
-    public int|null $tm_integdata_tenant_id = NULL {
-                        get => $this->tm_integdata_tenant_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_integdata_tenant_id', $value);
-                            $this->tm_integdata_tenant_id = $value;
-                        }
-                    }
+    public int|null $tm_integdata_tenant_id = null {
+        get => $this->tm_integdata_tenant_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_integdata_tenant_id', $value);
+            $this->tm_integdata_tenant_id = $value;
+        }
+    }
 
     /**
      * Integration Type Code
@@ -41,12 +51,12 @@ class DataAR extends \Object\ActiveRecord {
      * @var string|null Domain: group_code Type: varchar
      */
     public string|null $tm_integdata_integtype_code = null {
-                        get => $this->tm_integdata_integtype_code;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_integdata_integtype_code', $value);
-                            $this->tm_integdata_integtype_code = $value;
-                        }
-                    }
+        get => $this->tm_integdata_integtype_code;
+        set {
+            $this->setFullPkAndFilledColumn('tm_integdata_integtype_code', $value);
+            $this->tm_integdata_integtype_code = $value;
+        }
+    }
 
     /**
      * Integration Model Code
@@ -58,12 +68,12 @@ class DataAR extends \Object\ActiveRecord {
      * @var string|null Domain: group_code Type: varchar
      */
     public string|null $tm_integdata_integmodel_code = null {
-                        get => $this->tm_integdata_integmodel_code;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_integdata_integmodel_code', $value);
-                            $this->tm_integdata_integmodel_code = $value;
-                        }
-                    }
+        get => $this->tm_integdata_integmodel_code;
+        set {
+            $this->setFullPkAndFilledColumn('tm_integdata_integmodel_code', $value);
+            $this->tm_integdata_integmodel_code = $value;
+        }
+    }
 
     /**
      * Code
@@ -75,12 +85,12 @@ class DataAR extends \Object\ActiveRecord {
      * @var string|null Domain: code Type: varchar
      */
     public string|null $tm_integdata_code = null {
-                        get => $this->tm_integdata_code;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_integdata_code', $value);
-                            $this->tm_integdata_code = $value;
-                        }
-                    }
+        get => $this->tm_integdata_code;
+        set {
+            $this->setFullPkAndFilledColumn('tm_integdata_code', $value);
+            $this->tm_integdata_code = $value;
+        }
+    }
 
     /**
      * Name
@@ -92,12 +102,12 @@ class DataAR extends \Object\ActiveRecord {
      * @var string|null Domain: name Type: varchar
      */
     public string|null $tm_integdata_name = null {
-                        get => $this->tm_integdata_name;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_integdata_name', $value);
-                            $this->tm_integdata_name = $value;
-                        }
-                    }
+        get => $this->tm_integdata_name;
+        set {
+            $this->setFullPkAndFilledColumn('tm_integdata_name', $value);
+            $this->tm_integdata_name = $value;
+        }
+    }
 
     /**
      * Map
@@ -109,12 +119,12 @@ class DataAR extends \Object\ActiveRecord {
      * @var string|null Type: text
      */
     public string|null $tm_integdata_map = null {
-                        get => $this->tm_integdata_map;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_integdata_map', $value);
-                            $this->tm_integdata_map = $value;
-                        }
-                    }
+        get => $this->tm_integdata_map;
+        set {
+            $this->setFullPkAndFilledColumn('tm_integdata_map', $value);
+            $this->tm_integdata_map = $value;
+        }
+    }
 
     /**
      * Inactive
@@ -126,10 +136,10 @@ class DataAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_integdata_inactive = 0 {
-                        get => $this->tm_integdata_inactive;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_integdata_inactive', $value);
-                            $this->tm_integdata_inactive = $value;
-                        }
-                    }
+        get => $this->tm_integdata_inactive;
+        set {
+            $this->setFullPkAndFilledColumn('tm_integdata_inactive', $value);
+            $this->tm_integdata_inactive = $value;
+        }
+    }
 }

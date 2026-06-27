@@ -1,14 +1,24 @@
 <?php
 
+/*
+ * This file is part of Numbers Framework.
+ *
+ * (c) Volodymyr Volynets <volodymyr.volynets@gmail.com>
+ *
+ * This source file is subject to the Apache 2.0 license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Numbers\Tenants\Tenants\Model\Policy;
-class FoldersAR extends \Object\ActiveRecord {
 
+use Object\ActiveRecord;
 
-
+class FoldersAR extends ActiveRecord
+{
     /**
      * @var string
      */
-    public string $object_table_class = \Numbers\Tenants\Tenants\Model\Policy\Folders::class;
+    public string $object_table_class = Folders::class;
 
     /**
      * @var array
@@ -23,13 +33,13 @@ class FoldersAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: tenant_id Type: integer
      */
-    public int|null $tm_polfolder_tenant_id = NULL {
-                        get => $this->tm_polfolder_tenant_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_polfolder_tenant_id', $value);
-                            $this->tm_polfolder_tenant_id = $value;
-                        }
-                    }
+    public int|null $tm_polfolder_tenant_id = null {
+        get => $this->tm_polfolder_tenant_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_polfolder_tenant_id', $value);
+            $this->tm_polfolder_tenant_id = $value;
+        }
+    }
 
     /**
      * Folder #
@@ -41,12 +51,12 @@ class FoldersAR extends \Object\ActiveRecord {
      * @var int|null Domain: folder_id_sequence Type: serial
      */
     public int|null $tm_polfolder_id = null {
-                        get => $this->tm_polfolder_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_polfolder_id', $value);
-                            $this->tm_polfolder_id = $value;
-                        }
-                    }
+        get => $this->tm_polfolder_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_polfolder_id', $value);
+            $this->tm_polfolder_id = $value;
+        }
+    }
 
     /**
      * Root Code
@@ -58,12 +68,12 @@ class FoldersAR extends \Object\ActiveRecord {
      * @var string|null Domain: type_code Type: varchar
      */
     public string|null $tm_polfolder_polroot_code = null {
-                        get => $this->tm_polfolder_polroot_code;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_polfolder_polroot_code', $value);
-                            $this->tm_polfolder_polroot_code = $value;
-                        }
-                    }
+        get => $this->tm_polfolder_polroot_code;
+        set {
+            $this->setFullPkAndFilledColumn('tm_polfolder_polroot_code', $value);
+            $this->tm_polfolder_polroot_code = $value;
+        }
+    }
 
     /**
      * Parent Folder #
@@ -74,13 +84,13 @@ class FoldersAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: folder_id Type: integer
      */
-    public int|null $tm_polfolder_parent_polfolder_id = NULL {
-                        get => $this->tm_polfolder_parent_polfolder_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_polfolder_parent_polfolder_id', $value);
-                            $this->tm_polfolder_parent_polfolder_id = $value;
-                        }
-                    }
+    public int|null $tm_polfolder_parent_polfolder_id = null {
+        get => $this->tm_polfolder_parent_polfolder_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_polfolder_parent_polfolder_id', $value);
+            $this->tm_polfolder_parent_polfolder_id = $value;
+        }
+    }
 
     /**
      * Name
@@ -92,12 +102,12 @@ class FoldersAR extends \Object\ActiveRecord {
      * @var string|null Domain: name Type: varchar
      */
     public string|null $tm_polfolder_name = null {
-                        get => $this->tm_polfolder_name;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_polfolder_name', $value);
-                            $this->tm_polfolder_name = $value;
-                        }
-                    }
+        get => $this->tm_polfolder_name;
+        set {
+            $this->setFullPkAndFilledColumn('tm_polfolder_name', $value);
+            $this->tm_polfolder_name = $value;
+        }
+    }
 
     /**
      * Icon
@@ -109,12 +119,12 @@ class FoldersAR extends \Object\ActiveRecord {
      * @var string|null Domain: icon Type: varchar
      */
     public string|null $tm_polfolder_icon = null {
-                        get => $this->tm_polfolder_icon;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_polfolder_icon', $value);
-                            $this->tm_polfolder_icon = $value;
-                        }
-                    }
+        get => $this->tm_polfolder_icon;
+        set {
+            $this->setFullPkAndFilledColumn('tm_polfolder_icon', $value);
+            $this->tm_polfolder_icon = $value;
+        }
+    }
 
     /**
      * Counter
@@ -126,12 +136,12 @@ class FoldersAR extends \Object\ActiveRecord {
      * @var int|null Domain: counter Type: integer
      */
     public int|null $tm_polfolder_counter = 0 {
-                        get => $this->tm_polfolder_counter;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_polfolder_counter', $value);
-                            $this->tm_polfolder_counter = $value;
-                        }
-                    }
+        get => $this->tm_polfolder_counter;
+        set {
+            $this->setFullPkAndFilledColumn('tm_polfolder_counter', $value);
+            $this->tm_polfolder_counter = $value;
+        }
+    }
 
     /**
      * Inactive
@@ -143,12 +153,12 @@ class FoldersAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_polfolder_inactive = 0 {
-                        get => $this->tm_polfolder_inactive;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_polfolder_inactive', $value);
-                            $this->tm_polfolder_inactive = $value;
-                        }
-                    }
+        get => $this->tm_polfolder_inactive;
+        set {
+            $this->setFullPkAndFilledColumn('tm_polfolder_inactive', $value);
+            $this->tm_polfolder_inactive = $value;
+        }
+    }
 
     /**
      * Optimistic Lock
@@ -160,10 +170,10 @@ class FoldersAR extends \Object\ActiveRecord {
      * @var string|null Domain: optimistic_lock Type: timestamp
      */
     public string|null $tm_polfolder_optimistic_lock = 'now()' {
-                        get => $this->tm_polfolder_optimistic_lock;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_polfolder_optimistic_lock', $value);
-                            $this->tm_polfolder_optimistic_lock = $value;
-                        }
-                    }
+        get => $this->tm_polfolder_optimistic_lock;
+        set {
+            $this->setFullPkAndFilledColumn('tm_polfolder_optimistic_lock', $value);
+            $this->tm_polfolder_optimistic_lock = $value;
+        }
+    }
 }

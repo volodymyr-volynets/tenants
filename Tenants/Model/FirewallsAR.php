@@ -1,14 +1,24 @@
 <?php
 
+/*
+ * This file is part of Numbers Framework.
+ *
+ * (c) Volodymyr Volynets <volodymyr.volynets@gmail.com>
+ *
+ * This source file is subject to the Apache 2.0 license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Numbers\Tenants\Tenants\Model;
-class FirewallsAR extends \Object\ActiveRecord {
 
+use Object\ActiveRecord;
 
-
+class FirewallsAR extends ActiveRecord
+{
     /**
      * @var string
      */
-    public string $object_table_class = \Numbers\Tenants\Tenants\Model\Firewalls::class;
+    public string $object_table_class = Firewalls::class;
 
     /**
      * @var array
@@ -23,13 +33,13 @@ class FirewallsAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: tenant_id Type: integer
      */
-    public int|null $tm_firewall_tenant_id = NULL {
-                        get => $this->tm_firewall_tenant_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_firewall_tenant_id', $value);
-                            $this->tm_firewall_tenant_id = $value;
-                        }
-                    }
+    public int|null $tm_firewall_tenant_id = null {
+        get => $this->tm_firewall_tenant_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_firewall_tenant_id', $value);
+            $this->tm_firewall_tenant_id = $value;
+        }
+    }
 
     /**
      * IP Address
@@ -41,12 +51,12 @@ class FirewallsAR extends \Object\ActiveRecord {
      * @var string|null Domain: ip Type: varchar
      */
     public string|null $tm_firewall_ip = null {
-                        get => $this->tm_firewall_ip;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_firewall_ip', $value);
-                            $this->tm_firewall_ip = $value;
-                        }
-                    }
+        get => $this->tm_firewall_ip;
+        set {
+            $this->setFullPkAndFilledColumn('tm_firewall_ip', $value);
+            $this->tm_firewall_ip = $value;
+        }
+    }
 
     /**
      * Decoded IP Address Info
@@ -58,12 +68,12 @@ class FirewallsAR extends \Object\ActiveRecord {
      * @var mixed Type: json
      */
     public mixed $tm_firewall_info = null {
-                        get => $this->tm_firewall_info;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_firewall_info', $value);
-                            $this->tm_firewall_info = $value;
-                        }
-                    }
+        get => $this->tm_firewall_info;
+        set {
+            $this->setFullPkAndFilledColumn('tm_firewall_info', $value);
+            $this->tm_firewall_info = $value;
+        }
+    }
 
     /**
      * Timestamp Inserted
@@ -75,12 +85,12 @@ class FirewallsAR extends \Object\ActiveRecord {
      * @var string|null Domain: timestamp_now Type: timestamp
      */
     public string|null $tm_firewall_inserted_timestamp = 'now()' {
-                        get => $this->tm_firewall_inserted_timestamp;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_firewall_inserted_timestamp', $value);
-                            $this->tm_firewall_inserted_timestamp = $value;
-                        }
-                    }
+        get => $this->tm_firewall_inserted_timestamp;
+        set {
+            $this->setFullPkAndFilledColumn('tm_firewall_inserted_timestamp', $value);
+            $this->tm_firewall_inserted_timestamp = $value;
+        }
+    }
 
     /**
      * Last Timestamp
@@ -92,12 +102,12 @@ class FirewallsAR extends \Object\ActiveRecord {
      * @var string|null Type: timestamp
      */
     public string|null $tm_firewall_last_timestamp = null {
-                        get => $this->tm_firewall_last_timestamp;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_firewall_last_timestamp', $value);
-                            $this->tm_firewall_last_timestamp = $value;
-                        }
-                    }
+        get => $this->tm_firewall_last_timestamp;
+        set {
+            $this->setFullPkAndFilledColumn('tm_firewall_last_timestamp', $value);
+            $this->tm_firewall_last_timestamp = $value;
+        }
+    }
 
     /**
      * Last 10 Messages
@@ -109,12 +119,12 @@ class FirewallsAR extends \Object\ActiveRecord {
      * @var mixed Type: json
      */
     public mixed $tm_firewall_last_10_messages = null {
-                        get => $this->tm_firewall_last_10_messages;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_firewall_last_10_messages', $value);
-                            $this->tm_firewall_last_10_messages = $value;
-                        }
-                    }
+        get => $this->tm_firewall_last_10_messages;
+        set {
+            $this->setFullPkAndFilledColumn('tm_firewall_last_10_messages', $value);
+            $this->tm_firewall_last_10_messages = $value;
+        }
+    }
 
     /**
      * Requests
@@ -126,12 +136,12 @@ class FirewallsAR extends \Object\ActiveRecord {
      * @var int|null Domain: bigcounter Type: bigint
      */
     public int|null $tm_firewall_requests = 0 {
-                        get => $this->tm_firewall_requests;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_firewall_requests', $value);
-                            $this->tm_firewall_requests = $value;
-                        }
-                    }
+        get => $this->tm_firewall_requests;
+        set {
+            $this->setFullPkAndFilledColumn('tm_firewall_requests', $value);
+            $this->tm_firewall_requests = $value;
+        }
+    }
 
     /**
      * Blocked
@@ -143,12 +153,12 @@ class FirewallsAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_firewall_blocked = 0 {
-                        get => $this->tm_firewall_blocked;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_firewall_blocked', $value);
-                            $this->tm_firewall_blocked = $value;
-                        }
-                    }
+        get => $this->tm_firewall_blocked;
+        set {
+            $this->setFullPkAndFilledColumn('tm_firewall_blocked', $value);
+            $this->tm_firewall_blocked = $value;
+        }
+    }
 
     /**
      * Inactive
@@ -160,10 +170,10 @@ class FirewallsAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_firewall_inactive = 0 {
-                        get => $this->tm_firewall_inactive;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_firewall_inactive', $value);
-                            $this->tm_firewall_inactive = $value;
-                        }
-                    }
+        get => $this->tm_firewall_inactive;
+        set {
+            $this->setFullPkAndFilledColumn('tm_firewall_inactive', $value);
+            $this->tm_firewall_inactive = $value;
+        }
+    }
 }

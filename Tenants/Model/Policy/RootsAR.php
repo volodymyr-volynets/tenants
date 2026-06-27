@@ -1,14 +1,24 @@
 <?php
 
+/*
+ * This file is part of Numbers Framework.
+ *
+ * (c) Volodymyr Volynets <volodymyr.volynets@gmail.com>
+ *
+ * This source file is subject to the Apache 2.0 license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Numbers\Tenants\Tenants\Model\Policy;
-class RootsAR extends \Object\ActiveRecord {
 
+use Object\ActiveRecord;
 
-
+class RootsAR extends ActiveRecord
+{
     /**
      * @var string
      */
-    public string $object_table_class = \Numbers\Tenants\Tenants\Model\Policy\Roots::class;
+    public string $object_table_class = Roots::class;
 
     /**
      * @var array
@@ -23,13 +33,13 @@ class RootsAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: tenant_id Type: integer
      */
-    public int|null $tm_polroot_tenant_id = NULL {
-                        get => $this->tm_polroot_tenant_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_polroot_tenant_id', $value);
-                            $this->tm_polroot_tenant_id = $value;
-                        }
-                    }
+    public int|null $tm_polroot_tenant_id = null {
+        get => $this->tm_polroot_tenant_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_polroot_tenant_id', $value);
+            $this->tm_polroot_tenant_id = $value;
+        }
+    }
 
     /**
      * Code
@@ -41,12 +51,12 @@ class RootsAR extends \Object\ActiveRecord {
      * @var string|null Domain: type_code Type: varchar
      */
     public string|null $tm_polroot_code = null {
-                        get => $this->tm_polroot_code;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_polroot_code', $value);
-                            $this->tm_polroot_code = $value;
-                        }
-                    }
+        get => $this->tm_polroot_code;
+        set {
+            $this->setFullPkAndFilledColumn('tm_polroot_code', $value);
+            $this->tm_polroot_code = $value;
+        }
+    }
 
     /**
      * Name
@@ -58,12 +68,12 @@ class RootsAR extends \Object\ActiveRecord {
      * @var string|null Domain: name Type: varchar
      */
     public string|null $tm_polroot_name = null {
-                        get => $this->tm_polroot_name;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_polroot_name', $value);
-                            $this->tm_polroot_name = $value;
-                        }
-                    }
+        get => $this->tm_polroot_name;
+        set {
+            $this->setFullPkAndFilledColumn('tm_polroot_name', $value);
+            $this->tm_polroot_name = $value;
+        }
+    }
 
     /**
      * Icon
@@ -75,12 +85,12 @@ class RootsAR extends \Object\ActiveRecord {
      * @var string|null Domain: icon Type: varchar
      */
     public string|null $tm_polroot_icon = null {
-                        get => $this->tm_polroot_icon;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_polroot_icon', $value);
-                            $this->tm_polroot_icon = $value;
-                        }
-                    }
+        get => $this->tm_polroot_icon;
+        set {
+            $this->setFullPkAndFilledColumn('tm_polroot_icon', $value);
+            $this->tm_polroot_icon = $value;
+        }
+    }
 
     /**
      * Inactive
@@ -92,10 +102,10 @@ class RootsAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_polroot_inactive = 0 {
-                        get => $this->tm_polroot_inactive;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_polroot_inactive', $value);
-                            $this->tm_polroot_inactive = $value;
-                        }
-                    }
+        get => $this->tm_polroot_inactive;
+        set {
+            $this->setFullPkAndFilledColumn('tm_polroot_inactive', $value);
+            $this->tm_polroot_inactive = $value;
+        }
+    }
 }

@@ -1,14 +1,24 @@
 <?php
 
+/*
+ * This file is part of Numbers Framework.
+ *
+ * (c) Volodymyr Volynets <volodymyr.volynets@gmail.com>
+ *
+ * This source file is subject to the Apache 2.0 license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Numbers\Tenants\Tenants\Model;
-class TenantsAR extends \Object\ActiveRecord {
 
+use Object\ActiveRecord;
 
-
+class TenantsAR extends ActiveRecord
+{
     /**
      * @var string
      */
-    public string $object_table_class = \Numbers\Tenants\Tenants\Model\Tenants::class;
+    public string $object_table_class = Tenants::class;
 
     /**
      * @var array
@@ -24,12 +34,12 @@ class TenantsAR extends \Object\ActiveRecord {
      * @var int|null Domain: tenant_id_sequence Type: serial
      */
     public int|null $tm_tenant_id = null {
-                        get => $this->tm_tenant_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_tenant_id', $value);
-                            $this->tm_tenant_id = $value;
-                        }
-                    }
+        get => $this->tm_tenant_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_tenant_id', $value);
+            $this->tm_tenant_id = $value;
+        }
+    }
 
     /**
      * Code
@@ -41,12 +51,12 @@ class TenantsAR extends \Object\ActiveRecord {
      * @var string|null Domain: domain_part Type: varchar
      */
     public string|null $tm_tenant_code = null {
-                        get => $this->tm_tenant_code;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_tenant_code', $value);
-                            $this->tm_tenant_code = $value;
-                        }
-                    }
+        get => $this->tm_tenant_code;
+        set {
+            $this->setFullPkAndFilledColumn('tm_tenant_code', $value);
+            $this->tm_tenant_code = $value;
+        }
+    }
 
     /**
      * Name
@@ -58,12 +68,12 @@ class TenantsAR extends \Object\ActiveRecord {
      * @var string|null Domain: name Type: varchar
      */
     public string|null $tm_tenant_name = null {
-                        get => $this->tm_tenant_name;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_tenant_name', $value);
-                            $this->tm_tenant_name = $value;
-                        }
-                    }
+        get => $this->tm_tenant_name;
+        set {
+            $this->setFullPkAndFilledColumn('tm_tenant_name', $value);
+            $this->tm_tenant_name = $value;
+        }
+    }
 
     /**
      * Primary Email
@@ -75,12 +85,12 @@ class TenantsAR extends \Object\ActiveRecord {
      * @var string|null Domain: email Type: varchar
      */
     public string|null $tm_tenant_email = null {
-                        get => $this->tm_tenant_email;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_tenant_email', $value);
-                            $this->tm_tenant_email = $value;
-                        }
-                    }
+        get => $this->tm_tenant_email;
+        set {
+            $this->setFullPkAndFilledColumn('tm_tenant_email', $value);
+            $this->tm_tenant_email = $value;
+        }
+    }
 
     /**
      * Primary Phone
@@ -92,12 +102,12 @@ class TenantsAR extends \Object\ActiveRecord {
      * @var string|null Domain: phone Type: varchar
      */
     public string|null $tm_tenant_phone = null {
-                        get => $this->tm_tenant_phone;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_tenant_phone', $value);
-                            $this->tm_tenant_phone = $value;
-                        }
-                    }
+        get => $this->tm_tenant_phone;
+        set {
+            $this->setFullPkAndFilledColumn('tm_tenant_phone', $value);
+            $this->tm_tenant_phone = $value;
+        }
+    }
 
     /**
      * Database
@@ -109,12 +119,12 @@ class TenantsAR extends \Object\ActiveRecord {
      * @var string|null Domain: database Type: varchar
      */
     public string|null $tm_tenant_tm_database_code = null {
-                        get => $this->tm_tenant_tm_database_code;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_tenant_tm_database_code', $value);
-                            $this->tm_tenant_tm_database_code = $value;
-                        }
-                    }
+        get => $this->tm_tenant_tm_database_code;
+        set {
+            $this->setFullPkAndFilledColumn('tm_tenant_tm_database_code', $value);
+            $this->tm_tenant_tm_database_code = $value;
+        }
+    }
 
     /**
      * Registration #
@@ -125,13 +135,13 @@ class TenantsAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: group_id Type: integer
      */
-    public int|null $tm_tenant_um_regten_id = NULL {
-                        get => $this->tm_tenant_um_regten_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_tenant_um_regten_id', $value);
-                            $this->tm_tenant_um_regten_id = $value;
-                        }
-                    }
+    public int|null $tm_tenant_um_regten_id = null {
+        get => $this->tm_tenant_um_regten_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_tenant_um_regten_id', $value);
+            $this->tm_tenant_um_regten_id = $value;
+        }
+    }
 
     /**
      * Inactive
@@ -143,12 +153,12 @@ class TenantsAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_tenant_inactive = 0 {
-                        get => $this->tm_tenant_inactive;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_tenant_inactive', $value);
-                            $this->tm_tenant_inactive = $value;
-                        }
-                    }
+        get => $this->tm_tenant_inactive;
+        set {
+            $this->setFullPkAndFilledColumn('tm_tenant_inactive', $value);
+            $this->tm_tenant_inactive = $value;
+        }
+    }
 
     /**
      * Optimistic Lock
@@ -160,10 +170,10 @@ class TenantsAR extends \Object\ActiveRecord {
      * @var string|null Domain: optimistic_lock Type: timestamp
      */
     public string|null $tm_tenant_optimistic_lock = 'now()' {
-                        get => $this->tm_tenant_optimistic_lock;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_tenant_optimistic_lock', $value);
-                            $this->tm_tenant_optimistic_lock = $value;
-                        }
-                    }
+        get => $this->tm_tenant_optimistic_lock;
+        set {
+            $this->setFullPkAndFilledColumn('tm_tenant_optimistic_lock', $value);
+            $this->tm_tenant_optimistic_lock = $value;
+        }
+    }
 }

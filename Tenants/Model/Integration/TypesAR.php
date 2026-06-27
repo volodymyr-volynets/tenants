@@ -1,14 +1,24 @@
 <?php
 
+/*
+ * This file is part of Numbers Framework.
+ *
+ * (c) Volodymyr Volynets <volodymyr.volynets@gmail.com>
+ *
+ * This source file is subject to the Apache 2.0 license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Numbers\Tenants\Tenants\Model\Integration;
-class TypesAR extends \Object\ActiveRecord {
 
+use Object\ActiveRecord;
 
-
+class TypesAR extends ActiveRecord
+{
     /**
      * @var string
      */
-    public string $object_table_class = \Numbers\Tenants\Tenants\Model\Integration\Types::class;
+    public string $object_table_class = Types::class;
 
     /**
      * @var array
@@ -23,13 +33,13 @@ class TypesAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: tenant_id Type: integer
      */
-    public int|null $tm_integtype_tenant_id = NULL {
-                        get => $this->tm_integtype_tenant_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_integtype_tenant_id', $value);
-                            $this->tm_integtype_tenant_id = $value;
-                        }
-                    }
+    public int|null $tm_integtype_tenant_id = null {
+        get => $this->tm_integtype_tenant_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_integtype_tenant_id', $value);
+            $this->tm_integtype_tenant_id = $value;
+        }
+    }
 
     /**
      * Code
@@ -41,12 +51,12 @@ class TypesAR extends \Object\ActiveRecord {
      * @var string|null Domain: group_code Type: varchar
      */
     public string|null $tm_integtype_code = null {
-                        get => $this->tm_integtype_code;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_integtype_code', $value);
-                            $this->tm_integtype_code = $value;
-                        }
-                    }
+        get => $this->tm_integtype_code;
+        set {
+            $this->setFullPkAndFilledColumn('tm_integtype_code', $value);
+            $this->tm_integtype_code = $value;
+        }
+    }
 
     /**
      * Name
@@ -58,12 +68,12 @@ class TypesAR extends \Object\ActiveRecord {
      * @var string|null Domain: name Type: varchar
      */
     public string|null $tm_integtype_name = null {
-                        get => $this->tm_integtype_name;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_integtype_name', $value);
-                            $this->tm_integtype_name = $value;
-                        }
-                    }
+        get => $this->tm_integtype_name;
+        set {
+            $this->setFullPkAndFilledColumn('tm_integtype_name', $value);
+            $this->tm_integtype_name = $value;
+        }
+    }
 
     /**
      * Params
@@ -75,12 +85,12 @@ class TypesAR extends \Object\ActiveRecord {
      * @var mixed Type: json
      */
     public mixed $tm_integtype_params = null {
-                        get => $this->tm_integtype_params;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_integtype_params', $value);
-                            $this->tm_integtype_params = $value;
-                        }
-                    }
+        get => $this->tm_integtype_params;
+        set {
+            $this->setFullPkAndFilledColumn('tm_integtype_params', $value);
+            $this->tm_integtype_params = $value;
+        }
+    }
 
     /**
      * Password Code
@@ -92,12 +102,12 @@ class TypesAR extends \Object\ActiveRecord {
      * @var string|null Domain: group_code Type: varchar
      */
     public string|null $tm_integtype_password_code = null {
-                        get => $this->tm_integtype_password_code;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_integtype_password_code', $value);
-                            $this->tm_integtype_password_code = $value;
-                        }
-                    }
+        get => $this->tm_integtype_password_code;
+        set {
+            $this->setFullPkAndFilledColumn('tm_integtype_password_code', $value);
+            $this->tm_integtype_password_code = $value;
+        }
+    }
 
     /**
      * Group
@@ -109,12 +119,12 @@ class TypesAR extends \Object\ActiveRecord {
      * @var string|null Domain: group_code Type: varchar
      */
     public string|null $tm_integtype_group = null {
-                        get => $this->tm_integtype_group;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_integtype_group', $value);
-                            $this->tm_integtype_group = $value;
-                        }
-                    }
+        get => $this->tm_integtype_group;
+        set {
+            $this->setFullPkAndFilledColumn('tm_integtype_group', $value);
+            $this->tm_integtype_group = $value;
+        }
+    }
 
     /**
      * Start Datetime
@@ -126,12 +136,12 @@ class TypesAR extends \Object\ActiveRecord {
      * @var string|null Type: datetime
      */
     public string|null $tm_integtype_start_datetime = null {
-                        get => $this->tm_integtype_start_datetime;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_integtype_start_datetime', $value);
-                            $this->tm_integtype_start_datetime = $value;
-                        }
-                    }
+        get => $this->tm_integtype_start_datetime;
+        set {
+            $this->setFullPkAndFilledColumn('tm_integtype_start_datetime', $value);
+            $this->tm_integtype_start_datetime = $value;
+        }
+    }
 
     /**
      * Inactive
@@ -143,10 +153,10 @@ class TypesAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_integtype_inactive = 0 {
-                        get => $this->tm_integtype_inactive;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_integtype_inactive', $value);
-                            $this->tm_integtype_inactive = $value;
-                        }
-                    }
+        get => $this->tm_integtype_inactive;
+        set {
+            $this->setFullPkAndFilledColumn('tm_integtype_inactive', $value);
+            $this->tm_integtype_inactive = $value;
+        }
+    }
 }

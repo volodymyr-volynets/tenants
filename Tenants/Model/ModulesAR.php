@@ -1,14 +1,24 @@
 <?php
 
+/*
+ * This file is part of Numbers Framework.
+ *
+ * (c) Volodymyr Volynets <volodymyr.volynets@gmail.com>
+ *
+ * This source file is subject to the Apache 2.0 license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Numbers\Tenants\Tenants\Model;
-class ModulesAR extends \Object\ActiveRecord {
 
+use Object\ActiveRecord;
 
-
+class ModulesAR extends ActiveRecord
+{
     /**
      * @var string
      */
-    public string $object_table_class = \Numbers\Tenants\Tenants\Model\Modules::class;
+    public string $object_table_class = Modules::class;
 
     /**
      * @var array
@@ -23,13 +33,13 @@ class ModulesAR extends \Object\ActiveRecord {
      *
      * @var int|null Domain: tenant_id Type: integer
      */
-    public int|null $tm_module_tenant_id = NULL {
-                        get => $this->tm_module_tenant_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_module_tenant_id', $value);
-                            $this->tm_module_tenant_id = $value;
-                        }
-                    }
+    public int|null $tm_module_tenant_id = null {
+        get => $this->tm_module_tenant_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_module_tenant_id', $value);
+            $this->tm_module_tenant_id = $value;
+        }
+    }
 
     /**
      * Module #
@@ -41,12 +51,12 @@ class ModulesAR extends \Object\ActiveRecord {
      * @var int|null Domain: module_id_sequence Type: serial
      */
     public int|null $tm_module_id = null {
-                        get => $this->tm_module_id;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_module_id', $value);
-                            $this->tm_module_id = $value;
-                        }
-                    }
+        get => $this->tm_module_id;
+        set {
+            $this->setFullPkAndFilledColumn('tm_module_id', $value);
+            $this->tm_module_id = $value;
+        }
+    }
 
     /**
      * Module Code
@@ -58,12 +68,12 @@ class ModulesAR extends \Object\ActiveRecord {
      * @var string|null Domain: module_code Type: char
      */
     public string|null $tm_module_module_code = null {
-                        get => $this->tm_module_module_code;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_module_module_code', $value);
-                            $this->tm_module_module_code = $value;
-                        }
-                    }
+        get => $this->tm_module_module_code;
+        set {
+            $this->setFullPkAndFilledColumn('tm_module_module_code', $value);
+            $this->tm_module_module_code = $value;
+        }
+    }
 
     /**
      * Name
@@ -75,12 +85,12 @@ class ModulesAR extends \Object\ActiveRecord {
      * @var string|null Domain: name Type: varchar
      */
     public string|null $tm_module_name = null {
-                        get => $this->tm_module_name;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_module_name', $value);
-                            $this->tm_module_name = $value;
-                        }
-                    }
+        get => $this->tm_module_name;
+        set {
+            $this->setFullPkAndFilledColumn('tm_module_name', $value);
+            $this->tm_module_name = $value;
+        }
+    }
 
     /**
      * Inactive
@@ -92,10 +102,10 @@ class ModulesAR extends \Object\ActiveRecord {
      * @var int|null Type: boolean
      */
     public int|null $tm_module_inactive = 0 {
-                        get => $this->tm_module_inactive;
-                        set {
-                            $this->setFullPkAndFilledColumn('tm_module_inactive', $value);
-                            $this->tm_module_inactive = $value;
-                        }
-                    }
+        get => $this->tm_module_inactive;
+        set {
+            $this->setFullPkAndFilledColumn('tm_module_inactive', $value);
+            $this->tm_module_inactive = $value;
+        }
+    }
 }
