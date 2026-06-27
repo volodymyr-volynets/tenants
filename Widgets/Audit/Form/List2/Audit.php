@@ -102,7 +102,7 @@ class Audit extends List2
             'total' => 0,
             'rows' => []
         ];
-        $form->query = \Factory::model($form->options['model_table'] . '\0Virtual0\Widgets\Audit')->queryBuilder()->select();
+        $form->query = \Factory::model($form->options['model_table'] . '\0Virtual0\Widgets\Audit', false, [['archives' => \Request::input('__archives')]])->queryBuilder()->select();
         $form->processReportQueryFilter($form->query);
         // additional filter
         $parent_model = \Factory::model($form->options['model_table']);

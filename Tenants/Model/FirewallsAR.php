@@ -85,7 +85,7 @@ class FirewallsAR extends ActiveRecord
      *
      * @var string|null Domain: timestamp_now Type: timestamp
      */
-    public string|null $tm_firewall_inserted_timestamp = null {
+    public string|null $tm_firewall_inserted_timestamp = 'now()' {
         get => $this->tm_firewall_inserted_timestamp;
         set {
             $this->setFullPkAndFilledColumn('tm_firewall_inserted_timestamp', $value);
